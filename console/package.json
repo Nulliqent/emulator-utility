@@ -8,14 +8,19 @@
     "refs:fetch": "node scripts/fetch-refs.mjs",
     "catalog:build": "node packages/catalog-compiler/src/cli.ts build",
     "catalog:check": "node packages/catalog-compiler/src/cli.ts check",
-    "lint": "eslint .",
-    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p packages/model/tsconfig.json",
-    "test": "vitest run"
+    "lint": "eslint . && node scripts/check-colors.mjs",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p packages/model/tsconfig.json && tsc --noEmit -p packages/api-contract/tsconfig.json && tsc --noEmit -p packages/ui/tsconfig.json && tsc --noEmit -p apps/gateway/tsconfig.json && tsc --noEmit -p apps/web/tsconfig.json && tsc --noEmit -p e2e/tsconfig.json",
+    "test": "vitest run",
+    "build": "pnpm --filter @console/web build",
+    "start": "node apps/gateway/src/main.ts",
+    "dev": "node scripts/dev.mjs",
+    "e2e": "pnpm --filter @console/e2e test"
   },
   "pnpm": { "onlyBuiltDependencies": ["esbuild"] },
   "devDependencies": {
     "@types/node": "^24.19.2",
     "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.73.0",
     "vitest": "^3.2.7"

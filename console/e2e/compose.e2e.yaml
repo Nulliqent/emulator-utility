@@ -1,0 +1,39 @@
+# Overrides the repo-root docker-compose.yaml so the e2e stack never touches a developer's own
+# `emulator` container: its own compose project (console-e2e), no fixed container name, other host
+# ports (19297, 19300) and its own Emulator home. Needs Docker Compose 2.24.4 or newer (!reset, !override).
+#   docker compose -p console-e2e -f docker-compose.yaml -f console/e2e/compose.e2e.yaml ...
+#
+# The Emulator home is a named volume, not a bind mount: the Emulator (uid 1000) writes 0700 and 0600
+# files that a CI runner (uid 1001) could not delete from a host folder.
+services:
+  # A named volume starts root-owned, so hand it to uid 1000 before the Emulator starts.
+  emulator-home-init:
+    build:
+      context: .
+      dockerfile: Dockerfile/emulator.Dockerfile
+    image: aws-emulator
+    user: "0"
+    entrypoint: ["chown", "1000:1000", "/volume"]
+    volumes:
+      - e2e-home:/volume
+  emulator:
+    container_name: !reset null
+    depends_on:
+      emulator-home-init:
+        condition: service_completed_successfully
+    ports: !override
+      - "127.0.0.1:19297:9297"
+    volumes: !override
+      - e2e-home:/home/emulator/.aws
+  console:
+    image: aws-emulator-console:e2e
+    # ca.pem is 0600 and owned by uid 1000, so the Gateway runs as uid 1000 (the base file sets it too).
+    ports: !override
+      - "127.0.0.1:19300:9300"
+    volumes: !override
+      - e2e-home:/emulator-home-root:ro
+    environment:
+      CONSOLE_PUBLIC_ORIGIN: http://127.0.0.1:19300
+      CONSOLE_EMULATOR_HOME: /emulator-home-root/emulator
+volumes:
+  e2e-home:

@@ -49,3 +49,29 @@ An Operation with an `ops/<op>.rs` file is Implemented, or Scaffolded when its l
 - `probeOp` is the implemented, non-streaming read Operation with no required input whose noun appears in the most Operation names of the Service (ListStreams for Kinesis, DescribeRepositories for ECR), List before Describe before Get. It is chosen by name, so it is read-only by convention, not by proof. A missing `probeOp` (75 Services at the pin) means no implemented, non-streaming read Operation without required input exists, so Availability falls back to an empty-input read, as ARCHITECTURE 6.1 describes.
 - `sdkPackage` is `@aws-sdk/client-` plus the sdkId lowercased with spaces as hyphens.
 - `rootResourceTypes` (Resource Inference, ticket #14) and `knownIssues` (the Phase 3 Known Issues work) are deferred and absent for now.
+
+## Running the Console
+
+```sh
+docker compose up --build        # from the repo root: the Emulator plus the console on 127.0.0.1:9300
+```
+
+Open http://127.0.0.1:9300 (it redirects to `/__console/`). The `console` service mounts `.aws/emulator` read-only. Compose 2.24.4 or newer is needed for the e2e override (`!reset`, `!override`).
+
+Host mode (Gateway on 127.0.0.1:9300 plus Vite on port 5173, open `/__console/` there): `pnpm dev`. Both `http://localhost:5173/__console/` and `http://127.0.0.1:5173/__console/` work, as do `localhost:9300` and `127.0.0.1:9300` for the Gateway itself. It defaults to `CONSOLE_EMULATOR_URL=https://127.0.0.1:9297`, `CONSOLE_EMULATOR_HOME=../.aws/emulator` and `CONSOLE_CONFIG_DIR=./.dev-data`; set any of them in the environment to override.
+
+| Piece | Where |
+|---|---|
+| Gateway (Node 24, TypeScript by type stripping) | `apps/gateway`, `pnpm start` |
+| Web app (React 19, Vite, TanStack Router) | `apps/web`, `pnpm build` or `pnpm --filter @console/web dev` |
+| Console API contract (zod) | `packages/api-contract` |
+| Design tokens and primitives | `packages/ui` (colors only in `src/tokens/tokens.css`; `pnpm lint` bans raw colors elsewhere) |
+| Playwright end-to-end tests | `e2e/`, `pnpm e2e` |
+
+The Gateway reads `CONSOLE_EMULATOR_URL`, `CONSOLE_EMULATOR_HOME`, `CONSOLE_CONFIG_DIR` and `CONSOLE_PUBLIC_ORIGIN` (see `apps/gateway/src/config.ts`).
+
+**Network exposure.** The Gateway binds `127.0.0.1` by default and refuses to start on any other address unless `CONSOLE_ALLOW_REMOTE_BIND=1`. The image sets `CONSOLE_HOST=0.0.0.0` and that flag because a container must listen on all interfaces; compose publishes the port on `127.0.0.1` only, so keep it that way. Outside compose, publish it the same way: `docker run -p 127.0.0.1:9300:9300 ...` (never `-p 9300:9300`, which listens on every interface). The same-origin rule (ARCHITECTURE 3.9) and the `Host` check stop other web pages and DNS rebinding from driving the API through your browser. They are not a network boundary: anyone who can reach the port directly (curl-style, no `Origin`) is served, so never publish it beyond loopback.
+
+### End-to-end tests
+
+`pnpm e2e` builds and starts its own compose project (`console-e2e`) with `e2e/compose.e2e.yaml`: other host ports (19297, 19300), its own Emulator home in a named volume, and no fixed container name, so it never touches your own `emulator` container. The first run needs `pnpm --filter @console/e2e exec playwright install chromium`. The Emulator image is aarch64 only, so CI runs the job on an arm runner.

@@ -305,11 +305,11 @@ JSON over same-origin HTTP. Every error is `{ "error": { "code": string, "messag
 
 | Method and path | Response | Notes |
 |---|---|---|
-| `GET /meta` | `{ gatewayVersion, catalog: { fingerprint, sourceCommit, sdkVersion, builtAt }, features: { reset: boolean } }` | The SPA loads `catalog/<fingerprint>/index.json` from here. |
+| `GET /meta` | `{ gatewayVersion, catalog: { fingerprint, sourceCommit, sdkVersion, builtAt }, features: { reset: boolean } }`. Every `catalog` field is nullable: `fingerprint` and `sourceCommit` are null when the manifest is missing, and `sdkVersion` and `builtAt` are null until the compiler records them. | The SPA loads `catalog/<fingerprint>/index.json` from here. |
 | `GET /connections` | `{ active: id, items: ConnectionSummary[] }` | `ConnectionSummary` has no secrets. |
 | `POST /connections`, `PUT /connections/{id}`, `DELETE /connections/{id}`, `POST /connections/{id}/activate` | the `ConnectionSummary` | Phase 3. Until then the API answers `405` and the list holds only the local connection. |
 | `GET /connections/{id}/credentials` | `{ accessKeyId, secretAccessKey, sessionToken?, epoch }` | Same-origin only, `Cache-Control: no-store`. |
-| `GET /connections/{id}/health` | `{ reachable, status, latencyMs, checkedAt, credentialsEpoch, tls: "ok"|"untrusted"|"error" }` | Wraps `/__admin/health`; drives the toolbar pill. |
+| `GET /connections/{id}/health` | `{ reachable, status, latencyMs, checkedAt, credentialsEpoch, tls: "ok"|"untrusted"|"missing"|"error" }` (`missing`: no `ca.pem`, so the Emulator is not running or its home is wrong) | Wraps `/__admin/health`; drives the toolbar pill. |
 | `POST /connections/{id}/checks` | `{ checks: { id, ok, detail }[] }` | Connections screen: reachable, TLS trusted, credentials accepted (`sts:GetCallerIdentity`), S3 path-style (`ListBuckets`). The design's "CORS allowed" check is replaced by "Gateway same-origin". |
 | `POST /connections/{id}/probe` | `{ results: { serviceId, availability: "available"|"absent"|"unknown", via: OpName, status, checkedAt }[] }` | Availability probes for many services at once (section 6.1); concurrency 8; results cached per credentials epoch. |
 | `POST /connections/{id}/reset` | `202 { jobId }` or `409 reset-unavailable { command }` | Restart; see 3.11. |
