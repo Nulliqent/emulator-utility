@@ -1,0 +1,7 @@
+{
+  "name": "@console/forms",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": { "@console/model": "workspace:*" }
+}

@@ -94,6 +94,12 @@ importers:
         specifier: workspace:*
         version: link:../model
 
+  packages/forms:
+    dependencies:
+      '@console/model':
+        specifier: workspace:*
+        version: link:../model
+
   packages/invoker:
     dependencies:
       '@aws-sdk/client-accessanalyzer':
