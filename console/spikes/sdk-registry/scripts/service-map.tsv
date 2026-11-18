@@ -1,0 +1,436 @@
+com-amazonaws-accessanalyzer-accessanalyzer	AccessAnalyzer	@aws-sdk/client-accessanalyzer
+com-amazonaws-account-account	Account	@aws-sdk/client-account
+com-amazonaws-accountaccess-awsaccountaccess	Account Access	@aws-sdk/client-account-access
+com-amazonaws-accountaccessruntime-awsaccountaccessruntime	Account Access Runtime	@aws-sdk/client-account-access-runtime
+com-amazonaws-acm-certificatemanager	ACM	@aws-sdk/client-acm
+com-amazonaws-acmpca-acmprivateca	ACM PCA	@aws-sdk/client-acm-pca
+com-amazonaws-agentregistry-agentregistry	Agent Registry	@aws-sdk/client-agent-registry
+com-amazonaws-agentregistrycontrol-agentregistrycontrol	Agent Registry Control	@aws-sdk/client-agent-registry-control
+com-amazonaws-aiops-aiops	AIOps	@aws-sdk/client-aiops
+com-amazonaws-amp-amazonprometheusservice	amp	@aws-sdk/client-amp
+com-amazonaws-amplify-amplify	Amplify	@aws-sdk/client-amplify
+com-amazonaws-amplifybackend-amplifybackend	AmplifyBackend	@aws-sdk/client-amplifybackend
+com-amazonaws-amplifyuibuilder-amplifyuibuilder	AmplifyUIBuilder	@aws-sdk/client-amplifyuibuilder
+com-amazonaws-apigateway-backplanecontrolservice	API Gateway	@aws-sdk/client-api-gateway
+com-amazonaws-apigatewaymanagementapi-apigatewaymanagementapi	ApiGatewayManagementApi	@aws-sdk/client-apigatewaymanagementapi
+com-amazonaws-apigatewayv2-apigatewayv2	ApiGatewayV2	@aws-sdk/client-apigatewayv2
+com-amazonaws-appconfig-amazonappconfig	AppConfig	@aws-sdk/client-appconfig
+com-amazonaws-appconfigdata-appconfigdata	AppConfigData	@aws-sdk/client-appconfigdata
+com-amazonaws-appfabric-fabricfrontendservice	AppFabric	@aws-sdk/client-appfabric
+com-amazonaws-appflow-sandstoneconfigurationservicelambda	Appflow	@aws-sdk/client-appflow
+com-amazonaws-appintegrations-amazonappintegrationservice	AppIntegrations	@aws-sdk/client-appintegrations
+com-amazonaws-applicationautoscaling-anyscalefrontendservice	Application Auto Scaling	@aws-sdk/client-application-auto-scaling
+com-amazonaws-applicationcostprofiler-awsapplicationcostprofiler	ApplicationCostProfiler	@aws-sdk/client-applicationcostprofiler
+com-amazonaws-applicationdiscoveryawsposeidonv2015-11-01	Application Discovery Service	@aws-sdk/client-application-discovery-service
+com-amazonaws-applicationinsights-ec2windowsbarleyservice	Application Insights	@aws-sdk/client-application-insights
+com-amazonaws-applicationsignals-applicationsignals	Application Signals	@aws-sdk/client-application-signals
+com-amazonaws-appmesh-appmesh	App Mesh	@aws-sdk/client-app-mesh
+com-amazonaws-apprunner-apprunner	AppRunner	@aws-sdk/client-apprunner
+com-amazonaws-appstream-photonadminproxyservice	AppStream	@aws-sdk/client-appstream
+com-amazonaws-appsync-awsdeepdishcontrolplaneservice	AppSync	@aws-sdk/client-appsync
+com-amazonaws-arcregionswitch-arcregionswitch	ARC Region switch	@aws-sdk/client-arc-region-switch
+com-amazonaws-arczonalshift-percdataplane	ARC Zonal Shift	@aws-sdk/client-arc-zonal-shift
+com-amazonaws-artifact-artifact	Artifact	@aws-sdk/client-artifact
+com-amazonaws-athena-amazonathena	Athena	@aws-sdk/client-athena
+com-amazonaws-auditmanager-bedrockassessmentmanagerlambda	AuditManager	@aws-sdk/client-auditmanager
+com-amazonaws-autoscaling-autoscaling-2011-01-01	Auto Scaling	@aws-sdk/client-auto-scaling
+com-amazonaws-autoscalingplans-anyscalescalingplannerfrontendservice	Auto Scaling Plans	@aws-sdk/client-auto-scaling-plans
+com-amazonaws-b2bi-b2bi	b2bi	@aws-sdk/client-b2bi
+com-amazonaws-backup-cryocontrollerusermanager	Backup	@aws-sdk/client-backup
+com-amazonaws-backupgateway-backuponpremises-v20210101	Backup Gateway	@aws-sdk/client-backup-gateway
+com-amazonaws-backupsearch-cryobackupsearchservice	BackupSearch	@aws-sdk/client-backupsearch
+com-amazonaws-batch-awsbatchv20160810	Batch	@aws-sdk/client-batch
+com-amazonaws-bcmdashboards-awsbcmdashboardsservice	BCM Dashboards	@aws-sdk/client-bcm-dashboards
+com-amazonaws-bcmdataexports-awsbillingandcostmanagementdataexports	BCM Data Exports	@aws-sdk/client-bcm-data-exports
+com-amazonaws-bcmpricingcalculator-awsbcmpricingcalculator	BCM Pricing Calculator	@aws-sdk/client-bcm-pricing-calculator
+com-amazonaws-bcmrecommendedactions-awsbillingandcostmanagementrecommendedactions	BCM Recommended Actions	@aws-sdk/client-bcm-recommended-actions
+com-amazonaws-bedrock-amazonbedrockcontrolplaneservice	Bedrock	@aws-sdk/client-bedrock
+com-amazonaws-bedrockagent-amazonbedrockagentbuildtimelambda	Bedrock Agent	@aws-sdk/client-bedrock-agent
+com-amazonaws-bedrockagentcore-amazonbedrockagentcore	Bedrock AgentCore	@aws-sdk/client-bedrock-agentcore
+com-amazonaws-bedrockagentcorecontrol-amazonbedrockagentcorecontrol	Bedrock AgentCore Control	@aws-sdk/client-bedrock-agentcore-control
+com-amazonaws-bedrockagentruntime-amazonbedrockagentruntimeservice	Bedrock Agent Runtime	@aws-sdk/client-bedrock-agent-runtime
+com-amazonaws-bedrockdataautomation-amazonbedrockkeystonebuildtimeservice	Bedrock Data Automation	@aws-sdk/client-bedrock-data-automation
+com-amazonaws-bedrockdataautomationruntime-amazonbedrockkeystoneruntimeservice	Bedrock Data Automation Runtime	@aws-sdk/client-bedrock-data-automation-runtime
+com-amazonaws-bedrockruntime-amazonbedrockfrontendservice	Bedrock Runtime	@aws-sdk/client-bedrock-runtime
+com-amazonaws-billing-awsbilling	Billing	@aws-sdk/client-billing
+com-amazonaws-billingconductor-awsbillingconductor	billingconductor	@aws-sdk/client-billingconductor
+com-amazonaws-braket-braket	Braket	@aws-sdk/client-braket
+com-amazonaws-budgets-awsbudgetservicegateway	Budgets	@aws-sdk/client-budgets
+com-amazonaws-chatbot-wheatleyorchestration-20171011	chatbot	@aws-sdk/client-chatbot
+com-amazonaws-chime-ucbuzzconsoleservice	Chime	@aws-sdk/client-chime
+com-amazonaws-chimesdkidentity-chimeidentityservice	Chime SDK Identity	@aws-sdk/client-chime-sdk-identity
+com-amazonaws-chimesdkmediapipelines-chimesdkmediapipelinesservice	Chime SDK Media Pipelines	@aws-sdk/client-chime-sdk-media-pipelines
+com-amazonaws-chimesdkmeetings-chimemeetingssdkservice	Chime SDK Meetings	@aws-sdk/client-chime-sdk-meetings
+com-amazonaws-chimesdkmessaging-chimemessagingservice	Chime SDK Messaging	@aws-sdk/client-chime-sdk-messaging
+com-amazonaws-chimesdkvoice-chimesdktelephonyservice	Chime SDK Voice	@aws-sdk/client-chime-sdk-voice
+com-amazonaws-cleanrooms-awsbastioncontrolplaneservicelambda	CleanRooms	@aws-sdk/client-cleanrooms
+com-amazonaws-cleanroomsml-awsstarkcontrolservice	CleanRoomsML	@aws-sdk/client-cleanroomsml
+com-amazonaws-cloud9-awscloud9workspacemanagementservice	Cloud9	@aws-sdk/client-cloud9
+com-amazonaws-cloudcontrol-cloudapiservice	CloudControl	@aws-sdk/client-cloudcontrol
+com-amazonaws-clouddirectory-amazonclouddirectory-20170111	CloudDirectory	@aws-sdk/client-clouddirectory
+com-amazonaws-cloudformation-cloudformation	CloudFormation	@aws-sdk/client-cloudformation
+com-amazonaws-cloudfront-cloudfront2020-05-31	CloudFront	@aws-sdk/client-cloudfront
+com-amazonaws-cloudfrontkeyvaluestore-cloudfrontkeyvaluestore	CloudFront KeyValueStore	@aws-sdk/client-cloudfront-keyvaluestore
+com-amazonaws-cloudhsm-cloudhsmfrontendservice	CloudHSM	@aws-sdk/client-cloudhsm
+com-amazonaws-cloudhsmv2-baldrapiservice	CloudHSM V2	@aws-sdk/client-cloudhsm-v2
+com-amazonaws-cloudsearch-a9searchcloudconfigservice2013	CloudSearch	@aws-sdk/client-cloudsearch
+com-amazonaws-cloudsearchdomain-amazoncloudsearch2013	CloudSearch Domain	@aws-sdk/client-cloudsearch-domain
+com-amazonaws-cloudtrail-cloudtrail-20131101	CloudTrail	@aws-sdk/client-cloudtrail
+com-amazonaws-cloudtraildata-cloudtraildataservice	CloudTrail Data	@aws-sdk/client-cloudtrail-data
+com-amazonaws-cloudwatch-graniteserviceversion20100801	CloudWatch	@aws-sdk/client-cloudwatch
+com-amazonaws-cloudwatchevents-awsevents	CloudWatch Events	@aws-sdk/client-cloudwatch-events
+com-amazonaws-cloudwatchlogs-logs-20140328	CloudWatch Logs	@aws-sdk/client-cloudwatch-logs
+com-amazonaws-cloudwatchomni-cloudwatchomnifrontend	CloudWatchOmni	@aws-sdk/client-cloudwatchomni
+com-amazonaws-codeartifact-codeartifactcontrolplaneservice	codeartifact	@aws-sdk/client-codeartifact
+com-amazonaws-codebuild-codebuild-20161006	CodeBuild	@aws-sdk/client-codebuild
+com-amazonaws-codecatalyst-codecatalyst	CodeCatalyst	@aws-sdk/client-codecatalyst
+com-amazonaws-codecommit-codecommit-20150413	CodeCommit	@aws-sdk/client-codecommit
+com-amazonaws-codeconnections-codeconnections-20231201	CodeConnections	@aws-sdk/client-codeconnections
+com-amazonaws-codedeploy-codedeploy-20141006	CodeDeploy	@aws-sdk/client-codedeploy
+com-amazonaws-codeguruprofiler-codeguruprofiler	CodeGuruProfiler	@aws-sdk/client-codeguruprofiler
+com-amazonaws-codegurureviewer-awsgurufrontendservice	CodeGuru Reviewer	@aws-sdk/client-codeguru-reviewer
+com-amazonaws-codegurusecurity-awscodegurusecurity	CodeGuru Security	@aws-sdk/client-codeguru-security
+com-amazonaws-codepipeline-codepipeline-20150709	CodePipeline	@aws-sdk/client-codepipeline
+com-amazonaws-codestarconnections-codestar-connections-20191201	CodeStar connections	@aws-sdk/client-codestar-connections
+com-amazonaws-codestarnotifications-codestarnotifications-20191015	codestar notifications	@aws-sdk/client-codestar-notifications
+com-amazonaws-cognitoidentity-awscognitoidentityservice	Cognito Identity	@aws-sdk/client-cognito-identity
+com-amazonaws-cognitoidentityprovider-awscognitoidentityproviderservice	Cognito Identity Provider	@aws-sdk/client-cognito-identity-provider
+com-amazonaws-cognitosync-awscognitosyncservice	Cognito Sync	@aws-sdk/client-cognito-sync
+com-amazonaws-comprehend-comprehend-20171127	Comprehend	@aws-sdk/client-comprehend
+com-amazonaws-comprehendmedical-comprehendmedical-20181030	ComprehendMedical	@aws-sdk/client-comprehendmedical
+com-amazonaws-computeoptimizer-computeoptimizerservice	Compute Optimizer	@aws-sdk/client-compute-optimizer
+com-amazonaws-computeoptimizerautomation-computeoptimizerautomationservice	Compute Optimizer Automation	@aws-sdk/client-compute-optimizer-automation
+com-amazonaws-configstarlingdoveservice	Config Service	@aws-sdk/client-config-service
+com-amazonaws-connect-amazonconnectservice	Connect	@aws-sdk/client-connect
+com-amazonaws-connectcampaigns-amazonconnectcampaignservice	ConnectCampaigns	@aws-sdk/client-connectcampaigns
+com-amazonaws-connectcampaignsv2-amazonconnectcampaignservicev2	ConnectCampaignsV2	@aws-sdk/client-connectcampaignsv2
+com-amazonaws-connectcases-amazonconnectcases	ConnectCases	@aws-sdk/client-connectcases
+com-amazonaws-connectcontactlens-amazonconnectcontactlens	Connect Contact Lens	@aws-sdk/client-connect-contact-lens
+com-amazonaws-connecthealth-connecthealth	ConnectHealth	@aws-sdk/client-connecthealth
+com-amazonaws-connectparticipant-amazonconnectparticipantservicelambda	ConnectParticipant	@aws-sdk/client-connectparticipant
+com-amazonaws-continuum-continuumcontrolplane	Continuum	@aws-sdk/client-continuum
+com-amazonaws-controlcatalog-controlcatalog	ControlCatalog	@aws-sdk/client-controlcatalog
+com-amazonaws-controltower-awscontroltowerapis	ControlTower	@aws-sdk/client-controltower
+com-amazonaws-costandusagereportawsorigamiservicegatewayservice	Cost and Usage Report Service	@aws-sdk/client-cost-and-usage-report-service
+com-amazonaws-costexplorer-awsinsightsindexservice	Cost Explorer	@aws-sdk/client-cost-explorer
+com-amazonaws-costoptimizationhub-costoptimizationhubservice	Cost Optimization Hub	@aws-sdk/client-cost-optimization-hub
+com-amazonaws-customerprofiles-customerprofiles-20200815	Customer Profiles	@aws-sdk/client-customer-profiles
+com-amazonaws-databasemigrationamazondmsv20160101	Database Migration Service	@aws-sdk/client-database-migration-service
+com-amazonaws-databrew-awsgluedatabrew	DataBrew	@aws-sdk/client-databrew
+com-amazonaws-dataexchange-dataexchange	DataExchange	@aws-sdk/client-dataexchange
+com-amazonaws-datapipeline-datapipeline	Data Pipeline	@aws-sdk/client-data-pipeline
+com-amazonaws-datasync-fmrsservice	DataSync	@aws-sdk/client-datasync
+com-amazonaws-datazone-datazone	DataZone	@aws-sdk/client-datazone
+com-amazonaws-dax-amazondaxv3	DAX	@aws-sdk/client-dax
+com-amazonaws-deadline-deadline	deadline	@aws-sdk/client-deadline
+com-amazonaws-detective-amazondetective	Detective	@aws-sdk/client-detective
+com-amazonaws-devicefarm-devicefarm-20150623	Device Farm	@aws-sdk/client-device-farm
+com-amazonaws-devopsagent-devopsagent	DevOps Agent	@aws-sdk/client-devops-agent
+com-amazonaws-devopsguru-capstonecontrolplaneservice	DevOps Guru	@aws-sdk/client-devops-guru
+com-amazonaws-directconnect-overtureservice	Direct Connect	@aws-sdk/client-direct-connect
+com-amazonaws-directorydirectory20150416	Directory Service	@aws-sdk/client-directory-service
+com-amazonaws-directoryservicedata-directoryservicedata	Directory Service Data	@aws-sdk/client-directory-service-data
+com-amazonaws-dlm-dlm-20180112	DLM	@aws-sdk/client-dlm
+com-amazonaws-docdb-amazonrdsv19	DocDB	@aws-sdk/client-docdb
+com-amazonaws-docdbelastic-chimeradblionfishservicelambda	DocDB Elastic	@aws-sdk/client-docdb-elastic
+com-amazonaws-drs-elasticdisasterrecoveryservice	drs	@aws-sdk/client-drs
+com-amazonaws-dsql-dsql	DSQL	@aws-sdk/client-dsql
+com-amazonaws-dynamodb-dynamodb-20120810	DynamoDB	@aws-sdk/client-dynamodb
+com-amazonaws-dynamodbstreams-dynamodbstreams-20120810	DynamoDB Streams	@aws-sdk/client-dynamodb-streams
+com-amazonaws-ebs-ebs	EBS	@aws-sdk/client-ebs
+com-amazonaws-ec2-amazonec2	EC2	@aws-sdk/client-ec2
+com-amazonaws-ec2instanceconnect-awsec2instanceconnectservice	EC2 Instance Connect	@aws-sdk/client-ec2-instance-connect
+com-amazonaws-ecr-amazonec2containerregistry-v20150921	ECR	@aws-sdk/client-ecr
+com-amazonaws-ecrpublic-spencerfrontendservice	ECR PUBLIC	@aws-sdk/client-ecr-public
+com-amazonaws-ecs-amazonec2containerservicev20141113	ECS	@aws-sdk/client-ecs
+com-amazonaws-efs-magnolioapiv20150201	EFS	@aws-sdk/client-efs
+com-amazonaws-eks-awswesleyfrontend	EKS	@aws-sdk/client-eks
+com-amazonaws-eksauth-eksauthfrontend	EKS Auth	@aws-sdk/client-eks-auth
+com-amazonaws-elasticache-amazonelasticachev9	ElastiCache	@aws-sdk/client-elasticache
+com-amazonaws-elasticbeanstalk-awselasticbeanstalkservice	Elastic Beanstalk	@aws-sdk/client-elastic-beanstalk
+com-amazonaws-elasticloadbalancing-elasticloadbalancing-v7	Elastic Load Balancing	@aws-sdk/client-elastic-load-balancing
+com-amazonaws-elasticloadbalancingv2-elasticloadbalancing-v10	Elastic Load Balancing v2	@aws-sdk/client-elastic-load-balancing-v2
+com-amazonaws-elasticsearchamazonelasticsearchservice2015	Elasticsearch Service	@aws-sdk/client-elasticsearch-service
+com-amazonaws-elementalinference-elementalinference	ElementalInference	@aws-sdk/client-elementalinference
+com-amazonaws-emr-elasticmapreduce	EMR	@aws-sdk/client-emr
+com-amazonaws-emrcontainers-awschicagowebservice	EMR containers	@aws-sdk/client-emr-containers
+com-amazonaws-emrserverless-awstoledowebservice	EMR Serverless	@aws-sdk/client-emr-serverless
+com-amazonaws-endusermessaging-endusermessaging	EndUserMessaging	@aws-sdk/client-endusermessaging
+com-amazonaws-entityresolution-awsveniceservice	EntityResolution	@aws-sdk/client-entityresolution
+com-amazonaws-eventbridge-awsevents	EventBridge	@aws-sdk/client-eventbridge
+com-amazonaws-eventbridgev2-awseventsv2	EventBridgeV2	@aws-sdk/client-eventbridgev2
+com-amazonaws-evs-amazonelasticvmwareservice	evs	@aws-sdk/client-evs
+com-amazonaws-firehose-firehose-20150804	Firehose	@aws-sdk/client-firehose
+com-amazonaws-fis-faultinjectionsimulator	fis	@aws-sdk/client-fis
+com-amazonaws-fms-awsfms-20180101	FMS	@aws-sdk/client-fms
+com-amazonaws-forecast-amazonforecast	forecast	@aws-sdk/client-forecast
+com-amazonaws-forecastquery-amazonforecastruntime	forecastquery	@aws-sdk/client-forecastquery
+com-amazonaws-frauddetector-awshawksnestservicefacade	FraudDetector	@aws-sdk/client-frauddetector
+com-amazonaws-freetier-awsfreetierservice	FreeTier	@aws-sdk/client-freetier
+com-amazonaws-fsx-awssimbaapiv20180301	FSx	@aws-sdk/client-fsx
+com-amazonaws-gamelift-gamelift	GameLift	@aws-sdk/client-gamelift
+com-amazonaws-gameliftstreams-gameliftstreams	GameLiftStreams	@aws-sdk/client-gameliftstreams
+com-amazonaws-geomaps-mapsservice	Geo Maps	@aws-sdk/client-geo-maps
+com-amazonaws-geoplaces-placesservice	Geo Places	@aws-sdk/client-geo-places
+com-amazonaws-georoutes-routesservice	Geo Routes	@aws-sdk/client-geo-routes
+com-amazonaws-glacier-glacier	Glacier	@aws-sdk/client-glacier
+com-amazonaws-globalaccelerator-globalaccelerator-v20180706	Global Accelerator	@aws-sdk/client-global-accelerator
+com-amazonaws-glue-awsglue	Glue	@aws-sdk/client-glue
+com-amazonaws-grafana-awsgrafanacontrolplane	grafana	@aws-sdk/client-grafana
+com-amazonaws-greengrass-greengrass	Greengrass	@aws-sdk/client-greengrass
+com-amazonaws-greengrassv2-greengrassv2	GreengrassV2	@aws-sdk/client-greengrassv2
+com-amazonaws-groundstation-groundstation	GroundStation	@aws-sdk/client-groundstation
+com-amazonaws-guardduty-guarddutyapiservice	GuardDuty	@aws-sdk/client-guardduty
+com-amazonaws-health-awshealth-20160804	Health	@aws-sdk/client-health
+com-amazonaws-healthlake-healthlake	HealthLake	@aws-sdk/client-healthlake
+com-amazonaws-iam-awsidentitymanagementv20100508	IAM	@aws-sdk/client-iam
+com-amazonaws-iamtoolbox-authrequestservice	IAM Toolbox	@aws-sdk/client-iam-toolbox
+com-amazonaws-identitystore-awsidentitystore	identitystore	@aws-sdk/client-identitystore
+com-amazonaws-imagebuilder-imagebuilder	imagebuilder	@aws-sdk/client-imagebuilder
+com-amazonaws-inspector-inspectorservice	Inspector	@aws-sdk/client-inspector
+com-amazonaws-inspector2-inspector2	Inspector2	@aws-sdk/client-inspector2
+com-amazonaws-inspectorscan-inspectorscan	Inspector Scan	@aws-sdk/client-inspector-scan
+com-amazonaws-interconnect-interconnect	Interconnect	@aws-sdk/client-interconnect
+com-amazonaws-internetmonitor-internetmonitor20210603	InternetMonitor	@aws-sdk/client-internetmonitor
+com-amazonaws-invoicing-invoicing	Invoicing	@aws-sdk/client-invoicing
+com-amazonaws-iot-awsiotservice	IoT	@aws-sdk/client-iot
+com-amazonaws-iotdataplane-iotmoonrakerservice	IoT Data Plane	@aws-sdk/client-iot-data-plane
+com-amazonaws-iotdeviceadvisor-iotsenateservice	IotDeviceAdvisor	@aws-sdk/client-iotdeviceadvisor
+com-amazonaws-iotfleetwise-iotautobahncontrolplane	IoTFleetWise	@aws-sdk/client-iotfleetwise
+com-amazonaws-iotjobsdataplane-iotlaserthingjobmanagerexternalservice	IoT Jobs Data Plane	@aws-sdk/client-iot-jobs-data-plane
+com-amazonaws-iotmanagedintegrations-iotmanagedintegrations	IoT Managed Integrations	@aws-sdk/client-iot-managed-integrations
+com-amazonaws-iotsecuretunneling-iotsecuredtunneling	IoTSecureTunneling	@aws-sdk/client-iotsecuretunneling
+com-amazonaws-iotsitewise-awsiotsitewise	IoTSiteWise	@aws-sdk/client-iotsitewise
+com-amazonaws-iotthingsgraph-iotthingsgraphfrontendservice	IoTThingsGraph	@aws-sdk/client-iotthingsgraph
+com-amazonaws-iottwinmaker-awsiottwinmaker	IoTTwinMaker	@aws-sdk/client-iottwinmaker
+com-amazonaws-iotwireless-iotwireless	IoT Wireless	@aws-sdk/client-iot-wireless
+com-amazonaws-ivs-amazoninteractivevideoservice	ivs	@aws-sdk/client-ivs
+com-amazonaws-ivschat-amazoninteractivevideoservicechat	ivschat	@aws-sdk/client-ivschat
+com-amazonaws-ivsrealtime-amazoninteractivevideoservicerealtime	IVS RealTime	@aws-sdk/client-ivs-realtime
+com-amazonaws-kafka-kafka	Kafka	@aws-sdk/client-kafka
+com-amazonaws-kafkaconnect-kafkaconnect	KafkaConnect	@aws-sdk/client-kafkaconnect
+com-amazonaws-kendra-awskendrafrontendservice	kendra	@aws-sdk/client-kendra
+com-amazonaws-kendraranking-awskendrarerankingfrontendservice	Kendra Ranking	@aws-sdk/client-kendra-ranking
+com-amazonaws-keyspaces-keyspacesservice	Keyspaces	@aws-sdk/client-keyspaces
+com-amazonaws-keyspacesstreams-keyspacesstreams	KeyspacesStreams	@aws-sdk/client-keyspacesstreams
+com-amazonaws-kinesis-kinesis-20131202	Kinesis	@aws-sdk/client-kinesis
+com-amazonaws-kinesisanalytics-kinesisanalytics-20150814	Kinesis Analytics	@aws-sdk/client-kinesis-analytics
+com-amazonaws-kinesisanalyticsv2-kinesisanalytics-20180523	Kinesis Analytics V2	@aws-sdk/client-kinesis-analytics-v2
+com-amazonaws-kinesisvideo-kinesisvideo-20170930	Kinesis Video	@aws-sdk/client-kinesis-video
+com-amazonaws-kinesisvideoarchivedmedia-awsacuityreader	Kinesis Video Archived Media	@aws-sdk/client-kinesis-video-archived-media
+com-amazonaws-kinesisvideomedia-awsacuityinletservice	Kinesis Video Media	@aws-sdk/client-kinesis-video-media
+com-amazonaws-kinesisvideosignaling-awsacuitysignalingservice	Kinesis Video Signaling	@aws-sdk/client-kinesis-video-signaling
+com-amazonaws-kinesisvideowebrtcstorage-awsacuityroutingservicelambda	Kinesis Video WebRTC Storage	@aws-sdk/client-kinesis-video-webrtc-storage
+com-amazonaws-kms-trentservice	KMS	@aws-sdk/client-kms
+com-amazonaws-lakeformation-awslakeformation	LakeFormation	@aws-sdk/client-lakeformation
+com-amazonaws-lambda-awsgirapiservice	Lambda	@aws-sdk/client-lambda
+com-amazonaws-lambdacore-lambdacoreapiservice	Lambda Core	@aws-sdk/client-lambda-core
+com-amazonaws-lambdamicrovms-lambdamicrovms	Lambda Microvms	@aws-sdk/client-lambda-microvms
+com-amazonaws-lambdaweb-lambdaweb	Lambda Web	@aws-sdk/client-lambda-web
+com-amazonaws-launchwizard-launchwizard	Launch Wizard	@aws-sdk/client-launch-wizard
+com-amazonaws-lexmodelbuildingawsdeepsensemodelbuildingservice	Lex Model Building Service	@aws-sdk/client-lex-model-building-service
+com-amazonaws-lexmodelsv2-lexmodelbuildingservicev2	Lex Models V2	@aws-sdk/client-lex-models-v2
+com-amazonaws-lexruntimeawsdeepsenseruntimeservice	Lex Runtime Service	@aws-sdk/client-lex-runtime-service
+com-amazonaws-lexruntimev2-awsdeepsenseruntimeserviceapi2-0	Lex Runtime V2	@aws-sdk/client-lex-runtime-v2
+com-amazonaws-licensemanager-awslicensemanager	License Manager	@aws-sdk/client-license-manager
+com-amazonaws-licensemanagerlinuxsubscriptions-licensemanagerlinuxsubscriptions	License Manager Linux Subscriptions	@aws-sdk/client-license-manager-linux-subscriptions
+com-amazonaws-licensemanagerusersubscriptions-licensemanagerusersubscriptions	License Manager User Subscriptions	@aws-sdk/client-license-manager-user-subscriptions
+com-amazonaws-lightsail-lightsail-20161128	Lightsail	@aws-sdk/client-lightsail
+com-amazonaws-location-locationservice	Location	@aws-sdk/client-location
+com-amazonaws-lookoutequipment-awslookoutequipmentfrontendservice	LookoutEquipment	@aws-sdk/client-lookoutequipment
+com-amazonaws-m2-awssupernovacontrolplaneservice	m2	@aws-sdk/client-m2
+com-amazonaws-machinelearning-amazonml-20141212	Machine Learning	@aws-sdk/client-machine-learning
+com-amazonaws-macie2-macie2	Macie2	@aws-sdk/client-macie2
+com-amazonaws-mailmanager-mailmanagersvc	MailManager	@aws-sdk/client-mailmanager
+com-amazonaws-managedblockchain-taigawebservice	ManagedBlockchain	@aws-sdk/client-managedblockchain
+com-amazonaws-managedblockchainquery-tietonchainqueryservice	ManagedBlockchain Query	@aws-sdk/client-managedblockchain-query
+com-amazonaws-marketplaceagreement-awsmpcommercev20200301	Marketplace Agreement	@aws-sdk/client-marketplace-agreement
+com-amazonaws-marketplacecatalog-awsmpseymour	Marketplace Catalog	@aws-sdk/client-marketplace-catalog
+com-amazonaws-marketplacecommerceanalytics-marketplacecommerceanalytics20150701	Marketplace Commerce Analytics	@aws-sdk/client-marketplace-commerce-analytics
+com-amazonaws-marketplacedeployment-awsmpdeploymentparametersservice	Marketplace Deployment	@aws-sdk/client-marketplace-deployment
+com-amazonaws-marketplacediscovery-awsmarketplacediscovery	Marketplace Discovery	@aws-sdk/client-marketplace-discovery
+com-amazonaws-marketplaceentitlementawsmpentitlementservice	Marketplace Entitlement Service	@aws-sdk/client-marketplace-entitlement-service
+com-amazonaws-marketplacemetering-awsmpmeteringservice	Marketplace Metering	@aws-sdk/client-marketplace-metering
+com-amazonaws-marketplacereporting-awsmarketplacereporting	Marketplace Reporting	@aws-sdk/client-marketplace-reporting
+com-amazonaws-mediaconnect-mediaconnect	MediaConnect	@aws-sdk/client-mediaconnect
+com-amazonaws-mediaconvert-mediaconvert	MediaConvert	@aws-sdk/client-mediaconvert
+com-amazonaws-medialive-medialive	MediaLive	@aws-sdk/client-medialive
+com-amazonaws-mediapackage-mediapackage	MediaPackage	@aws-sdk/client-mediapackage
+com-amazonaws-mediapackagev2-mediapackagev2	MediaPackageV2	@aws-sdk/client-mediapackagev2
+com-amazonaws-mediapackagevod-mediapackagevod	MediaPackage Vod	@aws-sdk/client-mediapackage-vod
+com-amazonaws-mediastore-mediastore-20170901	MediaStore	@aws-sdk/client-mediastore
+com-amazonaws-mediastoredata-mediastoreobject-20170901	MediaStore Data	@aws-sdk/client-mediastore-data
+com-amazonaws-mediatailor-mediatailor	MediaTailor	@aws-sdk/client-mediatailor
+com-amazonaws-medicalimaging-ahigatewayservice	Medical Imaging	@aws-sdk/client-medical-imaging
+com-amazonaws-memorydb-amazonmemorydb	MemoryDB	@aws-sdk/client-memorydb
+com-amazonaws-mgn-applicationmigrationservice	mgn	@aws-sdk/client-mgn
+com-amazonaws-migrationhub-awsmigrationhub	Migration Hub	@aws-sdk/client-migration-hub
+com-amazonaws-migrationhubconfig-awsmigrationhubmultiaccountservice	MigrationHub Config	@aws-sdk/client-migrationhub-config
+com-amazonaws-migrationhuborchestrator-awsmigrationhuborchestrator	MigrationHubOrchestrator	@aws-sdk/client-migrationhuborchestrator
+com-amazonaws-migrationhubrefactorspaces-refactorspaces	Migration Hub Refactor Spaces	@aws-sdk/client-migration-hub-refactor-spaces
+com-amazonaws-migrationhubstrategy-awsmigrationhubstrategyrecommendation	MigrationHubStrategy	@aws-sdk/client-migrationhubstrategy
+com-amazonaws-mpa-awsfluffycoreservice	MPA	@aws-sdk/client-mpa
+com-amazonaws-mq-mq	mq	@aws-sdk/client-mq
+com-amazonaws-mturk-mturkrequesterservicev20170117	MTurk	@aws-sdk/client-mturk
+com-amazonaws-mwaa-amazonmwaa	MWAA	@aws-sdk/client-mwaa
+com-amazonaws-mwaaserverless-amazonmwaaserverless	MWAA Serverless	@aws-sdk/client-mwaa-serverless
+com-amazonaws-neptune-amazonrdsv19	Neptune	@aws-sdk/client-neptune
+com-amazonaws-neptunedata-amazonneptunedataplane	neptunedata	@aws-sdk/client-neptunedata
+com-amazonaws-neptunegraph-amazonneptunegraph	Neptune Graph	@aws-sdk/client-neptune-graph
+com-amazonaws-networkfirewall-networkfirewall-20201112	Network Firewall	@aws-sdk/client-network-firewall
+com-amazonaws-networkflowmonitor-networkflowmonitor	NetworkFlowMonitor	@aws-sdk/client-networkflowmonitor
+com-amazonaws-networkmanager-networkmanager	NetworkManager	@aws-sdk/client-networkmanager
+com-amazonaws-networkmonitor-networkmonitor	NetworkMonitor	@aws-sdk/client-networkmonitor
+com-amazonaws-networksecuritymanager-piccolocustomerapiservice	Network Security Manager	@aws-sdk/client-network-security-manager
+com-amazonaws-notifications-notifications	Notifications	@aws-sdk/client-notifications
+com-amazonaws-notificationscontacts-notificationscontacts	NotificationsContacts	@aws-sdk/client-notificationscontacts
+com-amazonaws-novaact-amazonnovaagentsdataplane	Nova Act	@aws-sdk/client-nova-act
+com-amazonaws-oam-oamservice	OAM	@aws-sdk/client-oam
+com-amazonaws-observabilityadmin-observabilityadmin	ObservabilityAdmin	@aws-sdk/client-observabilityadmin
+com-amazonaws-odb-odb	odb	@aws-sdk/client-odb
+com-amazonaws-omics-omics	Omics	@aws-sdk/client-omics
+com-amazonaws-opensearch-amazonopensearchservice	OpenSearch	@aws-sdk/client-opensearch
+com-amazonaws-opensearchserverless-opensearchserverless	OpenSearchServerless	@aws-sdk/client-opensearchserverless
+com-amazonaws-organizations-awsorganizationsv20161128	Organizations	@aws-sdk/client-organizations
+com-amazonaws-osis-amazonopensearchingestionservice	OSIS	@aws-sdk/client-osis
+com-amazonaws-outposts-outpostsolafservice	Outposts	@aws-sdk/client-outposts
+com-amazonaws-partnercentralaccount-partnercentralaccount	PartnerCentral Account	@aws-sdk/client-partnercentral-account
+com-amazonaws-partnercentralbenefits-partnercentralbenefitsservice	PartnerCentral Benefits	@aws-sdk/client-partnercentral-benefits
+com-amazonaws-partnercentralchannel-partnercentralchannel	PartnerCentral Channel	@aws-sdk/client-partnercentral-channel
+com-amazonaws-partnercentralrevenuemeasurement-partnercentralrevenuemeasurement	PartnerCentral Revenue Measurement	@aws-sdk/client-partnercentral-revenue-measurement
+com-amazonaws-partnercentralselling-awspartnercentralselling	PartnerCentral Selling	@aws-sdk/client-partnercentral-selling
+com-amazonaws-paymentcryptography-paymentcryptographycontrolplane	Payment Cryptography	@aws-sdk/client-payment-cryptography
+com-amazonaws-paymentcryptographydata-paymentcryptographydataplane	Payment Cryptography Data	@aws-sdk/client-payment-cryptography-data
+com-amazonaws-pcaconnectorad-pcaconnectorad	Pca Connector Ad	@aws-sdk/client-pca-connector-ad
+com-amazonaws-pcaconnectorscep-pcaconnectorscep	Pca Connector Scep	@aws-sdk/client-pca-connector-scep
+com-amazonaws-pcs-awsparallelcomputingservice	PCS	@aws-sdk/client-pcs
+com-amazonaws-personalize-amazonpersonalize	Personalize	@aws-sdk/client-personalize
+com-amazonaws-personalizeevents-amazonpersonalizeevents	Personalize Events	@aws-sdk/client-personalize-events
+com-amazonaws-personalizeruntime-amazonpersonalizeruntime	Personalize Runtime	@aws-sdk/client-personalize-runtime
+com-amazonaws-pi-performanceinsightsv20180227	PI	@aws-sdk/client-pi
+com-amazonaws-pinpoint-pinpoint	Pinpoint	@aws-sdk/client-pinpoint
+com-amazonaws-pinpointemail-amazonpinpointemailservice	Pinpoint Email	@aws-sdk/client-pinpoint-email
+com-amazonaws-pinpointsmsvoice-pinpointsmsvoice	Pinpoint SMS Voice	@aws-sdk/client-pinpoint-sms-voice
+com-amazonaws-pinpointsmsvoicev2-pinpointsmsvoicev2	Pinpoint SMS Voice V2	@aws-sdk/client-pinpoint-sms-voice-v2
+com-amazonaws-pipes-pipes	Pipes	@aws-sdk/client-pipes
+com-amazonaws-polly-parrot-v1	Polly	@aws-sdk/client-polly
+com-amazonaws-pricing-awspricelistservice	Pricing	@aws-sdk/client-pricing
+com-amazonaws-pricingplanmanager-awspricingplanmanager	Pricing Plan Manager	@aws-sdk/client-pricing-plan-manager
+com-amazonaws-proton-awsproton20200720	Proton	@aws-sdk/client-proton
+com-amazonaws-qapps-qappsservice	QApps	@aws-sdk/client-qapps
+com-amazonaws-qbusiness-expertq	QBusiness	@aws-sdk/client-qbusiness
+com-amazonaws-qconnect-wisdomservice	QConnect	@aws-sdk/client-qconnect
+com-amazonaws-quicksight-quicksight-20180401	QuickSight	@aws-sdk/client-quicksight
+com-amazonaws-ram-amazonresourcesharing	RAM	@aws-sdk/client-ram
+com-amazonaws-rbin-amazonrecyclebin	rbin	@aws-sdk/client-rbin
+com-amazonaws-rds-amazonrdsv19	RDS	@aws-sdk/client-rds
+com-amazonaws-rdsdata-rdsdataservice	RDS Data	@aws-sdk/client-rds-data
+com-amazonaws-redshift-redshiftserviceversion20121201	Redshift	@aws-sdk/client-redshift
+com-amazonaws-redshiftdata-redshiftdata	Redshift Data	@aws-sdk/client-redshift-data
+com-amazonaws-redshiftserverless-redshiftserverless	Redshift Serverless	@aws-sdk/client-redshift-serverless
+com-amazonaws-rekognition-rekognitionservice	Rekognition	@aws-sdk/client-rekognition
+com-amazonaws-repostspace-repostspace	repostspace	@aws-sdk/client-repostspace
+com-amazonaws-resiliencehub-awsresiliencehub	resiliencehub	@aws-sdk/client-resiliencehub
+com-amazonaws-resiliencehubv2-ngrhservicecore	resiliencehubv2	@aws-sdk/client-resiliencehubv2
+com-amazonaws-resourceexplorer2-resourceexplorer	Resource Explorer 2	@aws-sdk/client-resource-explorer-2
+com-amazonaws-resourcegroups-ardi	Resource Groups	@aws-sdk/client-resource-groups
+com-amazonaws-resourcegroupstaggingapi-resourcegroupstaggingapi-20170126	Resource Groups Tagging API	@aws-sdk/client-resource-groups-tagging-api
+com-amazonaws-rolesanywhere-rolesanywhere	RolesAnywhere	@aws-sdk/client-rolesanywhere
+com-amazonaws-route53-awsdnsv20130401	Route 53	@aws-sdk/client-route-53
+com-amazonaws-route53domains-route53domains-v20140515	Route 53 Domains	@aws-sdk/client-route-53-domains
+com-amazonaws-route53globalresolver-ec2dnsglobalresolvercustomerapi	Route53GlobalResolver	@aws-sdk/client-route53globalresolver
+com-amazonaws-route53profiles-route53profiles	Route53Profiles	@aws-sdk/client-route53profiles
+com-amazonaws-route53recoverycluster-togglecustomerapi	Route53 Recovery Cluster	@aws-sdk/client-route53-recovery-cluster
+com-amazonaws-route53recoverycontrolconfig-route53recoverycontrolconfig	Route53 Recovery Control Config	@aws-sdk/client-route53-recovery-control-config
+com-amazonaws-route53recoveryreadiness-route53recoveryreadiness	Route53 Recovery Readiness	@aws-sdk/client-route53-recovery-readiness
+com-amazonaws-route53resolver-route53resolver	Route53Resolver	@aws-sdk/client-route53resolver
+com-amazonaws-rtbfabric-rtbfabric	RTBFabric	@aws-sdk/client-rtbfabric
+com-amazonaws-rum-rum	RUM	@aws-sdk/client-rum
+com-amazonaws-s3-amazons3	S3	@aws-sdk/client-s3
+com-amazonaws-s3control-awss3controlservicev20180820	S3 Control	@aws-sdk/client-s3-control
+com-amazonaws-s3files-s3files	S3Files	@aws-sdk/client-s3files
+com-amazonaws-s3outposts-s3outposts	S3Outposts	@aws-sdk/client-s3outposts
+com-amazonaws-s3tables-s3tablebuckets	S3Tables	@aws-sdk/client-s3tables
+com-amazonaws-s3vectors-s3vectors	S3Vectors	@aws-sdk/client-s3vectors
+com-amazonaws-sagemaker-sagemaker	SageMaker	@aws-sdk/client-sagemaker
+com-amazonaws-sagemakera2iruntime-amazonsagemakera2iruntime	SageMaker A2I Runtime	@aws-sdk/client-sagemaker-a2i-runtime
+com-amazonaws-sagemakeredge-amazonsagemakeredge	Sagemaker Edge	@aws-sdk/client-sagemaker-edge
+com-amazonaws-sagemakerfeaturestoreruntime-amazonsagemakerfeaturestoreruntime	SageMaker FeatureStore Runtime	@aws-sdk/client-sagemaker-featurestore-runtime
+com-amazonaws-sagemakergeospatial-sagemakergeospatial	SageMaker Geospatial	@aws-sdk/client-sagemaker-geospatial
+com-amazonaws-sagemakerjobruntime-agenticrftruntimeservice	SagemakerJobRuntime	@aws-sdk/client-sagemakerjobruntime
+com-amazonaws-sagemakermetrics-sagemakermetricsservice	SageMaker Metrics	@aws-sdk/client-sagemaker-metrics
+com-amazonaws-sagemakerruntime-amazonsagemakerruntime	SageMaker Runtime	@aws-sdk/client-sagemaker-runtime
+com-amazonaws-sagemakerruntimehttp2-amazonsagemakerruntimehttp2	SageMaker Runtime HTTP2	@aws-sdk/client-sagemaker-runtime-http2
+com-amazonaws-sagemakertrainingsessionruntime-legorouterservice	SageMakerTrainingSessionRuntime	@aws-sdk/client-sagemakertrainingsessionruntime
+com-amazonaws-savingsplans-awssavingsplan	savingsplans	@aws-sdk/client-savingsplans
+com-amazonaws-scheduler-awschronosservice	Scheduler	@aws-sdk/client-scheduler
+com-amazonaws-schemas-schemas	schemas	@aws-sdk/client-schemas
+com-amazonaws-secretsmanager-secretsmanager	Secrets Manager	@aws-sdk/client-secrets-manager
+com-amazonaws-securityagent-securityagent	SecurityAgent	@aws-sdk/client-securityagent
+com-amazonaws-securityhub-securityhubapiservice	SecurityHub	@aws-sdk/client-securityhub
+com-amazonaws-securityir-securityincidentresponse	Security IR	@aws-sdk/client-security-ir
+com-amazonaws-securitylake-securitylake	SecurityLake	@aws-sdk/client-securitylake
+com-amazonaws-serverlessapplicationrepository-serverlessapplicationrepository	ServerlessApplicationRepository	@aws-sdk/client-serverlessapplicationrepository
+com-amazonaws-servicecatalog-aws242servicecatalogservice	Service Catalog	@aws-sdk/client-service-catalog
+com-amazonaws-servicecatalogappregistry-aws242appregistry	Service Catalog AppRegistry	@aws-sdk/client-service-catalog-appregistry
+com-amazonaws-servicediscovery-route53autonaming-v20170314	ServiceDiscovery	@aws-sdk/client-servicediscovery
+com-amazonaws-servicequotas-servicequotasv20190624	Service Quotas	@aws-sdk/client-service-quotas
+com-amazonaws-ses-simpleemailservice	SES	@aws-sdk/client-ses
+com-amazonaws-sesv2-simpleemailv2	SESv2	@aws-sdk/client-sesv2
+com-amazonaws-sfn-awsstepfunctions	SFN	@aws-sdk/client-sfn
+com-amazonaws-shield-awsshield-20160616	Shield	@aws-sdk/client-shield
+com-amazonaws-signer-wallabyservice	signer	@aws-sdk/client-signer
+com-amazonaws-signerdata-signerdataplane	Signer Data	@aws-sdk/client-signer-data
+com-amazonaws-signin-signin	Signin	@aws-sdk/client-signin
+com-amazonaws-simpledbv2-simpledbv2	SimpleDBv2	@aws-sdk/client-simpledbv2
+com-amazonaws-snowball-awsiesnowballjobmanagementservice	Snowball	@aws-sdk/client-snowball
+com-amazonaws-snowdevicemanagement-snowdevicemanagement	Snow Device Management	@aws-sdk/client-snow-device-management
+com-amazonaws-sns-amazonsimplenotificationservice	SNS	@aws-sdk/client-sns
+com-amazonaws-socialmessaging-socialmessaging	SocialMessaging	@aws-sdk/client-socialmessaging
+com-amazonaws-sqs-amazonsqs	SQS	@aws-sdk/client-sqs
+com-amazonaws-ssm-amazonssm	SSM	@aws-sdk/client-ssm
+com-amazonaws-ssmcontacts-ssmcontacts	SSM Contacts	@aws-sdk/client-ssm-contacts
+com-amazonaws-ssmguiconnect-ssmguiconnect	SSM GuiConnect	@aws-sdk/client-ssm-guiconnect
+com-amazonaws-ssmincidents-ssmincidents	SSM Incidents	@aws-sdk/client-ssm-incidents
+com-amazonaws-ssmquicksetup-quicksetup	SSM QuickSetup	@aws-sdk/client-ssm-quicksetup
+com-amazonaws-ssmsap-ssmsap	Ssm Sap	@aws-sdk/client-ssm-sap
+com-amazonaws-sso-swbportalservice	SSO	@aws-sdk/client-sso
+com-amazonaws-ssoadmin-swbexternalservice	SSO Admin	@aws-sdk/client-sso-admin
+com-amazonaws-ssooidc-awsssooidcservice	SSO OIDC	@aws-sdk/client-sso-oidc
+com-amazonaws-storagegateway-storagegateway-20130630	Storage Gateway	@aws-sdk/client-storage-gateway
+com-amazonaws-sts-awssecuritytokenservicev20110615	STS	@aws-sdk/client-sts
+com-amazonaws-supplychain-galaxypublicapigateway	SupplyChain	@aws-sdk/client-supplychain
+com-amazonaws-support-awssupport-20130415	Support	@aws-sdk/client-support
+com-amazonaws-supportapp-supportapp	Support App	@aws-sdk/client-support-app
+com-amazonaws-supportauthz-supportauthz	SupportAuthZ	@aws-sdk/client-supportauthz
+com-amazonaws-sustainability-awssustainabilityapiservice	Sustainability	@aws-sdk/client-sustainability
+com-amazonaws-swf-simpleworkflowservice	SWF	@aws-sdk/client-swf
+com-amazonaws-synthetics-synthetics	synthetics	@aws-sdk/client-synthetics
+com-amazonaws-taxsettings-taxsettings	TaxSettings	@aws-sdk/client-taxsettings
+com-amazonaws-textract-textract	Textract	@aws-sdk/client-textract
+com-amazonaws-timestreaminfluxdb-amazontimestreaminfluxdb	Timestream InfluxDB	@aws-sdk/client-timestream-influxdb
+com-amazonaws-timestreamquery-timestream-20181101	Timestream Query	@aws-sdk/client-timestream-query
+com-amazonaws-timestreamwrite-timestream-20181101	Timestream Write	@aws-sdk/client-timestream-write
+com-amazonaws-transcribe-transcribe	Transcribe	@aws-sdk/client-transcribe
+com-amazonaws-transcribestreaming-transcribe	Transcribe Streaming	@aws-sdk/client-transcribe-streaming
+com-amazonaws-transfer-transferservice	Transfer	@aws-sdk/client-transfer
+com-amazonaws-translate-awsshinefrontend20170701	Translate	@aws-sdk/client-translate
+com-amazonaws-trustedadvisor-trustedadvisor	TrustedAdvisor	@aws-sdk/client-trustedadvisor
+com-amazonaws-uxc-awsaccountuxsetting	uxc	@aws-sdk/client-uxc
+com-amazonaws-verifiedpermissions-verifiedpermissions	VerifiedPermissions	@aws-sdk/client-verifiedpermissions
+com-amazonaws-voiceid-voiceid	Voice ID	@aws-sdk/client-voice-id
+com-amazonaws-vpclattice-mercurycontrolplane	VPC Lattice	@aws-sdk/client-vpc-lattice
+com-amazonaws-waf-awswaf-20150824	WAF	@aws-sdk/client-waf
+com-amazonaws-wafregional-awswaf-regional-20161128	WAF Regional	@aws-sdk/client-waf-regional
+com-amazonaws-wafv2-awswaf-20190729	WAFV2	@aws-sdk/client-wafv2
+com-amazonaws-wellarchitected-wellarchitectedapiservicelambda	WellArchitected	@aws-sdk/client-wellarchitected
+com-amazonaws-wickr-wickradminapi	Wickr	@aws-sdk/client-wickr
+com-amazonaws-wisdom-wisdomservice	Wisdom	@aws-sdk/client-wisdom
+com-amazonaws-workdocs-awsgorillaboyservice	WorkDocs	@aws-sdk/client-workdocs
+com-amazonaws-workmail-workmailservice	WorkMail	@aws-sdk/client-workmail
+com-amazonaws-workmailmessageflow-giraffemessageintransitservice	WorkMailMessageFlow	@aws-sdk/client-workmailmessageflow
+com-amazonaws-workspaces-workspacesservice	WorkSpaces	@aws-sdk/client-workspaces
+com-amazonaws-workspacesinstances-eucmifrontendapiservice	Workspaces Instances	@aws-sdk/client-workspaces-instances
+com-amazonaws-workspacesthinclient-thinclient	WorkSpaces Thin Client	@aws-sdk/client-workspaces-thin-client
+com-amazonaws-workspacesweb-awserminecontrolplaneservice	WorkSpaces Web	@aws-sdk/client-workspaces-web
+com-amazonaws-xray-awsxray	XRay	@aws-sdk/client-xray
