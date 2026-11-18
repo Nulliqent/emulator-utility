@@ -12,3 +12,26 @@ services:
       - .aws/emulator:/home/emulator/.aws/emulator
     mem_limit: 2g
     memswap_limit: 2g
+
+  console:
+    build:
+      context: ./console
+      dockerfile: apps/gateway/Dockerfile
+    image: aws-emulator-console
+    # The Emulator (uid 1000) writes ca.pem and the credentials as 0600; the Gateway must be uid 1000 to read them.
+    user: "1000:1000"
+    depends_on:
+      - emulator
+    environment:
+      CONSOLE_EMULATOR_URL: https://emulator:${PORT:-9297}
+      CONSOLE_EMULATOR_HOME: /emulator-home
+      CONSOLE_PUBLIC_ORIGIN: http://127.0.0.1:9300
+    volumes:
+      - .aws/emulator:/emulator-home:ro
+      - console-data:/data
+    ports:
+      - "127.0.0.1:9300:9300"
+    mem_limit: 256m
+
+volumes:
+  console-data:

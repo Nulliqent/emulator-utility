@@ -1,0 +1,11 @@
+**/node_modules
+.refs
+**/.dev-data
+**/.aws
+**/.env*
+**/*.pem
+e2e/test-results
+e2e/playwright-report
+apps/web/dist
+dist/catalog/*
+!dist/catalog/manifest.json

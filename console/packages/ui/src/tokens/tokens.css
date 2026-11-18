@@ -1,0 +1,52 @@
+/*
+ * Design tokens (UI Design Spec, visual system). The only file, with this folder, where raw
+ * color values may appear (D-10, enforced by scripts/check-colors.mjs). Light theme only; a dark
+ * set can be added later under a [data-theme="dark"] selector without touching components.
+ */
+:root {
+  --color-accent: #0071e3;
+  --color-on-accent: #ffffff;
+
+  --color-text: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-text-sidebar-secondary: #636366;
+  --color-link: #0066cc;
+  --color-link-hover: #004e9e;
+
+  --color-bg-page: #f5f5f7;
+  --color-bg-card: #ffffff;
+  --color-bg-sidebar: #f0f0f3;
+  --color-bg-toolbar: rgba(255, 255, 255, 0.82);
+  --color-bg-track: #e8e8ed;
+
+  --color-line-card: #e5e5ea;
+  --color-line-control: #d2d2d7;
+  --color-line-sidebar: #d9d9de;
+  --color-line-sidebar-card: #dcdce1;
+
+  --color-status-ok-text: #1f7a35; /* the spec's green, darkened to reach 4.5:1 on the ok background */
+  --color-status-ok-bg: #e3f5e7;
+  --color-status-ok-dot: #1f7a35; /* 3:1 or better on the sidebar card */
+  --color-status-warn-text: #c93400;
+  --color-status-warn-bg: #fff1e5;
+  --color-status-danger-text: #d70015;
+  --color-status-danger-bg: #fdebec;
+  --color-status-danger-solid: #d70015;
+  --color-status-neutral-text: #6e6e73;
+  --color-status-neutral-bg: #e8e8ed;
+
+  --color-focus-ring: #0071e3;
+
+  --shadow-control: 0 1px 1px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.05);
+
+  --radius-card: 12px;
+  --radius-control: 8px;
+  --radius-nav: 7px;
+  --radius-search: 9px;
+  --radius-pill: 14px;
+  --radius-tile: 8px;
+
+  --font-sans: -apple-system, blinkmacsystemfont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, menlo, monospace;
+}

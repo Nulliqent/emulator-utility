@@ -1,0 +1,72 @@
+.ui-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.ui-pill[data-tone="ok"] { background: var(--color-status-ok-bg); color: var(--color-status-ok-text); }
+.ui-pill[data-tone="danger"] { background: var(--color-status-danger-bg); color: var(--color-status-danger-text); }
+.ui-pill[data-tone="warn"] { background: var(--color-status-warn-bg); color: var(--color-status-warn-text); }
+.ui-pill[data-tone="neutral"] { background: var(--color-status-neutral-bg); color: var(--color-status-neutral-text); }
+
+/* The icon carries the state as a shape, so status never relies on color alone. */
+.ui-status-icon { flex: none; }
+.ui-pill-words { display: inline-flex; align-items: center; gap: 6px; }
+.ui-sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+/* ok is a filled dot; every other state is a hollow ring, so the shape differs as well as the color. */
+.ui-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+  box-sizing: border-box;
+  background: transparent;
+  border: 2px solid var(--color-status-neutral-text);
+}
+.ui-dot[data-tone="ok"] { background: var(--color-status-ok-dot); border-color: var(--color-status-ok-dot); }
+.ui-dot[data-tone="danger"] { border-color: var(--color-status-danger-solid); }
+
+.ui-button {
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid var(--color-line-control);
+  border-radius: var(--radius-control);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-control);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.ui-button[data-variant="primary"] {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 600;
+}
+
+.ui-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-on-accent);
+  background: var(--color-status-danger-solid);
+  padding: 1px 7px;
+  border-radius: 12px;
+}
+
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
