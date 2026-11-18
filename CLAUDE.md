@@ -41,6 +41,7 @@ When the committer starts, the orchestrating session (the main conversation that
 - A ticket is ready when each of its blockers is either closed, or has a PR open from a committer. Use the ticket order and the blocking links in the tracker (see `docs/agents/issue-tracker.md`).
 - If a blocker's PR is still open, branch the new ticket from that PR's branch, not from `main`, and say so in the new PR.
 - Run each ticket's subagents in its own git worktree (`isolation: "worktree"`), so concurrent tickets never touch the same working tree.
+- Concurrent agents share one e2e stack (compose project `console-e2e`, ports 19297/19300). Each agent takes a lock before bringing it up (`mkdir <scratchpad>/e2e.lock`, waiting while it exists), and releases it with `rmdir` right after teardown. An agent never tears down a stack it didn't start.
 - If no ticket is ready, or the next one is `ready-for-human`, stop and tell the user.
 
 ### Saving progress
