@@ -1,3 +1,5 @@
-./aws-eumalator
-./api-models-aws
+/aws-emulator/
+/api-models-aws/
 .aws/
+/PROGRESS.md
+/.claude/worktrees/
