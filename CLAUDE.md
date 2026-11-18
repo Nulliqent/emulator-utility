@@ -28,9 +28,11 @@ Every code-change task runs up to six subagents. Pass `model` explicitly on each
 3. **Code reviewer** (`model: opus`, `effort: medium`). Reviews the quality of the changed code: correctness, maintainability, module boundaries, tests.
 4. **Security reviewer** (`model: opus`, `effort: medium`). Reviews the security of the changed code, for example credential handling, the Gateway proxy and origin checks, the Docker socket, and input validation.
 
-5. **Committer** (`model: sonnet`, `effort: medium`). Runs only after 2, 3 and 4 all pass. Creates a branch for the ticket off `main`, commits the change with a message that references the ticket, pushes, and opens a pull request whose body says `Closes #<ticket>`. It does not merge unless the user says to. It reports the PR link so the next ticket can start.
+5. **Committer** (agent type `committer`, defined in `.claude/agents/committer.md`: Haiku). Runs only after 2, 3 and 4 all pass. Squashes the ticket's commits, pushes the ticket branch, and opens a pull request whose body says `Closes #<ticket>`. It does not merge unless the user says to. It reports the PR link so the next ticket can start.
 
-Run 0 first when it applies, then 1. Run 2, 3 and 4 after 1 finishes; they can run in parallel. Send any findings from 2–4 back to the implementer, then re-check. Run 5 last, once every review is clean.
+Run 0 first when it applies, then 1. Run 2, 3 and 4 after 1 finishes; they can run in parallel. Send any findings from 2–4 back to the implementer. Run 5 last, once every review is clean.
+
+**Re-checks after fixes.** The full code review (3) and security review (4) run on Opus once per ticket. After the implementer fixes their findings, do not re-run 2, 3 and 4. Run **one** re-check reviewer (`model: sonnet`, `effort: medium`) that verifies only the listed findings were fixed and that the fix diff adds no new problem. If the fixes touch security-sensitive code (credentials, the Gateway proxy or origin checks, Docker or CI permissions), the re-check covers the security findings too.
 
 ### Moving to the next ticket
 
@@ -43,7 +45,7 @@ When the committer starts, the orchestrating session (the main conversation that
 
 ### Saving progress
 
-Save progress so work survives a network disconnect, a crash or a usage limit. A **progress saver** subagent (`model: sonnet`, `effort: medium`) does the saving. The orchestrating session spawns it:
+Save progress so work survives a network disconnect, a crash or a usage limit. A **progress saver** subagent (agent type `progress-saver`, defined in `.claude/agents/progress-saver.md`: Haiku) does the saving. The orchestrating session spawns it:
 
 - **periodically**: after every workflow step finishes for any ticket (implementer done, reviews back, PR opened), and at least every 30 minutes while tickets are in flight;
 - **immediately**: when a usage-limit warning appears, or a subagent stops because of a limit or a network error.
