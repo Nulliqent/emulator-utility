@@ -41,12 +41,19 @@ When the committer starts, the orchestrating session (the main conversation that
 - Run each ticket's subagents in its own git worktree (`isolation: "worktree"`), so concurrent tickets never touch the same working tree.
 - If no ticket is ready, or the next one is `ready-for-human`, stop and tell the user.
 
-### Saving progress when usage runs low
+### Saving progress
 
-If a usage-limit warning appears, or a subagent stops because of a limit, save progress before anything else so the work can continue in the next window:
+Save progress so work survives a network disconnect, a crash or a usage limit. A **progress saver** subagent (`model: sonnet`, `effort: medium`) does the saving. The orchestrating session spawns it:
 
-1. In each ticket's worktree, commit the work in progress on its ticket branch with a `wip:` message and push it. Never merge WIP into `main`.
-2. Comment on each in-flight ticket, saying which workflow step it reached (designer, implementer, user simulator, reviewers or committer), what is done, what is left, any open review findings, and the branch name.
-3. Update `PROGRESS.md` at the repo root with one line per in-flight ticket (ticket, step, branch, next action) and the ticket frontier.
+- **periodically**: after every workflow step finishes for any ticket (implementer done, reviews back, PR opened), and at least every 30 minutes while tickets are in flight;
+- **immediately**: when a usage-limit warning appears, or a subagent stops because of a limit or a network error.
+
+The progress saver:
+
+1. In each in-flight ticket's worktree, commits the uncommitted work with a `wip(#<ticket>): <step>` message and pushes it. On the first save it renames the worktree's branch to `ticket/<n>-<slug>`. Never merge WIP into `main`. It never stages secrets, `.aws/`, `node_modules`, build output, or the reference repos.
+2. Comments on each in-flight ticket: the workflow step it reached (designer, implementer, user simulator, reviewers or committer), what is done, what is left, any open review findings, the branch and the worktree path.
+3. Rewrites `PROGRESS.md` in the main checkout's root (git-ignored, local only) with one line per in-flight ticket (ticket, step, branch, worktree, next action), the PRs that are open, and the ticket frontier.
+
+Implementers also make their own `wip(#<ticket>):` commits at natural checkpoints, without pushing. The progress saver pushes them. The committer squashes the WIP commits into one ticket commit before opening the PR.
 
 To resume, read `PROGRESS.md` and the ticket comments, check out each ticket's branch, and restart the workflow from the recorded step.
