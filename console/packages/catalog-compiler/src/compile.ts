@@ -14,6 +14,9 @@ import type {
   Diagnostic,
 } from "./types.ts";
 
+/** Bump when the compiler's output format changes without any source change, so the fingerprint (and cache URLs) change. */
+const COMPILER_SCHEMA_VERSION = 1;
+
 const sha256 = (data: string | Buffer): string => createHash("sha256").update(data).digest("hex");
 
 const PROBE_PREFIX = /^(List|Describe|Get|Search|Query|Head|BatchGet)/;
@@ -210,6 +213,11 @@ export function compileCatalog(options: CompileOptions): CompiledCatalog {
   }
 
   index.sort((a, b) => compareCodeUnits(a.serviceId, b.serviceId));
+  // The fingerprint names what is emitted, not only its source: the compiler's schema version, the Category overlay,
+  // and every Catalog Entry (which holds the content hashes of the emitted per-Service files, the tier and the Category).
+  fingerprintLines.push(`compiler-schema ${COMPILER_SCHEMA_VERSION}`);
+  fingerprintLines.push(`categories ${sha256(JSON.stringify(categoryConfig.categories))}`);
+  for (const entry of index) fingerprintLines.push(`entry ${sha256(JSON.stringify(entry))}`);
   const manifest: CatalogManifest = {
     schemaVersion: 1,
     fingerprint: sha256(fingerprintLines.join("\n")),

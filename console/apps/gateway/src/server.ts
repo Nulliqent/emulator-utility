@@ -1,11 +1,14 @@
 import { readFileSync } from "node:fs";
 import http from "node:http";
-import { API_BASE, type ConnectionList, type Meta } from "@console/api-contract";
+import { API_BASE, CATALOG_BASE, type ConnectionList, type Meta } from "@console/api-contract";
+import { serveCatalog } from "./catalog.ts";
 import type { GatewayConfig } from "./config.ts";
 import { createRegistry, toSummary } from "./connections.ts";
+import { readCredentials } from "./credentials.ts";
 import { createEventHub } from "./events.ts";
 import { createHealthProbe } from "./health.ts";
 import { createOriginGuard } from "./origin.ts";
+import { createProxy, hasConsoleHeader } from "./proxy.ts";
 import { serveSpa } from "./static.ts";
 
 // The built SPA loads only same-origin scripts and styles (no inline code), so this CSP needs no 'unsafe-inline'.
@@ -23,8 +26,11 @@ function json(res: http.ServerResponse, status: number, body: unknown) {
   res.end(JSON.stringify(body));
 }
 
-const fail = (res: http.ServerResponse, status: number, code: string, message: string) =>
+// The Gateway marks its own failures with `X-Console-Error`, so a client can tell them from the Emulator's.
+const fail = (res: http.ServerResponse, status: number, code: string, message: string) => {
+  res.setHeader("X-Console-Error", code);
   json(res, status, { error: { code, message } });
+};
 
 function readMeta(cfg: GatewayConfig): Meta {
   let fingerprint: string | null = null;
@@ -50,6 +56,7 @@ export function createServer(cfg: GatewayConfig) {
   const registry = createRegistry(cfg);
   const probe = createHealthProbe(cfg);
   const isSameOrigin = createOriginGuard(cfg.publicOrigin);
+  const proxy = createProxy({ timeoutMs: cfg.proxyTimeoutMs });
   const hub = createEventHub(
     () =>
       Promise.all(registry.list().items.map(async (c) => ({ connectionId: c.id, health: await probe.check(c) }))),
@@ -67,9 +74,15 @@ export function createServer(cfg: GatewayConfig) {
     const method = req.method ?? "GET";
 
     // The SPA is public; it holds no secrets. It is navigated to directly, so it is not origin-checked.
-    if ((p === "/" && (method === "GET" || method === "HEAD")) || p === "/__console") {
+    // Only for browser navigations: an SDK call to `GET /` (S3 ListBuckets) carries X-Console and goes to the proxy.
+    if ((p === "/" && (method === "GET" || method === "HEAD") && !hasConsoleHeader(req.headers)) || p === "/__console") {
       res.writeHead(302, { Location: "/__console/" });
       return void res.end();
+    }
+    // The compiled Catalog is public like the SPA (no secrets), content-addressed by its fingerprint.
+    if (p.startsWith(`${CATALOG_BASE}/`)) {
+      if (method !== "GET" && method !== "HEAD") return fail(res, 405, "method-not-allowed", "Use GET.");
+      return serveCatalog(cfg.catalogManifest, p.slice(CATALOG_BASE.length + 1), res, method === "HEAD");
     }
     const isApi = p === API_BASE || p.startsWith(`${API_BASE}/`);
     if (p.startsWith("/__console/") && !isApi) {
@@ -84,10 +97,22 @@ export function createServer(cfg: GatewayConfig) {
 
     if (isApi) {
       const route = p.slice(API_BASE.length);
+      // A cross-site page cannot add a custom header without a CORS preflight, which is never approved.
+      const credentials = /^\/connections\/([^/]+)\/credentials$/.exec(route);
+      if ((credentials || method !== "GET") && !hasConsoleHeader(req.headers)) {
+        return fail(res, 403, "console-header-required", "Send the X-Console header.");
+      }
       if (method !== "GET") return fail(res, 405, "method-not-allowed", "Only GET is available yet.");
       if (route === "/meta") return json(res, 200, readMeta(cfg));
       if (route === "/connections") {
         const body: ConnectionList = { active, items: items.map(toSummary) };
+        return json(res, 200, body);
+      }
+      if (credentials) {
+        const c = items.find((x) => x.id === credentials[1]);
+        if (!c) return fail(res, 404, "connection-not-found", "No such Connection.");
+        const body = readCredentials(c, probe.epochOf(c.id, c.credentialsFile));
+        if (!body) return fail(res, 503, "credentials-unavailable", "The Emulator has not written its credentials; is it running?");
         return json(res, 200, body);
       }
       const health = /^\/connections\/([^/]+)\/health$/.exec(route);
@@ -115,8 +140,17 @@ export function createServer(cfg: GatewayConfig) {
       }
     }
 
-    // The AWS pass-through proxy arrives with ticket #7.
-    return fail(res, 404, "not-found", "No such endpoint.");
+    // Everything else is the AWS pass-through (ARCHITECTURE 3.9). It needs the custom header like any other
+    // state-changing route, and names its Connection with `x-console-connection` (default: the active one).
+    if (!hasConsoleHeader(req.headers)) {
+      // A browser typing an address (/favicon.ico) gets a plain 404; anything else is told what it is missing.
+      if (req.headers["sec-fetch-mode"] === "navigate") return fail(res, 404, "not-found", "No such endpoint.");
+      return fail(res, 403, "console-header-required", "Send the X-Console header.");
+    }
+    const wanted = req.headers["x-console-connection"];
+    const target = items.find((x) => x.id === (typeof wanted === "string" ? wanted : active));
+    if (!target) return fail(res, 404, "connection-not-found", "No such Connection.");
+    return proxy(req, res, target, (status, code, message) => fail(res, status, code, message));
   }
 
   const server = http.createServer((req, res) => {

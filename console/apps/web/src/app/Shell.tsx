@@ -9,6 +9,7 @@ import { GridIcon, HomeIcon, PlugIcon, PulseIcon } from "./icons.tsx";
 const NAV = [
   { to: "/", label: "Home", icon: <HomeIcon /> },
   { to: "/services", label: "All services", icon: <GridIcon /> },
+  { to: "/explorer", label: "API Explorer", icon: <PulseIcon /> },
   { to: "/inspector", label: "Request inspector", icon: <PulseIcon /> },
   { to: "/connections", label: "Connections", icon: <PlugIcon /> },
 ] as const;

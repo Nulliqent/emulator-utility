@@ -17,6 +17,12 @@ services:
     build:
       context: ./console
       dockerfile: apps/gateway/Dockerfile
+      args:
+        # build (default): compile the SPA in Docker, which needs RAM (see README). prebuilt: use the host's dist.
+        WEB_SOURCE: ${CONSOLE_WEB_SOURCE:-build}
+      additional_contexts:
+        # The apps/web folder; only read when WEB_SOURCE=prebuilt. Run `pnpm --dir console build` first.
+        webdist: ${CONSOLE_WEBDIST:-./console/apps/web}
     image: aws-emulator-console
     # The Emulator (uid 1000) writes ca.pem and the credentials as 0600; the Gateway must be uid 1000 to read them.
     user: "1000:1000"
