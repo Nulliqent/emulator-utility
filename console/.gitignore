@@ -1,0 +1,5 @@
+node_modules/
+.refs/
+dist/catalog/*
+!dist/catalog/index.json
+!dist/catalog/manifest.json

@@ -27,7 +27,7 @@ An Operation the Emulator routes but answers with `501 NotImplemented` because n
 _Avoid_: stub, mock, unsupported
 
 **Unrouted Operation**:
-An Operation the model declares but the Emulator cannot route at all, because no scaffold could be generated for it.
+An Operation the model declares but the Emulator has no source file for (no `ops/<op>.rs`), so it cannot route it; typically because no scaffold could be generated for it. An Operation listed as skipped that later got a hand-authored file is Implemented, whether or not the skip list was updated.
 _Avoid_: skipped, missing
 
 **Source Status**:

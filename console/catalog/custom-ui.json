@@ -1,0 +1,12 @@
+[
+  "cloudwatch-logs",
+  "dynamodb",
+  "eventbridge",
+  "lambda",
+  "s3",
+  "secrets-manager",
+  "sfn",
+  "sns",
+  "sqs",
+  "ssm"
+]

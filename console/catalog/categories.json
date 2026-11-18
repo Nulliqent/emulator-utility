@@ -1,0 +1,1838 @@
+{
+  "categories": [
+    {
+      "id": "compute",
+      "name": "Compute"
+    },
+    {
+      "id": "containers",
+      "name": "Containers"
+    },
+    {
+      "id": "storage",
+      "name": "Storage"
+    },
+    {
+      "id": "databases",
+      "name": "Databases"
+    },
+    {
+      "id": "networking-content-delivery",
+      "name": "Networking & content delivery"
+    },
+    {
+      "id": "application-integration",
+      "name": "Application integration"
+    },
+    {
+      "id": "security-identity-compliance",
+      "name": "Security, identity & compliance"
+    },
+    {
+      "id": "management-governance",
+      "name": "Management & governance"
+    },
+    {
+      "id": "analytics",
+      "name": "Analytics"
+    },
+    {
+      "id": "ai-machine-learning",
+      "name": "AI & machine learning"
+    },
+    {
+      "id": "developer-tools",
+      "name": "Developer tools"
+    },
+    {
+      "id": "front-end-web-mobile-location",
+      "name": "Front-end web, mobile & location"
+    },
+    {
+      "id": "media-services",
+      "name": "Media services"
+    },
+    {
+      "id": "migration-transfer",
+      "name": "Migration & transfer"
+    },
+    {
+      "id": "business-apps-communications",
+      "name": "Business apps & communications"
+    },
+    {
+      "id": "internet-of-things",
+      "name": "Internet of Things"
+    },
+    {
+      "id": "end-user-computing",
+      "name": "End-user computing"
+    },
+    {
+      "id": "cost-billing",
+      "name": "Cost & billing"
+    },
+    {
+      "id": "marketplace-partners",
+      "name": "Marketplace & partners"
+    },
+    {
+      "id": "healthcare-science-space",
+      "name": "Healthcare, science & space"
+    },
+    {
+      "id": "games-blockchain",
+      "name": "Games & blockchain"
+    },
+    {
+      "id": "other",
+      "name": "Other"
+    }
+  ],
+  "services": {
+    "accessanalyzer": {
+      "crate": "service-com-amazonaws-accessanalyzer-accessanalyzer",
+      "category": "security-identity-compliance"
+    },
+    "account": {
+      "crate": "service-com-amazonaws-account-account",
+      "category": "management-governance"
+    },
+    "account-access": {
+      "crate": "service-com-amazonaws-accountaccess-awsaccountaccess",
+      "category": "security-identity-compliance"
+    },
+    "account-access-runtime": {
+      "crate": "service-com-amazonaws-accountaccessruntime-awsaccountaccessruntime",
+      "category": "security-identity-compliance"
+    },
+    "acm": {
+      "crate": "service-com-amazonaws-acm-certificatemanager",
+      "category": "security-identity-compliance"
+    },
+    "acm-pca": {
+      "crate": "service-com-amazonaws-acmpca-acmprivateca",
+      "category": "security-identity-compliance"
+    },
+    "agent-registry": {
+      "crate": "service-com-amazonaws-agentregistry-agentregistry",
+      "category": "ai-machine-learning"
+    },
+    "agent-registry-control": {
+      "crate": "service-com-amazonaws-agentregistrycontrol-agentregistrycontrol",
+      "category": "ai-machine-learning"
+    },
+    "aiops": {
+      "crate": "service-com-amazonaws-aiops-aiops",
+      "category": "management-governance"
+    },
+    "amp": {
+      "crate": "service-com-amazonaws-amp-amazonprometheusservice",
+      "category": "management-governance"
+    },
+    "amplify": {
+      "crate": "service-com-amazonaws-amplify-amplify",
+      "category": "front-end-web-mobile-location"
+    },
+    "amplifybackend": {
+      "crate": "service-com-amazonaws-amplifybackend-amplifybackend",
+      "category": "front-end-web-mobile-location"
+    },
+    "amplifyuibuilder": {
+      "crate": "service-com-amazonaws-amplifyuibuilder-amplifyuibuilder",
+      "category": "front-end-web-mobile-location"
+    },
+    "api-gateway": {
+      "crate": "service-com-amazonaws-apigateway-backplanecontrolservice",
+      "category": "networking-content-delivery"
+    },
+    "apigatewaymanagementapi": {
+      "crate": "service-com-amazonaws-apigatewaymanagementapi-apigatewaymanagementapi",
+      "category": "networking-content-delivery"
+    },
+    "apigatewayv2": {
+      "crate": "service-com-amazonaws-apigatewayv2-apigatewayv2",
+      "category": "networking-content-delivery"
+    },
+    "app-mesh": {
+      "crate": "service-com-amazonaws-appmesh-appmesh",
+      "category": "containers"
+    },
+    "appconfig": {
+      "crate": "service-com-amazonaws-appconfig-amazonappconfig",
+      "category": "management-governance"
+    },
+    "appconfigdata": {
+      "crate": "service-com-amazonaws-appconfigdata-appconfigdata",
+      "category": "management-governance"
+    },
+    "appfabric": {
+      "crate": "service-com-amazonaws-appfabric-fabricfrontendservice",
+      "category": "business-apps-communications"
+    },
+    "appflow": {
+      "crate": "service-com-amazonaws-appflow-sandstoneconfigurationservicelambda",
+      "category": "application-integration"
+    },
+    "appintegrations": {
+      "crate": "service-com-amazonaws-appintegrations-amazonappintegrationservice",
+      "category": "application-integration"
+    },
+    "application-auto-scaling": {
+      "crate": "service-com-amazonaws-applicationautoscaling-anyscalefrontendservice",
+      "category": "compute"
+    },
+    "application-discovery-service": {
+      "crate": "service-com-amazonaws-applicationdiscoveryservice-awsposeidonservice-v2015-11-01",
+      "category": "migration-transfer"
+    },
+    "application-insights": {
+      "crate": "service-com-amazonaws-applicationinsights-ec2windowsbarleyservice",
+      "category": "management-governance"
+    },
+    "application-signals": {
+      "crate": "service-com-amazonaws-applicationsignals-applicationsignals",
+      "category": "management-governance"
+    },
+    "applicationcostprofiler": {
+      "crate": "service-com-amazonaws-applicationcostprofiler-awsapplicationcostprofiler",
+      "category": "cost-billing"
+    },
+    "apprunner": {
+      "crate": "service-com-amazonaws-apprunner-apprunner",
+      "category": "compute"
+    },
+    "appstream": {
+      "crate": "service-com-amazonaws-appstream-photonadminproxyservice",
+      "category": "end-user-computing"
+    },
+    "appsync": {
+      "crate": "service-com-amazonaws-appsync-awsdeepdishcontrolplaneservice",
+      "category": "application-integration"
+    },
+    "arc-region-switch": {
+      "crate": "service-com-amazonaws-arcregionswitch-arcregionswitch",
+      "category": "management-governance"
+    },
+    "arc-zonal-shift": {
+      "crate": "service-com-amazonaws-arczonalshift-percdataplane",
+      "category": "management-governance"
+    },
+    "artifact": {
+      "crate": "service-com-amazonaws-artifact-artifact",
+      "category": "security-identity-compliance"
+    },
+    "athena": {
+      "crate": "service-com-amazonaws-athena-amazonathena",
+      "category": "analytics"
+    },
+    "auditmanager": {
+      "crate": "service-com-amazonaws-auditmanager-bedrockassessmentmanagerlambda",
+      "category": "security-identity-compliance"
+    },
+    "auto-scaling": {
+      "crate": "service-com-amazonaws-autoscaling-autoscaling-2011-01-01",
+      "category": "compute"
+    },
+    "auto-scaling-plans": {
+      "crate": "service-com-amazonaws-autoscalingplans-anyscalescalingplannerfrontendservice",
+      "category": "compute"
+    },
+    "b2bi": {
+      "crate": "service-com-amazonaws-b2bi-b2bi",
+      "category": "application-integration"
+    },
+    "backup": {
+      "crate": "service-com-amazonaws-backup-cryocontrollerusermanager",
+      "category": "storage"
+    },
+    "backup-gateway": {
+      "crate": "service-com-amazonaws-backupgateway-backuponpremises-v20210101",
+      "category": "storage"
+    },
+    "backupsearch": {
+      "crate": "service-com-amazonaws-backupsearch-cryobackupsearchservice",
+      "category": "storage"
+    },
+    "batch": {
+      "crate": "service-com-amazonaws-batch-awsbatchv20160810",
+      "category": "compute"
+    },
+    "bcm-dashboards": {
+      "crate": "service-com-amazonaws-bcmdashboards-awsbcmdashboardsservice",
+      "category": "cost-billing"
+    },
+    "bcm-data-exports": {
+      "crate": "service-com-amazonaws-bcmdataexports-awsbillingandcostmanagementdataexports",
+      "category": "cost-billing"
+    },
+    "bcm-pricing-calculator": {
+      "crate": "service-com-amazonaws-bcmpricingcalculator-awsbcmpricingcalculator",
+      "category": "cost-billing"
+    },
+    "bcm-recommended-actions": {
+      "crate": "service-com-amazonaws-bcmrecommendedactions-awsbillingandcostmanagementrecommendedactions",
+      "category": "cost-billing"
+    },
+    "bedrock": {
+      "crate": "service-com-amazonaws-bedrock-amazonbedrockcontrolplaneservice",
+      "category": "ai-machine-learning"
+    },
+    "bedrock-agent": {
+      "crate": "service-com-amazonaws-bedrockagent-amazonbedrockagentbuildtimelambda",
+      "category": "ai-machine-learning"
+    },
+    "bedrock-agent-runtime": {
+      "crate": "service-com-amazonaws-bedrockagentruntime-amazonbedrockagentruntimeservice",
+      "category": "ai-machine-learning"
+    },
+    "bedrock-agentcore": {
+      "crate": "service-com-amazonaws-bedrockagentcore-amazonbedrockagentcore",
+      "category": "ai-machine-learning"
+    },
+    "bedrock-agentcore-control": {
+      "crate": "service-com-amazonaws-bedrockagentcorecontrol-amazonbedrockagentcorecontrol",
+      "category": "ai-machine-learning"
+    },
+    "bedrock-data-automation": {
+      "crate": "service-com-amazonaws-bedrockdataautomation-amazonbedrockkeystonebuildtimeservice",
+      "category": "ai-machine-learning"
+    },
+    "bedrock-data-automation-runtime": {
+      "crate": "service-com-amazonaws-bedrockdataautomationruntime-amazonbedrockkeystoneruntimeservice",
+      "category": "ai-machine-learning"
+    },
+    "bedrock-runtime": {
+      "crate": "service-com-amazonaws-bedrockruntime-amazonbedrockfrontendservice",
+      "category": "ai-machine-learning"
+    },
+    "billing": {
+      "crate": "service-com-amazonaws-billing-awsbilling",
+      "category": "cost-billing"
+    },
+    "billingconductor": {
+      "crate": "service-com-amazonaws-billingconductor-awsbillingconductor",
+      "category": "cost-billing"
+    },
+    "braket": {
+      "crate": "service-com-amazonaws-braket-braket",
+      "category": "healthcare-science-space"
+    },
+    "budgets": {
+      "crate": "service-com-amazonaws-budgets-awsbudgetservicegateway",
+      "category": "cost-billing"
+    },
+    "chatbot": {
+      "crate": "service-com-amazonaws-chatbot-wheatleyorchestration-20171011",
+      "category": "management-governance"
+    },
+    "chime": {
+      "crate": "service-com-amazonaws-chime-ucbuzzconsoleservice",
+      "category": "business-apps-communications"
+    },
+    "chime-sdk-identity": {
+      "crate": "service-com-amazonaws-chimesdkidentity-chimeidentityservice",
+      "category": "business-apps-communications"
+    },
+    "chime-sdk-media-pipelines": {
+      "crate": "service-com-amazonaws-chimesdkmediapipelines-chimesdkmediapipelinesservice",
+      "category": "business-apps-communications"
+    },
+    "chime-sdk-meetings": {
+      "crate": "service-com-amazonaws-chimesdkmeetings-chimemeetingssdkservice",
+      "category": "business-apps-communications"
+    },
+    "chime-sdk-messaging": {
+      "crate": "service-com-amazonaws-chimesdkmessaging-chimemessagingservice",
+      "category": "business-apps-communications"
+    },
+    "chime-sdk-voice": {
+      "crate": "service-com-amazonaws-chimesdkvoice-chimesdktelephonyservice",
+      "category": "business-apps-communications"
+    },
+    "cleanrooms": {
+      "crate": "service-com-amazonaws-cleanrooms-awsbastioncontrolplaneservicelambda",
+      "category": "analytics"
+    },
+    "cleanroomsml": {
+      "crate": "service-com-amazonaws-cleanroomsml-awsstarkcontrolservice",
+      "category": "ai-machine-learning"
+    },
+    "cloud9": {
+      "crate": "service-com-amazonaws-cloud9-awscloud9workspacemanagementservice",
+      "category": "developer-tools"
+    },
+    "cloudcontrol": {
+      "crate": "service-com-amazonaws-cloudcontrol-cloudapiservice",
+      "category": "management-governance"
+    },
+    "clouddirectory": {
+      "crate": "service-com-amazonaws-clouddirectory-amazonclouddirectory-20170111",
+      "category": "security-identity-compliance"
+    },
+    "cloudformation": {
+      "crate": "service-com-amazonaws-cloudformation-cloudformation",
+      "category": "management-governance"
+    },
+    "cloudfront": {
+      "crate": "service-com-amazonaws-cloudfront-cloudfront2020-05-31",
+      "category": "networking-content-delivery"
+    },
+    "cloudfront-keyvaluestore": {
+      "crate": "service-com-amazonaws-cloudfrontkeyvaluestore-cloudfrontkeyvaluestore",
+      "category": "networking-content-delivery"
+    },
+    "cloudhsm": {
+      "crate": "service-com-amazonaws-cloudhsm-cloudhsmfrontendservice",
+      "category": "security-identity-compliance"
+    },
+    "cloudhsm-v2": {
+      "crate": "service-com-amazonaws-cloudhsmv2-baldrapiservice",
+      "category": "security-identity-compliance"
+    },
+    "cloudsearch": {
+      "crate": "service-com-amazonaws-cloudsearch-a9searchcloudconfigservice2013",
+      "category": "analytics"
+    },
+    "cloudsearch-domain": {
+      "crate": "service-com-amazonaws-cloudsearchdomain-amazoncloudsearch2013",
+      "category": "analytics"
+    },
+    "cloudtrail": {
+      "crate": "service-com-amazonaws-cloudtrail-cloudtrail-20131101",
+      "category": "management-governance"
+    },
+    "cloudtrail-data": {
+      "crate": "service-com-amazonaws-cloudtraildata-cloudtraildataservice",
+      "category": "management-governance"
+    },
+    "cloudwatch": {
+      "crate": "service-com-amazonaws-cloudwatch-graniteserviceversion20100801",
+      "category": "management-governance"
+    },
+    "cloudwatch-events": {
+      "crate": "service-com-amazonaws-cloudwatchevents-awsevents",
+      "category": "application-integration"
+    },
+    "cloudwatch-logs": {
+      "crate": "service-com-amazonaws-cloudwatchlogs-logs-20140328",
+      "category": "management-governance"
+    },
+    "cloudwatchomni": {
+      "crate": "service-com-amazonaws-cloudwatchomni-cloudwatchomnifrontend",
+      "category": "management-governance"
+    },
+    "codeartifact": {
+      "crate": "service-com-amazonaws-codeartifact-codeartifactcontrolplaneservice",
+      "category": "developer-tools"
+    },
+    "codebuild": {
+      "crate": "service-com-amazonaws-codebuild-codebuild-20161006",
+      "category": "developer-tools"
+    },
+    "codecatalyst": {
+      "crate": "service-com-amazonaws-codecatalyst-codecatalyst",
+      "category": "developer-tools"
+    },
+    "codecommit": {
+      "crate": "service-com-amazonaws-codecommit-codecommit-20150413",
+      "category": "developer-tools"
+    },
+    "codeconnections": {
+      "crate": "service-com-amazonaws-codeconnections-codeconnections-20231201",
+      "category": "developer-tools"
+    },
+    "codedeploy": {
+      "crate": "service-com-amazonaws-codedeploy-codedeploy-20141006",
+      "category": "developer-tools"
+    },
+    "codeguru-reviewer": {
+      "crate": "service-com-amazonaws-codegurureviewer-awsgurufrontendservice",
+      "category": "developer-tools"
+    },
+    "codeguru-security": {
+      "crate": "service-com-amazonaws-codegurusecurity-awscodegurusecurity",
+      "category": "developer-tools"
+    },
+    "codeguruprofiler": {
+      "crate": "service-com-amazonaws-codeguruprofiler-codeguruprofiler",
+      "category": "developer-tools"
+    },
+    "codepipeline": {
+      "crate": "service-com-amazonaws-codepipeline-codepipeline-20150709",
+      "category": "developer-tools"
+    },
+    "codestar-connections": {
+      "crate": "service-com-amazonaws-codestarconnections-codestar-connections-20191201",
+      "category": "developer-tools"
+    },
+    "codestar-notifications": {
+      "crate": "service-com-amazonaws-codestarnotifications-codestarnotifications-20191015",
+      "category": "developer-tools"
+    },
+    "cognito-identity": {
+      "crate": "service-com-amazonaws-cognitoidentity-awscognitoidentityservice",
+      "category": "security-identity-compliance"
+    },
+    "cognito-identity-provider": {
+      "crate": "service-com-amazonaws-cognitoidentityprovider-awscognitoidentityproviderservice",
+      "category": "security-identity-compliance"
+    },
+    "cognito-sync": {
+      "crate": "service-com-amazonaws-cognitosync-awscognitosyncservice",
+      "category": "security-identity-compliance"
+    },
+    "comprehend": {
+      "crate": "service-com-amazonaws-comprehend-comprehend-20171127",
+      "category": "ai-machine-learning"
+    },
+    "comprehendmedical": {
+      "crate": "service-com-amazonaws-comprehendmedical-comprehendmedical-20181030",
+      "category": "healthcare-science-space"
+    },
+    "compute-optimizer": {
+      "crate": "service-com-amazonaws-computeoptimizer-computeoptimizerservice",
+      "category": "compute"
+    },
+    "compute-optimizer-automation": {
+      "crate": "service-com-amazonaws-computeoptimizerautomation-computeoptimizerautomationservice",
+      "category": "compute"
+    },
+    "config-service": {
+      "crate": "service-com-amazonaws-configservice-starlingdoveservice",
+      "category": "management-governance"
+    },
+    "connect": {
+      "crate": "service-com-amazonaws-connect-amazonconnectservice",
+      "category": "business-apps-communications"
+    },
+    "connect-contact-lens": {
+      "crate": "service-com-amazonaws-connectcontactlens-amazonconnectcontactlens",
+      "category": "business-apps-communications"
+    },
+    "connectcampaigns": {
+      "crate": "service-com-amazonaws-connectcampaigns-amazonconnectcampaignservice",
+      "category": "business-apps-communications"
+    },
+    "connectcampaignsv2": {
+      "crate": "service-com-amazonaws-connectcampaignsv2-amazonconnectcampaignservicev2",
+      "category": "business-apps-communications"
+    },
+    "connectcases": {
+      "crate": "service-com-amazonaws-connectcases-amazonconnectcases",
+      "category": "business-apps-communications"
+    },
+    "connecthealth": {
+      "crate": "service-com-amazonaws-connecthealth-connecthealth",
+      "category": "business-apps-communications"
+    },
+    "connectparticipant": {
+      "crate": "service-com-amazonaws-connectparticipant-amazonconnectparticipantservicelambda",
+      "category": "business-apps-communications"
+    },
+    "continuum": {
+      "crate": "service-com-amazonaws-continuum-continuumcontrolplane",
+      "category": "other"
+    },
+    "controlcatalog": {
+      "crate": "service-com-amazonaws-controlcatalog-controlcatalog",
+      "category": "management-governance"
+    },
+    "controltower": {
+      "crate": "service-com-amazonaws-controltower-awscontroltowerapis",
+      "category": "management-governance"
+    },
+    "cost-and-usage-report-service": {
+      "crate": "service-com-amazonaws-costandusagereportservice-awsorigamiservicegatewayservice",
+      "category": "cost-billing"
+    },
+    "cost-explorer": {
+      "crate": "service-com-amazonaws-costexplorer-awsinsightsindexservice",
+      "category": "cost-billing"
+    },
+    "cost-optimization-hub": {
+      "crate": "service-com-amazonaws-costoptimizationhub-costoptimizationhubservice",
+      "category": "cost-billing"
+    },
+    "customer-profiles": {
+      "crate": "service-com-amazonaws-customerprofiles-customerprofiles-20200815",
+      "category": "business-apps-communications"
+    },
+    "data-pipeline": {
+      "crate": "service-com-amazonaws-datapipeline-datapipeline",
+      "category": "analytics"
+    },
+    "database-migration-service": {
+      "crate": "service-com-amazonaws-databasemigrationservice-amazondmsv20160101",
+      "category": "migration-transfer"
+    },
+    "databrew": {
+      "crate": "service-com-amazonaws-databrew-awsgluedatabrew",
+      "category": "analytics"
+    },
+    "dataexchange": {
+      "crate": "service-com-amazonaws-dataexchange-dataexchange",
+      "category": "analytics"
+    },
+    "datasync": {
+      "crate": "service-com-amazonaws-datasync-fmrsservice",
+      "category": "migration-transfer"
+    },
+    "datazone": {
+      "crate": "service-com-amazonaws-datazone-datazone",
+      "category": "analytics"
+    },
+    "dax": {
+      "crate": "service-com-amazonaws-dax-amazondaxv3",
+      "category": "databases"
+    },
+    "deadline": {
+      "crate": "service-com-amazonaws-deadline-deadline",
+      "category": "compute"
+    },
+    "detective": {
+      "crate": "service-com-amazonaws-detective-amazondetective",
+      "category": "security-identity-compliance"
+    },
+    "device-farm": {
+      "crate": "service-com-amazonaws-devicefarm-devicefarm-20150623",
+      "category": "developer-tools"
+    },
+    "devops-agent": {
+      "crate": "service-com-amazonaws-devopsagent-devopsagent",
+      "category": "ai-machine-learning"
+    },
+    "devops-guru": {
+      "crate": "service-com-amazonaws-devopsguru-capstonecontrolplaneservice",
+      "category": "management-governance"
+    },
+    "direct-connect": {
+      "crate": "service-com-amazonaws-directconnect-overtureservice",
+      "category": "networking-content-delivery"
+    },
+    "directory-service": {
+      "crate": "service-com-amazonaws-directoryservice-directoryservice-20150416",
+      "category": "security-identity-compliance"
+    },
+    "directory-service-data": {
+      "crate": "service-com-amazonaws-directoryservicedata-directoryservicedata",
+      "category": "security-identity-compliance"
+    },
+    "dlm": {
+      "crate": "service-com-amazonaws-dlm-dlm-20180112",
+      "category": "storage"
+    },
+    "docdb": {
+      "crate": "service-com-amazonaws-docdb-amazonrdsv19",
+      "category": "databases"
+    },
+    "docdb-elastic": {
+      "crate": "service-com-amazonaws-docdbelastic-chimeradblionfishservicelambda",
+      "category": "databases"
+    },
+    "drs": {
+      "crate": "service-com-amazonaws-drs-elasticdisasterrecoveryservice",
+      "category": "storage"
+    },
+    "dsql": {
+      "crate": "service-com-amazonaws-dsql-dsql",
+      "category": "databases"
+    },
+    "dynamodb": {
+      "crate": "service-com-amazonaws-dynamodb-dynamodb-20120810",
+      "category": "databases"
+    },
+    "dynamodb-streams": {
+      "crate": "service-com-amazonaws-dynamodbstreams-dynamodbstreams-20120810",
+      "category": "databases"
+    },
+    "ebs": {
+      "crate": "service-com-amazonaws-ebs-ebs",
+      "category": "storage"
+    },
+    "ec2": {
+      "crate": "service-com-amazonaws-ec2-amazonec2",
+      "category": "compute"
+    },
+    "ec2-instance-connect": {
+      "crate": "service-com-amazonaws-ec2instanceconnect-awsec2instanceconnectservice",
+      "category": "compute"
+    },
+    "ecr": {
+      "crate": "service-com-amazonaws-ecr-amazonec2containerregistry-v20150921",
+      "category": "containers"
+    },
+    "ecr-public": {
+      "crate": "service-com-amazonaws-ecrpublic-spencerfrontendservice",
+      "category": "containers"
+    },
+    "ecs": {
+      "crate": "service-com-amazonaws-ecs-amazonec2containerservicev20141113",
+      "category": "containers"
+    },
+    "efs": {
+      "crate": "service-com-amazonaws-efs-magnolioapiservice-v20150201",
+      "category": "storage"
+    },
+    "eks": {
+      "crate": "service-com-amazonaws-eks-awswesleyfrontend",
+      "category": "containers"
+    },
+    "eks-auth": {
+      "crate": "service-com-amazonaws-eksauth-eksauthfrontend",
+      "category": "containers"
+    },
+    "elastic-beanstalk": {
+      "crate": "service-com-amazonaws-elasticbeanstalk-awselasticbeanstalkservice",
+      "category": "compute"
+    },
+    "elastic-load-balancing": {
+      "crate": "service-com-amazonaws-elasticloadbalancing-elasticloadbalancing-v7",
+      "category": "networking-content-delivery"
+    },
+    "elastic-load-balancing-v2": {
+      "crate": "service-com-amazonaws-elasticloadbalancingv2-elasticloadbalancing-v10",
+      "category": "networking-content-delivery"
+    },
+    "elasticache": {
+      "crate": "service-com-amazonaws-elasticache-amazonelasticachev9",
+      "category": "databases"
+    },
+    "elasticsearch-service": {
+      "crate": "service-com-amazonaws-elasticsearchservice-amazonelasticsearchservice2015",
+      "category": "analytics"
+    },
+    "elementalinference": {
+      "crate": "service-com-amazonaws-elementalinference-elementalinference",
+      "category": "ai-machine-learning"
+    },
+    "emr": {
+      "crate": "service-com-amazonaws-emr-elasticmapreduce",
+      "category": "analytics"
+    },
+    "emr-containers": {
+      "crate": "service-com-amazonaws-emrcontainers-awschicagowebservice",
+      "category": "analytics"
+    },
+    "emr-serverless": {
+      "crate": "service-com-amazonaws-emrserverless-awstoledowebservice",
+      "category": "analytics"
+    },
+    "endusermessaging": {
+      "crate": "service-com-amazonaws-endusermessaging-endusermessaging",
+      "category": "business-apps-communications"
+    },
+    "entityresolution": {
+      "crate": "service-com-amazonaws-entityresolution-awsveniceservice",
+      "category": "analytics"
+    },
+    "eventbridge": {
+      "crate": "service-com-amazonaws-eventbridge-awsevents",
+      "category": "application-integration"
+    },
+    "eventbridgev2": {
+      "crate": "service-com-amazonaws-eventbridgev2-awseventsv2",
+      "category": "application-integration"
+    },
+    "evs": {
+      "crate": "service-com-amazonaws-evs-amazonelasticvmwareservice",
+      "category": "compute"
+    },
+    "firehose": {
+      "crate": "service-com-amazonaws-firehose-firehose-20150804",
+      "category": "analytics"
+    },
+    "fis": {
+      "crate": "service-com-amazonaws-fis-faultinjectionsimulator",
+      "category": "developer-tools"
+    },
+    "fms": {
+      "crate": "service-com-amazonaws-fms-awsfms-20180101",
+      "category": "security-identity-compliance"
+    },
+    "forecast": {
+      "crate": "service-com-amazonaws-forecast-amazonforecast",
+      "category": "ai-machine-learning"
+    },
+    "forecastquery": {
+      "crate": "service-com-amazonaws-forecastquery-amazonforecastruntime",
+      "category": "ai-machine-learning"
+    },
+    "frauddetector": {
+      "crate": "service-com-amazonaws-frauddetector-awshawksnestservicefacade",
+      "category": "ai-machine-learning"
+    },
+    "freetier": {
+      "crate": "service-com-amazonaws-freetier-awsfreetierservice",
+      "category": "cost-billing"
+    },
+    "fsx": {
+      "crate": "service-com-amazonaws-fsx-awssimbaapiservice-v20180301",
+      "category": "storage"
+    },
+    "gamelift": {
+      "crate": "service-com-amazonaws-gamelift-gamelift",
+      "category": "games-blockchain"
+    },
+    "gameliftstreams": {
+      "crate": "service-com-amazonaws-gameliftstreams-gameliftstreams",
+      "category": "games-blockchain"
+    },
+    "geo-maps": {
+      "crate": "service-com-amazonaws-geomaps-mapsservice",
+      "category": "front-end-web-mobile-location"
+    },
+    "geo-places": {
+      "crate": "service-com-amazonaws-geoplaces-placesservice",
+      "category": "front-end-web-mobile-location"
+    },
+    "geo-routes": {
+      "crate": "service-com-amazonaws-georoutes-routesservice",
+      "category": "front-end-web-mobile-location"
+    },
+    "glacier": {
+      "crate": "service-com-amazonaws-glacier-glacier",
+      "category": "storage"
+    },
+    "global-accelerator": {
+      "crate": "service-com-amazonaws-globalaccelerator-globalaccelerator-v20180706",
+      "category": "networking-content-delivery"
+    },
+    "glue": {
+      "crate": "service-com-amazonaws-glue-awsglue",
+      "category": "analytics"
+    },
+    "grafana": {
+      "crate": "service-com-amazonaws-grafana-awsgrafanacontrolplane",
+      "category": "management-governance"
+    },
+    "greengrass": {
+      "crate": "service-com-amazonaws-greengrass-greengrass",
+      "category": "internet-of-things"
+    },
+    "greengrassv2": {
+      "crate": "service-com-amazonaws-greengrassv2-greengrassv2",
+      "category": "internet-of-things"
+    },
+    "groundstation": {
+      "crate": "service-com-amazonaws-groundstation-groundstation",
+      "category": "healthcare-science-space"
+    },
+    "guardduty": {
+      "crate": "service-com-amazonaws-guardduty-guarddutyapiservice",
+      "category": "security-identity-compliance"
+    },
+    "health": {
+      "crate": "service-com-amazonaws-health-awshealth-20160804",
+      "category": "management-governance"
+    },
+    "healthlake": {
+      "crate": "service-com-amazonaws-healthlake-healthlake",
+      "category": "healthcare-science-space"
+    },
+    "iam": {
+      "crate": "service-com-amazonaws-iam-awsidentitymanagementv20100508",
+      "category": "security-identity-compliance"
+    },
+    "iam-toolbox": {
+      "crate": "service-com-amazonaws-iamtoolbox-authrequestservice",
+      "category": "security-identity-compliance"
+    },
+    "identitystore": {
+      "crate": "service-com-amazonaws-identitystore-awsidentitystore",
+      "category": "security-identity-compliance"
+    },
+    "imagebuilder": {
+      "crate": "service-com-amazonaws-imagebuilder-imagebuilder",
+      "category": "compute"
+    },
+    "inspector": {
+      "crate": "service-com-amazonaws-inspector-inspectorservice",
+      "category": "security-identity-compliance"
+    },
+    "inspector-scan": {
+      "crate": "service-com-amazonaws-inspectorscan-inspectorscan",
+      "category": "security-identity-compliance"
+    },
+    "inspector2": {
+      "crate": "service-com-amazonaws-inspector2-inspector2",
+      "category": "security-identity-compliance"
+    },
+    "interconnect": {
+      "crate": "service-com-amazonaws-interconnect-interconnect",
+      "category": "networking-content-delivery"
+    },
+    "internetmonitor": {
+      "crate": "service-com-amazonaws-internetmonitor-internetmonitor20210603",
+      "category": "management-governance"
+    },
+    "invoicing": {
+      "crate": "service-com-amazonaws-invoicing-invoicing",
+      "category": "cost-billing"
+    },
+    "iot": {
+      "crate": "service-com-amazonaws-iot-awsiotservice",
+      "category": "internet-of-things"
+    },
+    "iot-data-plane": {
+      "crate": "service-com-amazonaws-iotdataplane-iotmoonrakerservice",
+      "category": "internet-of-things"
+    },
+    "iot-jobs-data-plane": {
+      "crate": "service-com-amazonaws-iotjobsdataplane-iotlaserthingjobmanagerexternalservice",
+      "category": "internet-of-things"
+    },
+    "iot-managed-integrations": {
+      "crate": "service-com-amazonaws-iotmanagedintegrations-iotmanagedintegrations",
+      "category": "internet-of-things"
+    },
+    "iot-wireless": {
+      "crate": "service-com-amazonaws-iotwireless-iotwireless",
+      "category": "internet-of-things"
+    },
+    "iotdeviceadvisor": {
+      "crate": "service-com-amazonaws-iotdeviceadvisor-iotsenateservice",
+      "category": "internet-of-things"
+    },
+    "iotfleetwise": {
+      "crate": "service-com-amazonaws-iotfleetwise-iotautobahncontrolplane",
+      "category": "internet-of-things"
+    },
+    "iotsecuretunneling": {
+      "crate": "service-com-amazonaws-iotsecuretunneling-iotsecuredtunneling",
+      "category": "internet-of-things"
+    },
+    "iotsitewise": {
+      "crate": "service-com-amazonaws-iotsitewise-awsiotsitewise",
+      "category": "internet-of-things"
+    },
+    "iotthingsgraph": {
+      "crate": "service-com-amazonaws-iotthingsgraph-iotthingsgraphfrontendservice",
+      "category": "internet-of-things"
+    },
+    "iottwinmaker": {
+      "crate": "service-com-amazonaws-iottwinmaker-awsiottwinmaker",
+      "category": "internet-of-things"
+    },
+    "ivs": {
+      "crate": "service-com-amazonaws-ivs-amazoninteractivevideoservice",
+      "category": "media-services"
+    },
+    "ivs-realtime": {
+      "crate": "service-com-amazonaws-ivsrealtime-amazoninteractivevideoservicerealtime",
+      "category": "media-services"
+    },
+    "ivschat": {
+      "crate": "service-com-amazonaws-ivschat-amazoninteractivevideoservicechat",
+      "category": "media-services"
+    },
+    "kafka": {
+      "crate": "service-com-amazonaws-kafka-kafka",
+      "category": "analytics"
+    },
+    "kafkaconnect": {
+      "crate": "service-com-amazonaws-kafkaconnect-kafkaconnect",
+      "category": "analytics"
+    },
+    "kendra": {
+      "crate": "service-com-amazonaws-kendra-awskendrafrontendservice",
+      "category": "ai-machine-learning"
+    },
+    "kendra-ranking": {
+      "crate": "service-com-amazonaws-kendraranking-awskendrarerankingfrontendservice",
+      "category": "ai-machine-learning"
+    },
+    "keyspaces": {
+      "crate": "service-com-amazonaws-keyspaces-keyspacesservice",
+      "category": "databases"
+    },
+    "keyspacesstreams": {
+      "crate": "service-com-amazonaws-keyspacesstreams-keyspacesstreams",
+      "category": "databases"
+    },
+    "kinesis": {
+      "crate": "service-com-amazonaws-kinesis-kinesis-20131202",
+      "category": "analytics"
+    },
+    "kinesis-analytics": {
+      "crate": "service-com-amazonaws-kinesisanalytics-kinesisanalytics-20150814",
+      "category": "analytics"
+    },
+    "kinesis-analytics-v2": {
+      "crate": "service-com-amazonaws-kinesisanalyticsv2-kinesisanalytics-20180523",
+      "category": "analytics"
+    },
+    "kinesis-video": {
+      "crate": "service-com-amazonaws-kinesisvideo-kinesisvideo-20170930",
+      "category": "media-services"
+    },
+    "kinesis-video-archived-media": {
+      "crate": "service-com-amazonaws-kinesisvideoarchivedmedia-awsacuityreader",
+      "category": "media-services"
+    },
+    "kinesis-video-media": {
+      "crate": "service-com-amazonaws-kinesisvideomedia-awsacuityinletservice",
+      "category": "media-services"
+    },
+    "kinesis-video-signaling": {
+      "crate": "service-com-amazonaws-kinesisvideosignaling-awsacuitysignalingservice",
+      "category": "media-services"
+    },
+    "kinesis-video-webrtc-storage": {
+      "crate": "service-com-amazonaws-kinesisvideowebrtcstorage-awsacuityroutingservicelambda",
+      "category": "media-services"
+    },
+    "kms": {
+      "crate": "service-com-amazonaws-kms-trentservice",
+      "category": "security-identity-compliance"
+    },
+    "lakeformation": {
+      "crate": "service-com-amazonaws-lakeformation-awslakeformation",
+      "category": "analytics"
+    },
+    "lambda": {
+      "crate": "service-com-amazonaws-lambda-awsgirapiservice",
+      "category": "compute"
+    },
+    "lambda-core": {
+      "crate": "service-com-amazonaws-lambdacore-lambdacoreapiservice",
+      "category": "compute"
+    },
+    "lambda-microvms": {
+      "crate": "service-com-amazonaws-lambdamicrovms-lambdamicrovms",
+      "category": "compute"
+    },
+    "lambda-web": {
+      "crate": "service-com-amazonaws-lambdaweb-lambdaweb",
+      "category": "compute"
+    },
+    "launch-wizard": {
+      "crate": "service-com-amazonaws-launchwizard-launchwizard",
+      "category": "management-governance"
+    },
+    "lex-model-building-service": {
+      "crate": "service-com-amazonaws-lexmodelbuildingservice-awsdeepsensemodelbuildingservice",
+      "category": "ai-machine-learning"
+    },
+    "lex-models-v2": {
+      "crate": "service-com-amazonaws-lexmodelsv2-lexmodelbuildingservicev2",
+      "category": "ai-machine-learning"
+    },
+    "lex-runtime-service": {
+      "crate": "service-com-amazonaws-lexruntimeservice-awsdeepsenseruntimeservice",
+      "category": "ai-machine-learning"
+    },
+    "lex-runtime-v2": {
+      "crate": "service-com-amazonaws-lexruntimev2-awsdeepsenseruntimeserviceapi2-0",
+      "category": "ai-machine-learning"
+    },
+    "license-manager": {
+      "crate": "service-com-amazonaws-licensemanager-awslicensemanager",
+      "category": "management-governance"
+    },
+    "license-manager-linux-subscriptions": {
+      "crate": "service-com-amazonaws-licensemanagerlinuxsubscriptions-licensemanagerlinuxsubscriptions",
+      "category": "management-governance"
+    },
+    "license-manager-user-subscriptions": {
+      "crate": "service-com-amazonaws-licensemanagerusersubscriptions-licensemanagerusersubscriptions",
+      "category": "management-governance"
+    },
+    "lightsail": {
+      "crate": "service-com-amazonaws-lightsail-lightsail-20161128",
+      "category": "compute"
+    },
+    "location": {
+      "crate": "service-com-amazonaws-location-locationservice",
+      "category": "front-end-web-mobile-location"
+    },
+    "lookoutequipment": {
+      "crate": "service-com-amazonaws-lookoutequipment-awslookoutequipmentfrontendservice",
+      "category": "ai-machine-learning"
+    },
+    "m2": {
+      "crate": "service-com-amazonaws-m2-awssupernovacontrolplaneservice",
+      "category": "migration-transfer"
+    },
+    "machine-learning": {
+      "crate": "service-com-amazonaws-machinelearning-amazonml-20141212",
+      "category": "ai-machine-learning"
+    },
+    "macie2": {
+      "crate": "service-com-amazonaws-macie2-macie2",
+      "category": "security-identity-compliance"
+    },
+    "mailmanager": {
+      "crate": "service-com-amazonaws-mailmanager-mailmanagersvc",
+      "category": "business-apps-communications"
+    },
+    "managedblockchain": {
+      "crate": "service-com-amazonaws-managedblockchain-taigawebservice",
+      "category": "games-blockchain"
+    },
+    "managedblockchain-query": {
+      "crate": "service-com-amazonaws-managedblockchainquery-tietonchainqueryservice",
+      "category": "games-blockchain"
+    },
+    "marketplace-agreement": {
+      "crate": "service-com-amazonaws-marketplaceagreement-awsmpcommerceservice-v20200301",
+      "category": "marketplace-partners"
+    },
+    "marketplace-catalog": {
+      "crate": "service-com-amazonaws-marketplacecatalog-awsmpseymour",
+      "category": "marketplace-partners"
+    },
+    "marketplace-commerce-analytics": {
+      "crate": "service-com-amazonaws-marketplacecommerceanalytics-marketplacecommerceanalytics20150701",
+      "category": "marketplace-partners"
+    },
+    "marketplace-deployment": {
+      "crate": "service-com-amazonaws-marketplacedeployment-awsmpdeploymentparametersservice",
+      "category": "marketplace-partners"
+    },
+    "marketplace-discovery": {
+      "crate": "service-com-amazonaws-marketplacediscovery-awsmarketplacediscovery",
+      "category": "marketplace-partners"
+    },
+    "marketplace-entitlement-service": {
+      "crate": "service-com-amazonaws-marketplaceentitlementservice-awsmpentitlementservice",
+      "category": "marketplace-partners"
+    },
+    "marketplace-metering": {
+      "crate": "service-com-amazonaws-marketplacemetering-awsmpmeteringservice",
+      "category": "marketplace-partners"
+    },
+    "marketplace-reporting": {
+      "crate": "service-com-amazonaws-marketplacereporting-awsmarketplacereporting",
+      "category": "marketplace-partners"
+    },
+    "mediaconnect": {
+      "crate": "service-com-amazonaws-mediaconnect-mediaconnect",
+      "category": "media-services"
+    },
+    "mediaconvert": {
+      "crate": "service-com-amazonaws-mediaconvert-mediaconvert",
+      "category": "media-services"
+    },
+    "medialive": {
+      "crate": "service-com-amazonaws-medialive-medialive",
+      "category": "media-services"
+    },
+    "mediapackage": {
+      "crate": "service-com-amazonaws-mediapackage-mediapackage",
+      "category": "media-services"
+    },
+    "mediapackage-vod": {
+      "crate": "service-com-amazonaws-mediapackagevod-mediapackagevod",
+      "category": "media-services"
+    },
+    "mediapackagev2": {
+      "crate": "service-com-amazonaws-mediapackagev2-mediapackagev2",
+      "category": "media-services"
+    },
+    "mediastore": {
+      "crate": "service-com-amazonaws-mediastore-mediastore-20170901",
+      "category": "media-services"
+    },
+    "mediastore-data": {
+      "crate": "service-com-amazonaws-mediastoredata-mediastoreobject-20170901",
+      "category": "media-services"
+    },
+    "mediatailor": {
+      "crate": "service-com-amazonaws-mediatailor-mediatailor",
+      "category": "media-services"
+    },
+    "medical-imaging": {
+      "crate": "service-com-amazonaws-medicalimaging-ahigatewayservice",
+      "category": "healthcare-science-space"
+    },
+    "memorydb": {
+      "crate": "service-com-amazonaws-memorydb-amazonmemorydb",
+      "category": "databases"
+    },
+    "mgn": {
+      "crate": "service-com-amazonaws-mgn-applicationmigrationservice",
+      "category": "migration-transfer"
+    },
+    "migration-hub": {
+      "crate": "service-com-amazonaws-migrationhub-awsmigrationhub",
+      "category": "migration-transfer"
+    },
+    "migration-hub-refactor-spaces": {
+      "crate": "service-com-amazonaws-migrationhubrefactorspaces-refactorspaces",
+      "category": "migration-transfer"
+    },
+    "migrationhub-config": {
+      "crate": "service-com-amazonaws-migrationhubconfig-awsmigrationhubmultiaccountservice",
+      "category": "migration-transfer"
+    },
+    "migrationhuborchestrator": {
+      "crate": "service-com-amazonaws-migrationhuborchestrator-awsmigrationhuborchestrator",
+      "category": "migration-transfer"
+    },
+    "migrationhubstrategy": {
+      "crate": "service-com-amazonaws-migrationhubstrategy-awsmigrationhubstrategyrecommendation",
+      "category": "migration-transfer"
+    },
+    "mpa": {
+      "crate": "service-com-amazonaws-mpa-awsfluffycoreservice",
+      "category": "security-identity-compliance"
+    },
+    "mq": {
+      "crate": "service-com-amazonaws-mq-mq",
+      "category": "application-integration"
+    },
+    "mturk": {
+      "crate": "service-com-amazonaws-mturk-mturkrequesterservicev20170117",
+      "category": "marketplace-partners"
+    },
+    "mwaa": {
+      "crate": "service-com-amazonaws-mwaa-amazonmwaa",
+      "category": "application-integration"
+    },
+    "mwaa-serverless": {
+      "crate": "service-com-amazonaws-mwaaserverless-amazonmwaaserverless",
+      "category": "application-integration"
+    },
+    "neptune": {
+      "crate": "service-com-amazonaws-neptune-amazonrdsv19",
+      "category": "databases"
+    },
+    "neptune-graph": {
+      "crate": "service-com-amazonaws-neptunegraph-amazonneptunegraph",
+      "category": "databases"
+    },
+    "neptunedata": {
+      "crate": "service-com-amazonaws-neptunedata-amazonneptunedataplane",
+      "category": "databases"
+    },
+    "network-firewall": {
+      "crate": "service-com-amazonaws-networkfirewall-networkfirewall-20201112",
+      "category": "security-identity-compliance"
+    },
+    "network-security-manager": {
+      "crate": "service-com-amazonaws-networksecuritymanager-piccolocustomerapiservice",
+      "category": "networking-content-delivery"
+    },
+    "networkflowmonitor": {
+      "crate": "service-com-amazonaws-networkflowmonitor-networkflowmonitor",
+      "category": "networking-content-delivery"
+    },
+    "networkmanager": {
+      "crate": "service-com-amazonaws-networkmanager-networkmanager",
+      "category": "networking-content-delivery"
+    },
+    "networkmonitor": {
+      "crate": "service-com-amazonaws-networkmonitor-networkmonitor",
+      "category": "networking-content-delivery"
+    },
+    "notifications": {
+      "crate": "service-com-amazonaws-notifications-notifications",
+      "category": "management-governance"
+    },
+    "notificationscontacts": {
+      "crate": "service-com-amazonaws-notificationscontacts-notificationscontacts",
+      "category": "management-governance"
+    },
+    "nova-act": {
+      "crate": "service-com-amazonaws-novaact-amazonnovaagentsdataplane",
+      "category": "ai-machine-learning"
+    },
+    "oam": {
+      "crate": "service-com-amazonaws-oam-oamservice",
+      "category": "management-governance"
+    },
+    "observabilityadmin": {
+      "crate": "service-com-amazonaws-observabilityadmin-observabilityadmin",
+      "category": "management-governance"
+    },
+    "odb": {
+      "crate": "service-com-amazonaws-odb-odb",
+      "category": "databases"
+    },
+    "omics": {
+      "crate": "service-com-amazonaws-omics-omics",
+      "category": "healthcare-science-space"
+    },
+    "opensearch": {
+      "crate": "service-com-amazonaws-opensearch-amazonopensearchservice",
+      "category": "analytics"
+    },
+    "opensearchserverless": {
+      "crate": "service-com-amazonaws-opensearchserverless-opensearchserverless",
+      "category": "analytics"
+    },
+    "organizations": {
+      "crate": "service-com-amazonaws-organizations-awsorganizationsv20161128",
+      "category": "management-governance"
+    },
+    "osis": {
+      "crate": "service-com-amazonaws-osis-amazonopensearchingestionservice",
+      "category": "analytics"
+    },
+    "outposts": {
+      "crate": "service-com-amazonaws-outposts-outpostsolafservice",
+      "category": "compute"
+    },
+    "partnercentral-account": {
+      "crate": "service-com-amazonaws-partnercentralaccount-partnercentralaccount",
+      "category": "marketplace-partners"
+    },
+    "partnercentral-benefits": {
+      "crate": "service-com-amazonaws-partnercentralbenefits-partnercentralbenefitsservice",
+      "category": "marketplace-partners"
+    },
+    "partnercentral-channel": {
+      "crate": "service-com-amazonaws-partnercentralchannel-partnercentralchannel",
+      "category": "marketplace-partners"
+    },
+    "partnercentral-revenue-measurement": {
+      "crate": "service-com-amazonaws-partnercentralrevenuemeasurement-partnercentralrevenuemeasurement",
+      "category": "marketplace-partners"
+    },
+    "partnercentral-selling": {
+      "crate": "service-com-amazonaws-partnercentralselling-awspartnercentralselling",
+      "category": "marketplace-partners"
+    },
+    "payment-cryptography": {
+      "crate": "service-com-amazonaws-paymentcryptography-paymentcryptographycontrolplane",
+      "category": "security-identity-compliance"
+    },
+    "payment-cryptography-data": {
+      "crate": "service-com-amazonaws-paymentcryptographydata-paymentcryptographydataplane",
+      "category": "security-identity-compliance"
+    },
+    "pca-connector-ad": {
+      "crate": "service-com-amazonaws-pcaconnectorad-pcaconnectorad",
+      "category": "security-identity-compliance"
+    },
+    "pca-connector-scep": {
+      "crate": "service-com-amazonaws-pcaconnectorscep-pcaconnectorscep",
+      "category": "security-identity-compliance"
+    },
+    "pcs": {
+      "crate": "service-com-amazonaws-pcs-awsparallelcomputingservice",
+      "category": "compute"
+    },
+    "personalize": {
+      "crate": "service-com-amazonaws-personalize-amazonpersonalize",
+      "category": "ai-machine-learning"
+    },
+    "personalize-events": {
+      "crate": "service-com-amazonaws-personalizeevents-amazonpersonalizeevents",
+      "category": "ai-machine-learning"
+    },
+    "personalize-runtime": {
+      "crate": "service-com-amazonaws-personalizeruntime-amazonpersonalizeruntime",
+      "category": "ai-machine-learning"
+    },
+    "pi": {
+      "crate": "service-com-amazonaws-pi-performanceinsightsv20180227",
+      "category": "databases"
+    },
+    "pinpoint": {
+      "crate": "service-com-amazonaws-pinpoint-pinpoint",
+      "category": "business-apps-communications"
+    },
+    "pinpoint-email": {
+      "crate": "service-com-amazonaws-pinpointemail-amazonpinpointemailservice",
+      "category": "business-apps-communications"
+    },
+    "pinpoint-sms-voice": {
+      "crate": "service-com-amazonaws-pinpointsmsvoice-pinpointsmsvoice",
+      "category": "business-apps-communications"
+    },
+    "pinpoint-sms-voice-v2": {
+      "crate": "service-com-amazonaws-pinpointsmsvoicev2-pinpointsmsvoicev2",
+      "category": "business-apps-communications"
+    },
+    "pipes": {
+      "crate": "service-com-amazonaws-pipes-pipes",
+      "category": "application-integration"
+    },
+    "polly": {
+      "crate": "service-com-amazonaws-polly-parrot-v1",
+      "category": "ai-machine-learning"
+    },
+    "pricing": {
+      "crate": "service-com-amazonaws-pricing-awspricelistservice",
+      "category": "cost-billing"
+    },
+    "pricing-plan-manager": {
+      "crate": "service-com-amazonaws-pricingplanmanager-awspricingplanmanager",
+      "category": "cost-billing"
+    },
+    "proton": {
+      "crate": "service-com-amazonaws-proton-awsproton20200720",
+      "category": "developer-tools"
+    },
+    "qapps": {
+      "crate": "service-com-amazonaws-qapps-qappsservice",
+      "category": "ai-machine-learning"
+    },
+    "qbusiness": {
+      "crate": "service-com-amazonaws-qbusiness-expertq",
+      "category": "ai-machine-learning"
+    },
+    "qconnect": {
+      "crate": "service-com-amazonaws-qconnect-wisdomservice",
+      "category": "ai-machine-learning"
+    },
+    "quicksight": {
+      "crate": "service-com-amazonaws-quicksight-quicksight-20180401",
+      "category": "analytics"
+    },
+    "ram": {
+      "crate": "service-com-amazonaws-ram-amazonresourcesharing",
+      "category": "security-identity-compliance"
+    },
+    "rbin": {
+      "crate": "service-com-amazonaws-rbin-amazonrecyclebin",
+      "category": "storage"
+    },
+    "rds": {
+      "crate": "service-com-amazonaws-rds-amazonrdsv19",
+      "category": "databases"
+    },
+    "rds-data": {
+      "crate": "service-com-amazonaws-rdsdata-rdsdataservice",
+      "category": "databases"
+    },
+    "redshift": {
+      "crate": "service-com-amazonaws-redshift-redshiftserviceversion20121201",
+      "category": "analytics"
+    },
+    "redshift-data": {
+      "crate": "service-com-amazonaws-redshiftdata-redshiftdata",
+      "category": "analytics"
+    },
+    "redshift-serverless": {
+      "crate": "service-com-amazonaws-redshiftserverless-redshiftserverless",
+      "category": "analytics"
+    },
+    "rekognition": {
+      "crate": "service-com-amazonaws-rekognition-rekognitionservice",
+      "category": "ai-machine-learning"
+    },
+    "repostspace": {
+      "crate": "service-com-amazonaws-repostspace-repostspace",
+      "category": "business-apps-communications"
+    },
+    "resiliencehub": {
+      "crate": "service-com-amazonaws-resiliencehub-awsresiliencehub",
+      "category": "management-governance"
+    },
+    "resiliencehubv2": {
+      "crate": "service-com-amazonaws-resiliencehubv2-ngrhservicecore",
+      "category": "management-governance"
+    },
+    "resource-explorer-2": {
+      "crate": "service-com-amazonaws-resourceexplorer2-resourceexplorer",
+      "category": "management-governance"
+    },
+    "resource-groups": {
+      "crate": "service-com-amazonaws-resourcegroups-ardi",
+      "category": "management-governance"
+    },
+    "resource-groups-tagging-api": {
+      "crate": "service-com-amazonaws-resourcegroupstaggingapi-resourcegroupstaggingapi-20170126",
+      "category": "management-governance"
+    },
+    "rolesanywhere": {
+      "crate": "service-com-amazonaws-rolesanywhere-rolesanywhere",
+      "category": "security-identity-compliance"
+    },
+    "route-53": {
+      "crate": "service-com-amazonaws-route53-awsdnsv20130401",
+      "category": "networking-content-delivery"
+    },
+    "route-53-domains": {
+      "crate": "service-com-amazonaws-route53domains-route53domains-v20140515",
+      "category": "networking-content-delivery"
+    },
+    "route53-recovery-cluster": {
+      "crate": "service-com-amazonaws-route53recoverycluster-togglecustomerapi",
+      "category": "networking-content-delivery"
+    },
+    "route53-recovery-control-config": {
+      "crate": "service-com-amazonaws-route53recoverycontrolconfig-route53recoverycontrolconfig",
+      "category": "networking-content-delivery"
+    },
+    "route53-recovery-readiness": {
+      "crate": "service-com-amazonaws-route53recoveryreadiness-route53recoveryreadiness",
+      "category": "networking-content-delivery"
+    },
+    "route53globalresolver": {
+      "crate": "service-com-amazonaws-route53globalresolver-ec2dnsglobalresolvercustomerapi",
+      "category": "networking-content-delivery"
+    },
+    "route53profiles": {
+      "crate": "service-com-amazonaws-route53profiles-route53profiles",
+      "category": "networking-content-delivery"
+    },
+    "route53resolver": {
+      "crate": "service-com-amazonaws-route53resolver-route53resolver",
+      "category": "networking-content-delivery"
+    },
+    "rtbfabric": {
+      "crate": "service-com-amazonaws-rtbfabric-rtbfabric",
+      "category": "networking-content-delivery"
+    },
+    "rum": {
+      "crate": "service-com-amazonaws-rum-rum",
+      "category": "management-governance"
+    },
+    "s3": {
+      "crate": "service-com-amazonaws-s3-amazons3",
+      "category": "storage"
+    },
+    "s3-control": {
+      "crate": "service-com-amazonaws-s3control-awss3controlservicev20180820",
+      "category": "storage"
+    },
+    "s3files": {
+      "crate": "service-com-amazonaws-s3files-s3files",
+      "category": "storage"
+    },
+    "s3outposts": {
+      "crate": "service-com-amazonaws-s3outposts-s3outposts",
+      "category": "storage"
+    },
+    "s3tables": {
+      "crate": "service-com-amazonaws-s3tables-s3tablebuckets",
+      "category": "storage"
+    },
+    "s3vectors": {
+      "crate": "service-com-amazonaws-s3vectors-s3vectors",
+      "category": "storage"
+    },
+    "sagemaker": {
+      "crate": "service-com-amazonaws-sagemaker-sagemaker",
+      "category": "ai-machine-learning"
+    },
+    "sagemaker-a2i-runtime": {
+      "crate": "service-com-amazonaws-sagemakera2iruntime-amazonsagemakera2iruntime",
+      "category": "ai-machine-learning"
+    },
+    "sagemaker-edge": {
+      "crate": "service-com-amazonaws-sagemakeredge-amazonsagemakeredge",
+      "category": "ai-machine-learning"
+    },
+    "sagemaker-featurestore-runtime": {
+      "crate": "service-com-amazonaws-sagemakerfeaturestoreruntime-amazonsagemakerfeaturestoreruntime",
+      "category": "ai-machine-learning"
+    },
+    "sagemaker-geospatial": {
+      "crate": "service-com-amazonaws-sagemakergeospatial-sagemakergeospatial",
+      "category": "ai-machine-learning"
+    },
+    "sagemaker-metrics": {
+      "crate": "service-com-amazonaws-sagemakermetrics-sagemakermetricsservice",
+      "category": "ai-machine-learning"
+    },
+    "sagemaker-runtime": {
+      "crate": "service-com-amazonaws-sagemakerruntime-amazonsagemakerruntime",
+      "category": "ai-machine-learning"
+    },
+    "sagemaker-runtime-http2": {
+      "crate": "service-com-amazonaws-sagemakerruntimehttp2-amazonsagemakerruntimehttp2",
+      "category": "ai-machine-learning"
+    },
+    "sagemakerjobruntime": {
+      "crate": "service-com-amazonaws-sagemakerjobruntime-agenticrftruntimeservice",
+      "category": "ai-machine-learning"
+    },
+    "sagemakertrainingsessionruntime": {
+      "crate": "service-com-amazonaws-sagemakertrainingsessionruntime-legorouterservice",
+      "category": "ai-machine-learning"
+    },
+    "savingsplans": {
+      "crate": "service-com-amazonaws-savingsplans-awssavingsplan",
+      "category": "cost-billing"
+    },
+    "scheduler": {
+      "crate": "service-com-amazonaws-scheduler-awschronosservice",
+      "category": "application-integration"
+    },
+    "schemas": {
+      "crate": "service-com-amazonaws-schemas-schemas",
+      "category": "application-integration"
+    },
+    "secrets-manager": {
+      "crate": "service-com-amazonaws-secretsmanager-secretsmanager",
+      "category": "security-identity-compliance"
+    },
+    "security-ir": {
+      "crate": "service-com-amazonaws-securityir-securityincidentresponse",
+      "category": "security-identity-compliance"
+    },
+    "securityagent": {
+      "crate": "service-com-amazonaws-securityagent-securityagent",
+      "category": "security-identity-compliance"
+    },
+    "securityhub": {
+      "crate": "service-com-amazonaws-securityhub-securityhubapiservice",
+      "category": "security-identity-compliance"
+    },
+    "securitylake": {
+      "crate": "service-com-amazonaws-securitylake-securitylake",
+      "category": "security-identity-compliance"
+    },
+    "serverlessapplicationrepository": {
+      "crate": "service-com-amazonaws-serverlessapplicationrepository-serverlessapplicationrepository",
+      "category": "compute"
+    },
+    "service-catalog": {
+      "crate": "service-com-amazonaws-servicecatalog-aws242servicecatalogservice",
+      "category": "management-governance"
+    },
+    "service-catalog-appregistry": {
+      "crate": "service-com-amazonaws-servicecatalogappregistry-aws242appregistry",
+      "category": "management-governance"
+    },
+    "service-quotas": {
+      "crate": "service-com-amazonaws-servicequotas-servicequotasv20190624",
+      "category": "management-governance"
+    },
+    "servicediscovery": {
+      "crate": "service-com-amazonaws-servicediscovery-route53autonaming-v20170314",
+      "category": "networking-content-delivery"
+    },
+    "ses": {
+      "crate": "service-com-amazonaws-ses-simpleemailservice",
+      "category": "business-apps-communications"
+    },
+    "sesv2": {
+      "crate": "service-com-amazonaws-sesv2-simpleemailservice-v2",
+      "category": "business-apps-communications"
+    },
+    "sfn": {
+      "crate": "service-com-amazonaws-sfn-awsstepfunctions",
+      "category": "application-integration"
+    },
+    "shield": {
+      "crate": "service-com-amazonaws-shield-awsshield-20160616",
+      "category": "security-identity-compliance"
+    },
+    "signer": {
+      "crate": "service-com-amazonaws-signer-wallabyservice",
+      "category": "security-identity-compliance"
+    },
+    "signer-data": {
+      "crate": "service-com-amazonaws-signerdata-signerdataplane",
+      "category": "security-identity-compliance"
+    },
+    "signin": {
+      "crate": "service-com-amazonaws-signin-signin",
+      "category": "security-identity-compliance"
+    },
+    "simpledbv2": {
+      "crate": "service-com-amazonaws-simpledbv2-simpledbv2",
+      "category": "compute"
+    },
+    "snow-device-management": {
+      "crate": "service-com-amazonaws-snowdevicemanagement-snowdevicemanagement",
+      "category": "migration-transfer"
+    },
+    "snowball": {
+      "crate": "service-com-amazonaws-snowball-awsiesnowballjobmanagementservice",
+      "category": "migration-transfer"
+    },
+    "sns": {
+      "crate": "service-com-amazonaws-sns-amazonsimplenotificationservice",
+      "category": "application-integration"
+    },
+    "socialmessaging": {
+      "crate": "service-com-amazonaws-socialmessaging-socialmessaging",
+      "category": "business-apps-communications"
+    },
+    "sqs": {
+      "crate": "service-com-amazonaws-sqs-amazonsqs",
+      "category": "application-integration"
+    },
+    "ssm": {
+      "crate": "service-com-amazonaws-ssm-amazonssm",
+      "category": "management-governance"
+    },
+    "ssm-contacts": {
+      "crate": "service-com-amazonaws-ssmcontacts-ssmcontacts",
+      "category": "management-governance"
+    },
+    "ssm-guiconnect": {
+      "crate": "service-com-amazonaws-ssmguiconnect-ssmguiconnect",
+      "category": "management-governance"
+    },
+    "ssm-incidents": {
+      "crate": "service-com-amazonaws-ssmincidents-ssmincidents",
+      "category": "management-governance"
+    },
+    "ssm-quicksetup": {
+      "crate": "service-com-amazonaws-ssmquicksetup-quicksetup",
+      "category": "management-governance"
+    },
+    "ssm-sap": {
+      "crate": "service-com-amazonaws-ssmsap-ssmsap",
+      "category": "management-governance"
+    },
+    "sso": {
+      "crate": "service-com-amazonaws-sso-swbportalservice",
+      "category": "security-identity-compliance"
+    },
+    "sso-admin": {
+      "crate": "service-com-amazonaws-ssoadmin-swbexternalservice",
+      "category": "security-identity-compliance"
+    },
+    "sso-oidc": {
+      "crate": "service-com-amazonaws-ssooidc-awsssooidcservice",
+      "category": "security-identity-compliance"
+    },
+    "storage-gateway": {
+      "crate": "service-com-amazonaws-storagegateway-storagegateway-20130630",
+      "category": "storage"
+    },
+    "sts": {
+      "crate": "service-com-amazonaws-sts-awssecuritytokenservicev20110615",
+      "category": "security-identity-compliance"
+    },
+    "supplychain": {
+      "crate": "service-com-amazonaws-supplychain-galaxypublicapigateway",
+      "category": "business-apps-communications"
+    },
+    "support": {
+      "crate": "service-com-amazonaws-support-awssupport-20130415",
+      "category": "management-governance"
+    },
+    "support-app": {
+      "crate": "service-com-amazonaws-supportapp-supportapp",
+      "category": "management-governance"
+    },
+    "supportauthz": {
+      "crate": "service-com-amazonaws-supportauthz-supportauthz",
+      "category": "management-governance"
+    },
+    "sustainability": {
+      "crate": "service-com-amazonaws-sustainability-awssustainabilityapiservice",
+      "category": "management-governance"
+    },
+    "swf": {
+      "crate": "service-com-amazonaws-swf-simpleworkflowservice",
+      "category": "application-integration"
+    },
+    "synthetics": {
+      "crate": "service-com-amazonaws-synthetics-synthetics",
+      "category": "management-governance"
+    },
+    "taxsettings": {
+      "crate": "service-com-amazonaws-taxsettings-taxsettings",
+      "category": "cost-billing"
+    },
+    "textract": {
+      "crate": "service-com-amazonaws-textract-textract",
+      "category": "ai-machine-learning"
+    },
+    "timestream-influxdb": {
+      "crate": "service-com-amazonaws-timestreaminfluxdb-amazontimestreaminfluxdb",
+      "category": "databases"
+    },
+    "timestream-query": {
+      "crate": "service-com-amazonaws-timestreamquery-timestream-20181101",
+      "category": "databases"
+    },
+    "timestream-write": {
+      "crate": "service-com-amazonaws-timestreamwrite-timestream-20181101",
+      "category": "databases"
+    },
+    "transcribe": {
+      "crate": "service-com-amazonaws-transcribe-transcribe",
+      "category": "ai-machine-learning"
+    },
+    "transcribe-streaming": {
+      "crate": "service-com-amazonaws-transcribestreaming-transcribe",
+      "category": "ai-machine-learning"
+    },
+    "transfer": {
+      "crate": "service-com-amazonaws-transfer-transferservice",
+      "category": "migration-transfer"
+    },
+    "translate": {
+      "crate": "service-com-amazonaws-translate-awsshinefrontendservice-20170701",
+      "category": "ai-machine-learning"
+    },
+    "trustedadvisor": {
+      "crate": "service-com-amazonaws-trustedadvisor-trustedadvisor",
+      "category": "management-governance"
+    },
+    "uxc": {
+      "crate": "service-com-amazonaws-uxc-awsaccountuxsetting",
+      "category": "management-governance"
+    },
+    "verifiedpermissions": {
+      "crate": "service-com-amazonaws-verifiedpermissions-verifiedpermissions",
+      "category": "security-identity-compliance"
+    },
+    "voice-id": {
+      "crate": "service-com-amazonaws-voiceid-voiceid",
+      "category": "ai-machine-learning"
+    },
+    "vpc-lattice": {
+      "crate": "service-com-amazonaws-vpclattice-mercurycontrolplane",
+      "category": "networking-content-delivery"
+    },
+    "waf": {
+      "crate": "service-com-amazonaws-waf-awswaf-20150824",
+      "category": "security-identity-compliance"
+    },
+    "waf-regional": {
+      "crate": "service-com-amazonaws-wafregional-awswaf-regional-20161128",
+      "category": "security-identity-compliance"
+    },
+    "wafv2": {
+      "crate": "service-com-amazonaws-wafv2-awswaf-20190729",
+      "category": "security-identity-compliance"
+    },
+    "wellarchitected": {
+      "crate": "service-com-amazonaws-wellarchitected-wellarchitectedapiservicelambda",
+      "category": "management-governance"
+    },
+    "wickr": {
+      "crate": "service-com-amazonaws-wickr-wickradminapi",
+      "category": "business-apps-communications"
+    },
+    "wisdom": {
+      "crate": "service-com-amazonaws-wisdom-wisdomservice",
+      "category": "ai-machine-learning"
+    },
+    "workdocs": {
+      "crate": "service-com-amazonaws-workdocs-awsgorillaboyservice",
+      "category": "business-apps-communications"
+    },
+    "workmail": {
+      "crate": "service-com-amazonaws-workmail-workmailservice",
+      "category": "business-apps-communications"
+    },
+    "workmailmessageflow": {
+      "crate": "service-com-amazonaws-workmailmessageflow-giraffemessageintransitservice",
+      "category": "business-apps-communications"
+    },
+    "workspaces": {
+      "crate": "service-com-amazonaws-workspaces-workspacesservice",
+      "category": "end-user-computing"
+    },
+    "workspaces-instances": {
+      "crate": "service-com-amazonaws-workspacesinstances-eucmifrontendapiservice",
+      "category": "end-user-computing"
+    },
+    "workspaces-thin-client": {
+      "crate": "service-com-amazonaws-workspacesthinclient-thinclient",
+      "category": "end-user-computing"
+    },
+    "workspaces-web": {
+      "crate": "service-com-amazonaws-workspacesweb-awserminecontrolplaneservice",
+      "category": "end-user-computing"
+    },
+    "xray": {
+      "crate": "service-com-amazonaws-xray-awsxray",
+      "category": "management-governance"
+    }
+  }
+}

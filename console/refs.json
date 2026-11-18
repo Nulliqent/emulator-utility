@@ -1,0 +1,21 @@
+{
+  "repos": {
+    "aws-emulator": {
+      "url": "https://github.com/aws/aws-emulator.git",
+      "sha": "8ae1f15e1239e20a3ab2eb37bf44813feb1807c7",
+      "sparse": ["services/*/smithy-model", "services/*/src/ops"]
+    },
+    "api-models-aws": {
+      "url": "https://github.com/aws/api-models-aws.git",
+      "sha": "00963cb6e3bd2cee061a279682a744bf54e544b2",
+      "sparse": ["models"]
+    }
+  },
+  "expectedCounts": {
+    "services": 436,
+    "operations": 19449,
+    "implemented": 12213,
+    "scaffolded": 7192,
+    "unrouted": 44
+  }
+}

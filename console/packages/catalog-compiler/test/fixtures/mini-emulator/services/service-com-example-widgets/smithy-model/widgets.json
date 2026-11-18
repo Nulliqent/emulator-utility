@@ -1,0 +1,84 @@
+{
+  "smithy": "2.0",
+  "shapes": {
+    "com.example#Widgets": {
+      "type": "service",
+      "version": "2024-01-01",
+      "operations": [
+        { "target": "com.example#GetWidget" },
+        { "target": "com.example#PutWidget" },
+        { "target": "com.example#DeleteWidget" },
+        { "target": "com.example#ListWidgets" },
+        { "target": "com.example#WatchWidgets" }
+      ],
+      "traits": {
+        "aws.api#service": { "sdkId": "Widget Works" },
+        "aws.auth#sigv4": { "name": "widgets" },
+        "aws.protocols#restJson1": {},
+        "smithy.api#title": "Example Widgets",
+        "smithy.api#paginated": { "inputToken": "NextToken", "outputToken": "NextToken", "pageSize": "MaxResults" }
+      }
+    },
+    "com.example#GetWidget": {
+      "type": "operation",
+      "input": { "target": "com.example#GetWidgetInput" },
+      "output": { "target": "com.example#GetWidgetOutput" }
+    },
+    "com.example#PutWidget": {
+      "type": "operation",
+      "input": { "target": "com.example#GetWidgetInput" }
+    },
+    "com.example#DeleteWidget": {
+      "type": "operation",
+      "input": { "target": "com.example#GetWidgetInput" }
+    },
+    "com.example#ListWidgets": {
+      "type": "operation",
+      "input": { "target": "com.example#ListWidgetsInput" },
+      "output": { "target": "com.example#ListWidgetsOutput" },
+      "traits": { "smithy.api#paginated": { "items": "Widgets" } }
+    },
+    "com.example#WatchWidgets": {
+      "type": "operation",
+      "output": { "target": "com.example#WatchOutput" }
+    },
+    "com.example#GetWidgetInput": {
+      "type": "structure",
+      "members": {
+        "Id": { "target": "smithy.api#String", "traits": { "smithy.api#required": {} } }
+      }
+    },
+    "com.example#GetWidgetOutput": {
+      "type": "structure",
+      "members": {
+        "Name": { "target": "smithy.api#String", "traits": { "smithy.api#documentation": "the name" } },
+        "Color": { "target": "com.example#Color" },
+        "Missing": { "target": "com.example#NoSuchShape" }
+      }
+    },
+    "com.example#ListWidgetsInput": {
+      "type": "structure",
+      "members": { "NextToken": { "target": "smithy.api#String" }, "MaxResults": { "target": "smithy.api#Integer" } }
+    },
+    "com.example#ListWidgetsOutput": {
+      "type": "structure",
+      "members": { "NextToken": { "target": "smithy.api#String" } }
+    },
+    "com.example#Color": {
+      "type": "string",
+      "traits": {
+        "smithy.api#enum": [{ "value": "red", "name": "RED" }, { "value": "blue" }]
+      }
+    },
+    "com.example#Conflict": { "type": "string" },
+    "com.example#WatchOutput": {
+      "type": "structure",
+      "members": { "Events": { "target": "com.example#EventStream" } }
+    },
+    "com.example#EventStream": {
+      "type": "union",
+      "members": { "Ping": { "target": "smithy.api#String" } },
+      "traits": { "smithy.api#streaming": {} }
+    }
+  }
+}

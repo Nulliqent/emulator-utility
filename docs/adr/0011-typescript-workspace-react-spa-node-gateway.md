@@ -1,13 +1,13 @@
 ---
 status: accepted
 date: 2026-11-18
-decisions: D-7, D-8
+decisions: D-7, D-8, D-13
 ---
 # One TypeScript pnpm workspace: a React SPA and a Node Gateway sharing framework-free packages
 
 The Console is a single pnpm workspace under `console/`:
 - The SPA uses React, TypeScript and Vite, with TanStack Router, Query and Table, React Hook Form, and Zustand.
-- The Gateway is TypeScript on Node 22.
+- The Gateway is TypeScript on Node 24 (first written as Node 22; see D-13).
 
 Both import the same framework-free packages:
 - `model`: Model Interpreter and Resource Inference
