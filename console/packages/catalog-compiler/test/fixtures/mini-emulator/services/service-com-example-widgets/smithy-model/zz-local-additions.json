@@ -1,0 +1,14 @@
+{
+  "smithy": "2.0",
+  "shapes": {
+    "com.example#GetWidgetOutput": {
+      "type": "structure",
+      "members": {
+        "Extra": { "target": "smithy.api#String" },
+        "Name": { "target": "smithy.api#String", "traits": { "smithy.api#sensitive": {} } }
+      }
+    },
+    "com.example#ListWidgetsOutput": { "type": "structure", "members": {} },
+    "com.example#Conflict": { "type": "structure", "members": {} }
+  }
+}

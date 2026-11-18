@@ -1,0 +1,11 @@
+{
+  "smithy": "2.0",
+  "shapes": {
+    "com.example#Newcomer": {
+      "type": "service",
+      "version": "2025-01-01",
+      "operations": [],
+      "traits": { "aws.api#service": { "sdkId": "Newcomer" }, "aws.auth#sigv4": { "name": "newcomer" } }
+    }
+  }
+}

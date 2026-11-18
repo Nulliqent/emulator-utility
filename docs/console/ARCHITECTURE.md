@@ -90,7 +90,7 @@ Reads the emulator tree and writes static, versioned JSON. It is the only code t
 Inputs:
 - `aws-emulator/services/service-*/smithy-model/*.json` (several crates have 2 or 3 model files; merge their `shapes`).
 - `aws-emulator/services/service-*/src/ops/*.rs` header doc comments: an operation is **Scaffolded** when its header carries the line `//! SCAFFOLDED, NOT IMPLEMENTED:`; match the header line, never a substring anywhere in the file (implemented ops such as `get_shard_iterator.rs` mention the phrase elsewhere).
-- `src/ops/SKIPPED_STUBS.md`: `// SKIPPED: <Op>` lines, minus `// HAND-AUTHORED: <Op>` lines, give **Unrouted** operations.
+- Source Status rule: an Operation with an `ops/<op>.rs` file is **Implemented**, or **Scaffolded** when its header carries the marker. An Operation with **no ops file** is **Unrouted**. `src/ops/SKIPPED_STUBS.md` (`// SKIPPED:` minus `// HAND-AUTHORED:` lines) is read only to warn when it disagrees with the files: 46 Operations it lists were hand-authored later without a HAND-AUTHORED line, so the file presence decides and the list is not part of the fingerprint.
 - `aws-emulator/issues/things-that-do-not-work/*.md` (optional): **Known Issues** per service, keyed by crate name in the file name or body.
 - `console/catalog/categories.json`: service key to **Category** (22 categories), seeded from the prototype's `SVCS` table (decoded from the design HTML; keyed by `api-models-aws/models/<dir>` names such as `s3`, `route-53`).
 - `console/catalog/overrides/*.ts`: per-service **Overrides** (section 5).
@@ -115,9 +115,9 @@ interface CatalogEntry {
   category: CategoryId;
   tier: "custom" | "generated"; // from catalog/custom-ui.json
   coverage: { implemented: number; scaffolded: number; unrouted: number; total: number; level: "full" | "partial" | "none" };
-  probeOp?: OpName;             // cheapest implemented read op with no required input, used for Availability
-  rootResourceTypes: string[];  // for Home counts, palette, discovery
-  knownIssues: number;
+  probeOp?: OpName;             // implemented, non-streaming read op with no required input; the one whose noun appears in the most Operation names of the Service wins (List, then Describe, then Get). Chosen by name, so a read by convention. Used for Availability
+  rootResourceTypes: string[];  // for Home counts, palette, discovery (deferred to the Resource Inference ticket #14)
+  knownIssues: number;         // deferred to the Phase 3 Known Issues work
 }
 ```
 
@@ -395,8 +395,8 @@ Observed beats Source. The UI never hides an operation.
 
 ## 7. Keeping the catalog in sync with a codegen'd emulator (ADR-0004)
 
-- The compiler keys off `aws-emulator/services/*/smithy-model`, the same input the scaffold renders `core/router/src/lib.rs` from. It does not parse `lib.rs`. As a cross-check it counts `register_connector` calls in `lib.rs` and warns on a mismatch.
-- `catalog/manifest.json` stores a fingerprint: a hash of the sorted crate list, every model file hash, and every `ops/*.rs` status line. `pnpm catalog:check` recomputes it. CI runs it, and so does a git pre-commit hook in `console/`. When the emulator updates (the agents that maintain it add services and implement operations), the check fails until someone runs `pnpm catalog:build` and commits.
+- The compiler keys off `aws-emulator/services/*/smithy-model`, the same input the scaffold renders `core/router/src/lib.rs` from. It does not read `lib.rs` (a `register_connector` cross-check is a possible later addition).
+- `catalog/manifest.json` stores a fingerprint: a hash of the sorted crate list, every model file hash, and every `ops/*.rs` status line. `pnpm catalog:check` recomputes it. CI runs it (a git pre-commit hook is a possible later addition). When the emulator updates (the agents that maintain it add services and implement operations), the check fails until someone runs `pnpm catalog:build` and commits.
 - Commit policy (D-11): `dist/catalog/index.json` and `dist/catalog/manifest.json` are committed, so an emulator update shows as a reviewable diff ("Kinesis: 3 operations now implemented"). The per-service `*.ui.json` and `*.docs.json` files are rebuilt in CI and in the Docker build and are git-ignored.
 - At runtime, `GET /meta` exposes the fingerprint. The SPA shows "Catalog built from source <commit>" in Settings, and Observed Status corrects drift against the prebuilt binary.
 - `services/<id>.ui.json` files have content-hashed paths, so a new catalog never mixes with a cached old one.
