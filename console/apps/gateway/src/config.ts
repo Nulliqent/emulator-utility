@@ -15,6 +15,8 @@ export interface GatewayConfig {
   gatewayVersion: string;
   healthIntervalMs: number;
   healthTimeoutMs: number;
+  /** Idle timeout of a pass-through call to the Emulator. */
+  proxyTimeoutMs: number;
 }
 
 const LOOPBACK = new Set(["127.0.0.1", "::1", "localhost", "[::1]"]);
@@ -40,5 +42,6 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): GatewayConfig 
     gatewayVersion: env.CONSOLE_VERSION ?? "0.1.0",
     healthIntervalMs: Number(env.CONSOLE_HEALTH_INTERVAL_MS ?? 2000),
     healthTimeoutMs: Number(env.CONSOLE_HEALTH_TIMEOUT_MS ?? 1500),
+    proxyTimeoutMs: Number(env.CONSOLE_PROXY_TIMEOUT_MS ?? 60_000),
   };
 }

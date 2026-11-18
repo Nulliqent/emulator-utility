@@ -17,4 +17,5 @@ The browser's AWS SDK clients point at the Gateway's origin and sign with the re
 
 - The Gateway must refuse non-same-origin browser requests. Otherwise it would reopen the hole the emulator closes.
 - The local secret is visible to the Console page. That is accepted for a loopback-only development tool whose secret already sits in an owner-only file (`.aws/emulator/9297/emulator_credentials`, mode 600) that every process of the same user can read.
+- The exposure boundary is the machine, not the browser. The same-origin rule, the `Host` check and the `X-Console` header stop other web pages and DNS rebinding. They do not stop other programs: any local process or user on the host, and any container on the compose network, can read the credentials endpoint and call the Emulator through the pass-through. The container publishes its port on `127.0.0.1` only, and the Emulator's own credentials file is equally readable by everything running as that user. Multi-user hosts are out of scope.
 - If phase 0 shows that S3 uploads fail to verify through the pass-through, S3 alone falls back to Gateway re-signing.

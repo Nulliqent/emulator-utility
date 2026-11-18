@@ -3,6 +3,11 @@ import { z } from "zod";
 
 export const API_BASE = "/__console/api/v1";
 
+/** The custom request header the Gateway requires on the credentials endpoint, the AWS pass-through and every mutating route. */
+export const CONSOLE_HEADER = "X-Console";
+/** Where the Gateway serves the compiled Catalog: `<CATALOG_BASE>/<fingerprint>/index.json` and so on. */
+export const CATALOG_BASE = "/__console/catalog";
+
 /** Names of the Server-Sent Events on `GET /events`. */
 export const SSE_EVENTS = { health: "health" } as const;
 
@@ -65,9 +70,23 @@ export type Health = z.infer<typeof Health>;
 export const HealthEvent = z.object({ connectionId: z.string(), health: Health });
 export type HealthEvent = z.infer<typeof HealthEvent>;
 
+/**
+ * The Emulator Credentials of a Connection, for the SPA's SDK clients. Served same-origin only, `no-store`, and only
+ * to a request that carries the `X-Console` header. Never logged, never put in a URL.
+ */
+export const Credentials = z.object({
+  accessKeyId: z.string(),
+  secretAccessKey: z.string(),
+  sessionToken: z.string().optional(),
+  /** The Connection's credentials epoch (see Health). */
+  epoch: z.number().int(),
+});
+export type Credentials = z.infer<typeof Credentials>;
+
 export const paths = {
   meta: `${API_BASE}/meta`,
   connections: `${API_BASE}/connections`,
   health: (id: string) => `${API_BASE}/connections/${encodeURIComponent(id)}/health`,
+  credentials: (id: string) => `${API_BASE}/connections/${encodeURIComponent(id)}/credentials`,
   events: `${API_BASE}/events`,
 } as const;

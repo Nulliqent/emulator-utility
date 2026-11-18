@@ -12,7 +12,7 @@ function run(cmd: string, args: string[]): string {
     cwd: repoRoot,
     stdio: ["ignore", "pipe", "inherit"],
     encoding: "utf8",
-    env: { ...process.env, PORT: "9297" }, // the base file's ${PORT:-9297}; a PORT in the caller's shell must not leak in
+    env: { ...process.env, PORT: "9297", CONSOLE_WEB_SOURCE: process.env.E2E_WEB === "host" ? "prebuilt" : "build" }, // the base file's ${PORT:-9297}; a PORT in the caller's shell must not leak in
   });
 }
 
@@ -44,6 +44,13 @@ async function waitFor(what: string, ok: () => Promise<boolean>, ms: number) {
 export async function up(): Promise<void> {
   // Never rebuild or retag a developer's own `aws-emulator` image: build it only when it is absent (a fresh CI runner).
   if (!imageExists("aws-emulator")) compose("build", "emulator");
+  if (process.env.E2E_WEB === "host") {
+    // The SPA bundles 436 SDK clients and needs several GB to build: build it on the host and let the image copy it.
+    execFileSync("pnpm", ["--filter", "@console/web", "build"], {
+      cwd: path.join(repoRoot, "console"),
+      stdio: "inherit",
+    });
+  }
   compose("build", "console"); // tagged aws-emulator-console:e2e, apart from the developer's image
   compose("up", "-d", "--no-build");
   await waitFor(

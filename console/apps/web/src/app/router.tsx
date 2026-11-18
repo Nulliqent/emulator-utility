@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { fetchMeta } from "../api.ts";
 import { useHealthView } from "./HealthPill.tsx";
 import { useHealth } from "./HealthProvider.tsx";
+import { ExplorerPage } from "../features/explorer/ExplorerPage.tsx";
 import { Root, useActiveConnection } from "./Shell.tsx";
 
 function Page({ title, children }: { title: string; children?: ReactNode }) {
@@ -69,6 +70,16 @@ function NotFound() {
 const rootRoute = createRootRoute({ component: Root, notFoundComponent: NotFound });
 const routeTree = rootRoute.addChildren([
   createRoute({ getParentRoute: () => rootRoute, path: "/", component: Home }),
+  createRoute({
+    getParentRoute: () => rootRoute,
+    path: "/explorer",
+    component: ExplorerPage,
+    // Deep links: /explorer?service=sqs&op=ListQueues
+    validateSearch: (s: Record<string, unknown>): { service?: string; op?: string } => ({
+      ...(typeof s.service === "string" ? { service: s.service } : {}),
+      ...(typeof s.op === "string" ? { op: s.op } : {}),
+    }),
+  }),
   createRoute({ getParentRoute: () => rootRoute, path: "/services", component: soon("All services") }),
   createRoute({ getParentRoute: () => rootRoute, path: "/inspector", component: soon("Request inspector") }),
   createRoute({ getParentRoute: () => rootRoute, path: "/connections", component: soon("Connections") }),

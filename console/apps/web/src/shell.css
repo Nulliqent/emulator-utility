@@ -101,3 +101,19 @@ a:hover { color: var(--color-link-hover); }
 .facts dt { color: var(--color-text-secondary); }
 .facts dd { margin: 0; overflow-wrap: anywhere; }
 .hint { color: var(--color-text-secondary); font-size: 13px; }
+
+.explorer-form { box-sizing: border-box; min-width: 0; display: grid; gap: 14px; margin-top: 16px; max-width: 760px; }
+.field { display: grid; gap: 6px; font-size: 14px; }
+.field label { font-weight: 600; }
+.ui-input {
+  font: inherit; padding: 8px 10px; border-radius: var(--radius-control);
+  border: 1px solid var(--color-line-control); background: var(--color-bg-card); color: var(--color-text);
+}
+.form-error { margin: 0; color: var(--color-status-danger-text); font-size: 14px; }
+.explorer-result { margin-top: 16px; max-width: 760px; }
+.explorer-result p { margin: 0 0 8px; font-size: 14px; }
+.explorer-body { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 13px; max-height: 480px; overflow: auto; }
+.explorer-form > *, .explorer-result > * { min-width: 0; }
+.ui-input { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+.explorer-result { box-sizing: border-box; min-width: 0; }
+.explorer-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }

@@ -122,6 +122,23 @@ describe("Catalog Entry", () => {
   });
 });
 
+describe("the fingerprint covers what is emitted, not only the source", () => {
+  const fp = () => compileCatalog(options).manifest.fingerprint;
+
+  it("changes when the Category overlay or the Custom-Tier list changes", () => {
+    const before = fp();
+    options.categoryConfig = { ...options.categoryConfig, services: { widgets: { crate: CRATE, category: "other" } } };
+    const moved = fp();
+    expect(moved).not.toBe(before);
+    options.customTier = ["widgets"];
+    expect(fp()).not.toBe(moved);
+  });
+
+  it("is stable for the same inputs", () => {
+    expect(fp()).toBe(fp());
+  });
+});
+
 describe("refs tree hygiene", () => {
   it("refuses to follow a symlink in the refs tree", () => {
     rmSync(opFile("SKIPPED_STUBS.md"));

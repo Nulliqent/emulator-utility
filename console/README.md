@@ -50,11 +50,13 @@ An Operation with an `ops/<op>.rs` file is Implemented, or Scaffolded when its l
 - `sdkPackage` is `@aws-sdk/client-` plus the sdkId lowercased with spaces as hyphens.
 - `rootResourceTypes` (Resource Inference, ticket #14) and `knownIssues` (the Phase 3 Known Issues work) are deferred and absent for now.
 
-## Running the Console
+## Quick start: running the Console
 
 ```sh
 docker compose up --build        # from the repo root: the Emulator plus the console on 127.0.0.1:9300
 ```
+
+**Memory.** `docker compose up --build` compiles the web app inside Docker. It bundles one lazy chunk per AWS SDK client (436), which peaked at about **6.9 GB** resident memory in a measured build (macOS arm64, Node 26, about 40 s; it fails with a 5 GB heap). Give the Docker VM **at least 8 GB**; check with `docker info --format '{{.MemTotal}}'` (bytes). With less, build on the host and let the image copy the result (one command, from the repo root): `pnpm --dir console build && CONSOLE_WEB_SOURCE=prebuilt docker compose up --build`. The dist is stamped with the Catalog fingerprint and the image build fails on a mismatch.
 
 Open http://127.0.0.1:9300 (it redirects to `/__console/`). The `console` service mounts `.aws/emulator` read-only. Compose 2.24.4 or newer is needed for the e2e override (`!reset`, `!override`).
 
@@ -71,6 +73,18 @@ Host mode (Gateway on 127.0.0.1:9300 plus Vite on port 5173, open `/__console/` 
 The Gateway reads `CONSOLE_EMULATOR_URL`, `CONSOLE_EMULATOR_HOME`, `CONSOLE_CONFIG_DIR` and `CONSOLE_PUBLIC_ORIGIN` (see `apps/gateway/src/config.ts`).
 
 **Network exposure.** The Gateway binds `127.0.0.1` by default and refuses to start on any other address unless `CONSOLE_ALLOW_REMOTE_BIND=1`. The image sets `CONSOLE_HOST=0.0.0.0` and that flag because a container must listen on all interfaces; compose publishes the port on `127.0.0.1` only, so keep it that way. Outside compose, publish it the same way: `docker run -p 127.0.0.1:9300:9300 ...` (never `-p 9300:9300`, which listens on every interface). The same-origin rule (ARCHITECTURE 3.9) and the `Host` check stop other web pages and DNS rebinding from driving the API through your browser. They are not a network boundary: anyone who can reach the port directly (curl-style, no `Origin`) is served, so never publish it beyond loopback.
+
+### The API Explorer and the SPA build
+
+`/__console/explorer` runs any Operation through the AWS SDK v3 (one lazy chunk per Service, loaded on first use) against the Gateway's pass-through proxy. It needs the Gateway's own origin (`pnpm build && pnpm start`, or compose), not the Vite dev server, because the SDK signs the request for the host it calls.
+
+**Who can reach the Gateway.** The same-origin rule stops other web pages, not other programs. The credentials endpoint and the AWS pass-through can be reached by any local process or user on this host, and by any container on the compose network, so a multi-user host is out of scope (ADR-0003).
+
+The Gateway requires an `X-Console` header on the AWS pass-through, on `GET /connections/{id}/credentials` and on every mutating API route; a cross-site page cannot send it without a CORS preflight, which the Gateway never approves.
+
+The web build bundles 436 SDK clients and needs a large Node heap (`apps/web/scripts/build.mjs` sets `--max-old-space-size=12288` on any OS; about 40 s, 6.9 GB peak). The image build does the same (`WEB_SOURCE=build`), so Docker needs several GB of RAM. On a small Docker VM, build on the host and let the image copy the result: `CONSOLE_WEB_SOURCE=prebuilt docker compose up --build` after `pnpm build` (the dist is passed as the named build context `webdist` and checked against the Catalog fingerprint), or `E2E_WEB=host pnpm e2e`. After a change to the Catalog's Services, regenerate the SDK registry with `pnpm --filter @console/invoker gen` (a test fails when `sdk-registry.gen.js` or `package.json` is stale; tsc reads the fixed `sdk-registry.gen.d.ts`, never the 436 imports).
+
+The compiled Catalog is built into the image from `aws-emulator` fetched at the pin in `refs.json`, and served at `/__console/catalog/<fingerprint>/*` with immutable cache headers.
 
 ### End-to-end tests
 

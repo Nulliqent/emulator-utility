@@ -99,6 +99,7 @@ export function createHealthProbe(cfg: GatewayConfig) {
 
   return {
     request,
+    epochOf,
     async check(c: Connection): Promise<Health> {
       const checkedAt = new Date().toISOString();
       const credentialsEpoch = epochOf(c.id, c.credentialsFile);
