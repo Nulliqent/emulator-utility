@@ -1,0 +1,14 @@
+services:
+  emulator:
+    build:
+      context: .
+      dockerfile: Dockerfile/emulator.Dockerfile
+    image: aws-emulator
+    container_name: emulator
+    command: ["-p", "${PORT:-9297}"]
+    ports:
+      - "127.0.0.1:${PORT:-9297}:${PORT:-9297}"
+    volumes:
+      - .aws/emulator:/home/emulator/.aws/emulator
+    mem_limit: 2g
+    memswap_limit: 2g
