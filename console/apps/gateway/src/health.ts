@@ -18,7 +18,10 @@ const MAX_BODY_BYTES = 64 * 1024;
  * Counts credential rotations per Connection: the epoch increments when `stampOf(file)` changes.
  * It is a change marker (compare with `!==`), and restarts at 1 when the Gateway restarts.
  */
-export function createEpochTracker(stampOf: (file: string) => string = credentialsStamp) {
+export function createEpochTracker(
+  stampOf: (file: string) => string = credentialsStamp,
+  onRotated?: (id: string, epoch: number) => void,
+) {
   const state = new Map<string, { stamp: string; epoch: number }>();
   return (id: string, credentialsFile: string): number => {
     const stamp = stampOf(credentialsFile);
@@ -30,6 +33,7 @@ export function createEpochTracker(stampOf: (file: string) => string = credentia
     if (prev.stamp !== stamp) {
       prev.stamp = stamp;
       prev.epoch += 1;
+      onRotated?.(id, prev.epoch);
     }
     return prev.epoch;
   };
@@ -62,8 +66,8 @@ export interface ProbeResponse {
   latencyMs: number;
 }
 
-export function createHealthProbe(cfg: GatewayConfig) {
-  const epochOf = createEpochTracker();
+export function createHealthProbe(cfg: GatewayConfig, onRotated?: (id: string, epoch: number) => void) {
+  const epochOf = createEpochTracker(credentialsStamp, onRotated);
 
   /** GET <emulator>/__admin/health over TLS, trusting only the Connection's ca.pem (spike P0.1). */
   function request(c: Connection): Promise<ProbeResponse> {

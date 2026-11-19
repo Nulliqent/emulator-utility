@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { restartEmulator } from "../stack.ts";
 
 const API = "/__console/api/v1";
 const ORIGIN = "http://127.0.0.1:19300";
@@ -246,4 +247,30 @@ test("catalog files are served immutable under the current fingerprint only", as
   expect((await request.get(`/__console/catalog/${"0".repeat(64)}/index.json`)).status()).toBe(404);
   expect((await request.get(`/__console/catalog/${meta.catalog.fingerprint}/..%2Fmanifest.json`)).status()).toBe(404);
   expect((await request.get(`/__console/catalog/${meta.catalog.fingerprint}/not-a-file.json`)).status()).toBe(404);
+});
+
+test("a restarted Emulator rotates its credentials: the banner shows and the next call works without a reload", async ({ page }) => {
+  test.setTimeout(180_000);
+  const creds = async () =>
+    (await (await page.request.get(`${API}/connections/local/credentials`, { headers: { "X-Console": "1" } })).json()) as { epoch: number };
+  await page.goto("/__console/explorer");
+  await send(page, "sqs", "ListQueues", {});
+  await expect(result(page).getByTestId("result-kind")).toHaveText("ok");
+  const before = await creds();
+
+  let navigations = 0;
+  page.on("framenavigated", (f) => f === page.mainFrame() && navigations++);
+  restartEmulator();
+
+  const banner = page.getByTestId("rotation-banner");
+  await expect(banner).toContainText("Emulator restarted. Credentials rotated; apps that cached the old keys must reload them.", { timeout: 60_000 });
+  expect((await creds()).epoch).not.toBe(before.epoch);
+
+  // The next call, with no page reload, uses the new keys.
+  await send(page, "sqs", "ListQueues", {});
+  await expect(result(page).getByTestId("result-kind")).toHaveText("ok", { timeout: 60_000 });
+  expect(navigations).toBe(0);
+
+  await banner.getByRole("button", { name: "Dismiss" }).click();
+  await expect(banner).toBeHidden();
 });

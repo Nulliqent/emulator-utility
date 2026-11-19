@@ -9,7 +9,7 @@ export const CONSOLE_HEADER = "X-Console";
 export const CATALOG_BASE = "/__console/catalog";
 
 /** Names of the Server-Sent Events on `GET /events`. */
-export const SSE_EVENTS = { health: "health", behaviourChanged: "behaviour-changed" } as const;
+export const SSE_EVENTS = { health: "health", behaviourChanged: "behaviour-changed", credentialsRotated: "credentials-rotated" } as const;
 
 export const ErrorBody = z.object({ error: z.object({ code: z.string(), message: z.string() }) });
 export type ErrorBody = z.infer<typeof ErrorBody>;
@@ -87,6 +87,10 @@ export type Health = z.infer<typeof Health>;
 /** Payload of the SSE `health` event on `GET /events`. */
 export const HealthEvent = z.object({ connectionId: z.string(), health: Health });
 export type HealthEvent = z.infer<typeof HealthEvent>;
+
+/** Payload of the SSE `credentials-rotated` event: the Emulator wrote new credentials. Carries no keys. */
+export const CredentialsRotatedEvent = z.object({ connectionId: z.string(), epoch: z.number().int() });
+export type CredentialsRotatedEvent = z.infer<typeof CredentialsRotatedEvent>;
 
 /** Payload of the SSE `behaviour-changed` event: another tab saved client behaviour, so clients must be rebuilt. */
 export const BehaviourChangedEvent = z.object({ connectionId: z.string() });

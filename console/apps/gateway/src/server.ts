@@ -75,7 +75,9 @@ function readMeta(cfg: GatewayConfig): Meta {
 
 export function createServer(cfg: GatewayConfig) {
   const registry = createRegistry(cfg);
-  const probe = createHealthProbe(cfg);
+  // The epoch tracker notices a rotation when the health poll (or a credentials read) sees the file change; the hub
+  // is created below and only called later, so the closure is safe. The event carries no keys.
+  const probe = createHealthProbe(cfg, (connectionId, epoch) => hub.publish(SSE_EVENTS.credentialsRotated, { connectionId, epoch }));
   const isSameOrigin = createOriginGuard(cfg.publicOrigin);
   const runChecks = createChecker(cfg, probe);
   const proxy = createProxy({ timeoutMs: cfg.proxyTimeoutMs });

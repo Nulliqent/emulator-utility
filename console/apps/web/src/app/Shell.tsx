@@ -1,9 +1,9 @@
-import { StatusDot } from "@console/ui";
+import { Button, StatusDot } from "@console/ui";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { fetchConnections } from "../api.ts";
 import { HealthPill, useHealthView } from "./HealthPill.tsx";
-import { HealthProvider } from "./HealthProvider.tsx";
+import { HealthProvider, useHealth } from "./HealthProvider.tsx";
 import { GridIcon, HomeIcon, PlugIcon, PulseIcon } from "./icons.tsx";
 
 const NAV = [
@@ -46,6 +46,7 @@ export function Root() {
 function Shell() {
   const { active } = useActiveConnection();
   const view = useHealthView();
+  const { rotated, dismissRotated } = useHealth();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const title = NAV.find((n) => (n.to === "/" ? pathname === "/" : pathname.startsWith(n.to)))?.label ?? "Emulator Console";
 
@@ -105,6 +106,12 @@ function Shell() {
           {active && !active.home.found && (
             <p className="notice" role="alert">
               Emulator home not found at <span className="mono">{active.home.path}</span>. Check CONSOLE_EMULATOR_HOME.
+            </p>
+          )}
+          {rotated && (
+            <p className="notice notice-row" role="status" data-testid="rotation-banner">
+              <span>Emulator restarted. Credentials rotated; apps that cached the old keys must reload them.</span>
+              <Button onClick={dismissRotated}>Dismiss</Button>
             </p>
           )}
           <Outlet />

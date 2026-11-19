@@ -4,6 +4,7 @@ import {
   ChecksResponse,
   ConnectionList,
   ConnectionSummary,
+  CredentialsRotatedEvent,
   ErrorBody,
   Health,
   HealthEvent,
@@ -32,6 +33,8 @@ export function openHealthStream(h: {
   onState: (up: boolean) => void;
   /** Another tab saved client behaviour for this Connection. */
   onBehaviourChanged?: (e: BehaviourChangedEvent) => void;
+  /** The Emulator restarted and wrote new Emulator Credentials. */
+  onCredentialsRotated?: (e: CredentialsRotatedEvent) => void;
 }): () => void {
   const source = new EventSource(paths.events);
   source.onopen = () => h.onState(true);
@@ -48,6 +51,14 @@ export function openHealthStream(h: {
     try {
       const parsed = BehaviourChangedEvent.safeParse(JSON.parse((ev as MessageEvent<string>).data));
       if (parsed.success) h.onBehaviourChanged?.(parsed.data);
+    } catch {
+      // ignore a malformed event
+    }
+  });
+  source.addEventListener(SSE_EVENTS.credentialsRotated, (ev) => {
+    try {
+      const parsed = CredentialsRotatedEvent.safeParse(JSON.parse((ev as MessageEvent<string>).data));
+      if (parsed.success) h.onCredentialsRotated?.(parsed.data);
     } catch {
       // ignore a malformed event
     }

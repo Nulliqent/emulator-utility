@@ -66,6 +66,18 @@ describe("createEpochTracker", () => {
     expect(epochOf("local", "f")).toBe(2);
     expect(epochOf("local", "f")).toBe(2);
   });
+  it("reports a rotation (not the first sighting) with the new epoch, once per change", () => {
+    let stamp = "a";
+    const rotated: [string, number][] = [];
+    const epochOf = createEpochTracker(() => stamp, (id, epoch) => rotated.push([id, epoch]));
+    epochOf("local", "f");
+    epochOf("local", "f");
+    expect(rotated).toEqual([]);
+    stamp = "b";
+    epochOf("local", "f");
+    epochOf("local", "f");
+    expect(rotated).toEqual([["local", 2]]);
+  });
   it("tracks Connections independently", () => {
     const epochOf = createEpochTracker((f) => f);
     expect(epochOf("one", "x")).toBe(1);
