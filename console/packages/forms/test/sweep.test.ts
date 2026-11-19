@@ -1,6 +1,6 @@
 import { beforeAll, describe, expect, it } from "vitest";
-import { compileCatalog, loadCatalogConfig, loadExpectedCounts, resolveEmulatorRoot } from "../../catalog-compiler/src/index.ts";
-import type { CompiledCatalog } from "../../catalog-compiler/src/index.ts";
+import { compileCatalog, loadCatalogConfig, loadExpectedCounts, resolveEmulatorRoot } from "@console/catalog-compiler";
+import type { CompiledCatalog } from "@console/catalog-compiler";
 import { MAX_DEPTH, formFor, fromInput, reviveInput, stringifyInput, toInput } from "../src/index.ts";
 import type { FieldSpec, FormSpec } from "../src/index.ts";
 

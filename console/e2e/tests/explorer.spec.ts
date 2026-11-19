@@ -13,8 +13,10 @@ async function send(page: Page, service: string, op: string, input: object) {
   await page.getByLabel("Operation", { exact: true }).selectOption(op);
   await expect(page).toHaveURL(new RegExp(`op=${op}`));
   const field = page.getByLabel("Input (JSON)");
-  // Picking an Operation pre-fills its required members; wait for that, then replace it with this test's input.
+  // Picking an Operation pre-fills its required members and shows the form; wait for that, switch to the JSON tab
+  // and replace the text with this test's input.
   await expect(async () => {
+    await page.getByRole("tab", { name: "JSON" }).click();
     await field.fill(JSON.stringify(input));
     await expect(field).toHaveValue(JSON.stringify(input));
   }).toPass();
@@ -117,9 +119,12 @@ test("an Operation can be opened by a deep link, which is also written as the UR
   await expect(page.getByLabel("Service", { exact: true })).toHaveValue("sqs");
   await expect(page.getByLabel("Operation", { exact: true })).toHaveValue("CreateQueue");
   // The required member is pre-filled as a placeholder.
+  await expect(page.getByLabel("QueueName", { exact: true })).toBeVisible();
+  await page.getByRole("tab", { name: "JSON" }).click();
   await expect(page.getByLabel("Input (JSON)")).toHaveValue(/"QueueName": ""/);
   await page.getByLabel("Operation", { exact: true }).selectOption("ListQueues");
   await expect(page).toHaveURL(/service=sqs&op=ListQueues|op=ListQueues&service=sqs/);
+  await page.getByRole("tab", { name: "JSON" }).click();
   await expect(page.getByLabel("Input (JSON)")).toHaveValue("{}");
 });
 
@@ -151,6 +156,7 @@ test("picking a Service moves focus to the Operation picker; Send says why it is
 test("at phone width the explorer does not scroll sideways and the inputs fit their card", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 800 });
   await page.goto("/__console/explorer?service=sqs&op=CreateQueue");
+  await page.getByRole("tab", { name: "JSON" }).click();
   await expect(page.getByLabel("Input (JSON)")).toBeVisible();
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   expect(overflow).toBeLessThanOrEqual(0);
@@ -165,7 +171,9 @@ test("a call that fails client-side validation is `input`; a missing queue is a 
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/__console/explorer?service=sqs&op=GetQueueUrl");
   await send(page, "sqs", "GetQueueUrl", {});
-  await expect(result(page).getByTestId("result-kind")).toHaveText(/input|service-error/);
+  // The form validates the model's required members before anything is sent.
+  await expect(page.getByRole("alert").filter({ hasText: "QueueName is required" })).toBeVisible();
+  await expect(result(page)).toHaveCount(0);
   await send(page, "sqs", "GetQueueUrl", { QueueName: `missing-${Date.now()}` });
   await expect(result(page).getByTestId("result-kind")).toHaveText("service-error");
   await expect(result(page)).toContainText(/\d+ bytes/);

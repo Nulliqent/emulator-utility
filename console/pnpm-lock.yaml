@@ -102,6 +102,10 @@ importers:
       '@console/model':
         specifier: workspace:*
         version: link:../model
+    devDependencies:
+      '@console/catalog-compiler':
+        specifier: workspace:*
+        version: link:../catalog-compiler
 
   packages/invoker:
     dependencies:

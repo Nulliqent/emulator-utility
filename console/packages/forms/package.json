@@ -3,5 +3,6 @@
   "private": true,
   "type": "module",
   "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@console/model": "workspace:*" }
+  "dependencies": { "@console/model": "workspace:*" },
+  "devDependencies": { "@console/catalog-compiler": "workspace:*" }
 }

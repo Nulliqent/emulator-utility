@@ -214,12 +214,6 @@ export function toInput(spec: FormSpec, value: StructValue): ToInputResult {
 
 // ---------------------------------------------------------------------------------------------------------------
 
-function bytesOf(v: unknown): Uint8Array | undefined {
-  if (v instanceof Uint8Array) return v;
-  if (typeof v === "string") return fromBase64(v);
-  return undefined;
-}
-
 function revert(spec: FieldSpec, input: unknown, path: string, dropped: string[]): FormValue | undefined {
   if (input === undefined || input === null) return undefined;
   const drop = () => {
