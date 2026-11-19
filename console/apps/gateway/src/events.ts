@@ -31,6 +31,10 @@ export function createEventHub(poll: () => Promise<HealthEvent[]>, intervalMs: n
   }
 
   return {
+    /** Sends one event to every open stream (for example `behaviour-changed`). */
+    publish(event: string, data: unknown) {
+      for (const res of clients) if (!res.writableNeedDrain) res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+    },
     /** Returns false (and answers 503) when too many streams are open. */
     subscribe(res: ServerResponse): boolean {
       if (clients.size >= MAX_CLIENTS) {

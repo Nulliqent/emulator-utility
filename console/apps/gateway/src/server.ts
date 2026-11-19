@@ -1,7 +1,8 @@
 import { readFileSync } from "node:fs";
 import http from "node:http";
-import { API_BASE, CATALOG_BASE, type ConnectionList, type Meta } from "@console/api-contract";
+import { API_BASE, BEHAVIOUR_LIMITS, BehaviourInput, CATALOG_BASE, SSE_EVENTS, type ChecksResponse, type ConnectionList, type Meta } from "@console/api-contract";
 import { serveCatalog } from "./catalog.ts";
+import { createChecker } from "./checks.ts";
 import type { GatewayConfig } from "./config.ts";
 import { createRegistry, toSummary } from "./connections.ts";
 import { readCredentials } from "./credentials.ts";
@@ -32,6 +33,26 @@ const fail = (res: http.ServerResponse, status: number, code: string, message: s
   json(res, status, { error: { code, message } });
 };
 
+const MAX_JSON_BODY = 4 * 1024;
+const MAX_DRAIN = 1024 * 1024; // keep reading (and dropping) an oversize body this far so the client gets its 400, not a reset
+
+/** Reads a small JSON body; `undefined` when it is too large or not JSON. */
+async function readJson(req: http.IncomingMessage): Promise<unknown> {
+  const chunks: Buffer[] = [];
+  let size = 0;
+  for await (const chunk of req) {
+    size += (chunk as Buffer).length;
+    if (size > MAX_DRAIN) break;
+    if (size <= MAX_JSON_BODY) chunks.push(chunk as Buffer);
+  }
+  if (size > MAX_JSON_BODY) return undefined;
+  try {
+    return JSON.parse(Buffer.concat(chunks).toString("utf8"));
+  } catch {
+    return undefined;
+  }
+}
+
 function readMeta(cfg: GatewayConfig): Meta {
   let fingerprint: string | null = null;
   let sourceCommit: string | null = null;
@@ -56,6 +77,7 @@ export function createServer(cfg: GatewayConfig) {
   const registry = createRegistry(cfg);
   const probe = createHealthProbe(cfg);
   const isSameOrigin = createOriginGuard(cfg.publicOrigin);
+  const runChecks = createChecker(cfg, probe);
   const proxy = createProxy({ timeoutMs: cfg.proxyTimeoutMs });
   const hub = createEventHub(
     () =>
@@ -102,7 +124,36 @@ export function createServer(cfg: GatewayConfig) {
       if ((credentials || method !== "GET") && !hasConsoleHeader(req.headers)) {
         return fail(res, 403, "console-header-required", "Send the X-Console header.");
       }
-      if (method !== "GET") return fail(res, 405, "method-not-allowed", "Only GET is available yet.");
+      // The two writes the Connections screen has: run the checks, and save client behaviour.
+      const checks = /^\/connections\/([^/]+)\/checks$/.exec(route);
+      if (checks && method === "POST") {
+        const c = items.find((x) => x.id === checks[1]);
+        if (!c) return fail(res, 404, "connection-not-found", "No such Connection.");
+        const body: ChecksResponse = { checks: await runChecks(c) };
+        return json(res, 200, body);
+      }
+      const behaviour = /^\/connections\/([^/]+)\/behaviour$/.exec(route);
+      if (behaviour && method === "PUT") {
+        if (!items.some((x) => x.id === behaviour[1])) return fail(res, 404, "connection-not-found", "No such Connection.");
+        const parsed = BehaviourInput.safeParse(await readJson(req));
+        if (!parsed.success) {
+          const why = parsed.error.issues.map((i) => `${i.path.join(".") || "body"}: ${i.message}`).join("; ");
+          const { maxAttempts: a, timeoutMs: t } = BEHAVIOUR_LIMITS;
+          return fail(res, 400, "invalid-behaviour", `Max attempts is ${a.min} to ${a.max} and timeout is ${t.min} to ${t.max} ms (${why}).`);
+        }
+        let updated;
+        try {
+          updated = registry.setBehaviour(behaviour[1]!, parsed.data);
+        } catch (e) {
+          console.error((e as Error).message);
+          return fail(res, 500, "config-write-failed", "The settings could not be saved: the Gateway cannot write its config file.");
+        }
+        if (!updated) return fail(res, 404, "connection-not-found", "No such Connection.");
+        hub.publish(SSE_EVENTS.behaviourChanged, { connectionId: updated.id }); // other tabs rebuild their clients
+        return json(res, 200, toSummary(updated));
+      }
+      // Creating, editing, deleting and activating Connections ships with additional Connections (ARCHITECTURE 4).
+      if (method !== "GET") return fail(res, 405, "method-not-allowed", "Only the Local Connection exists, and its settings are read-only apart from client behaviour.");
       if (route === "/meta") return json(res, 200, readMeta(cfg));
       if (route === "/connections") {
         const body: ConnectionList = { active, items: items.map(toSummary) };

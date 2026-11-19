@@ -29,8 +29,10 @@ export interface InvokerOptions {
   /** Region of a Connection. */
   regionOf: (connectionId: string) => Promise<string> | string;
   fetchImpl?: typeof fetch;
-  /** Per-call deadline. */
+  /** Per-call deadline when `behaviourOf` is not given. */
   timeoutMs?: number;
+  /** Client behaviour of a Connection (its saved max attempts and request timeout). */
+  behaviourOf?: (connectionId: string) => Promise<{ maxAttempts: number; timeoutMs: number }> | { maxAttempts: number; timeoutMs: number };
   /** Extra middleware added to each client when it is built (Call Capture, ARCHITECTURE 3.5). */
   middleware?: (ctx: ClientContext) => InvokerMiddleware[];
   /** Extra middleware added to each command: it knows the call's Operation and origin. */
@@ -95,6 +97,7 @@ export function createInvoker(opts: InvokerOptions): OperationInvoker {
     if (!Ctor) throw new MissingError("client");
     const creds = await fetchCredentials(connectionId);
     const region = await opts.regionOf(connectionId);
+    const behaviour = (await opts.behaviourOf?.(connectionId)) ?? { maxAttempts: 1, timeoutMs: opts.timeoutMs };
     const client = new Ctor({
       region,
       endpoint: opts.origin,
@@ -105,8 +108,8 @@ export function createInvoker(opts: InvokerOptions): OperationInvoker {
       ...(serviceId === "s3"
         ? { requestChecksumCalculation: "WHEN_REQUIRED", responseChecksumValidation: "WHEN_REQUIRED" }
         : {}),
-      maxAttempts: 1,
-      requestHandler: opts.timeoutMs ? { requestTimeout: opts.timeoutMs } : undefined,
+      maxAttempts: behaviour.maxAttempts,
+      requestHandler: behaviour.timeoutMs ? { requestTimeout: behaviour.timeoutMs } : undefined,
     });
     // At the build step, so both headers are signed and the Gateway forwards them unchanged.
     client.middlewareStack.add(
@@ -184,14 +187,14 @@ export function createInvoker(opts: InvokerOptions): OperationInvoker {
       const out = await entry.client.send(command, { abortSignal: call.signal });
       const { $metadata, ...output } = out;
       return {
-        result: { ok: true, output, meta: { durationMs: took(), status: $metadata?.httpStatusCode, requestId: $metadata?.requestId, attempts: 1 } },
+        result: { ok: true, output, meta: { durationMs: took(), status: $metadata?.httpStatusCode, requestId: $metadata?.requestId, attempts: $metadata?.attempts ?? 1 } },
         epoch: entry.epoch,
       };
     } catch (e) {
       const c = classifyError(e, { sent });
       const md = (e as SdkErrorLike).$metadata;
       return {
-        result: { ok: false, kind: c.kind, code: c.code, message: c.message, meta: { durationMs: took(), status: md?.httpStatusCode, requestId: md?.requestId, attempts: 1 } },
+        result: { ok: false, kind: c.kind, code: c.code, message: c.message, meta: { durationMs: took(), status: md?.httpStatusCode, requestId: md?.requestId, attempts: md?.attempts ?? 1 } },
         epoch: entry.epoch,
       };
     }
@@ -203,7 +206,7 @@ export function createInvoker(opts: InvokerOptions): OperationInvoker {
     let result = first.result;
     const epoch = first.epoch;
     // The Emulator issues new keys on every restart. When the keys were refused, fetch them again and retry once if
-    // they differ from the ones this client used. Other failures never retry.
+    // they differ from the ones this client used. Other retries are the SDK's own and follow the Connection's maxAttempts.
     if (!result.ok && result.kind === "auth" && isAuthCode(result.code) && epoch !== undefined) {
       drop(call.connectionId);
       const fresh = await fetchCredentials(call.connectionId).catch(() => undefined);
@@ -226,6 +229,7 @@ export function createInvoker(opts: InvokerOptions): OperationInvoker {
       }
       return result as InvokeResult<O>;
     },
+    forget: drop,
     async clientFor(connectionId, serviceId) {
       return (await entryFor(connectionId, serviceId)).client;
     },

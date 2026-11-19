@@ -9,7 +9,7 @@ export const CONSOLE_HEADER = "X-Console";
 export const CATALOG_BASE = "/__console/catalog";
 
 /** Names of the Server-Sent Events on `GET /events`. */
-export const SSE_EVENTS = { health: "health" } as const;
+export const SSE_EVENTS = { health: "health", behaviourChanged: "behaviour-changed" } as const;
 
 export const ErrorBody = z.object({ error: z.object({ code: z.string(), message: z.string() }) });
 export type ErrorBody = z.infer<typeof ErrorBody>;
@@ -27,6 +27,23 @@ export const Meta = z.object({
 });
 export type Meta = z.infer<typeof Meta>;
 
+/** Bounds of the client behaviour settings; the Gateway enforces them on `PUT /connections/{id}/behaviour`. */
+export const BEHAVIOUR_LIMITS = { maxAttempts: { min: 1, max: 10 }, timeoutMs: { min: 1_000, max: 120_000 } } as const;
+export const DEFAULT_BEHAVIOUR = { maxAttempts: 1, timeoutMs: 30_000 } as const;
+
+/** What an editor may change. `strict`: an unknown key is an error, not silently dropped. */
+export const BehaviourInput = z
+  .object({
+    maxAttempts: z.number().int().min(BEHAVIOUR_LIMITS.maxAttempts.min).max(BEHAVIOUR_LIMITS.maxAttempts.max),
+    timeoutMs: z.number().int().min(BEHAVIOUR_LIMITS.timeoutMs.min).max(BEHAVIOUR_LIMITS.timeoutMs.max),
+  })
+  .strict();
+export type BehaviourInput = z.infer<typeof BehaviourInput>;
+
+/** Client behaviour of a Connection. Path-style S3 is always on for this Emulator, so it is shown, not editable. */
+export const Behaviour = z.object({ s3PathStyle: z.literal(true), maxAttempts: z.number().int(), timeoutMs: z.number().int() });
+export type Behaviour = z.infer<typeof Behaviour>;
+
 /** No secrets: the Emulator Credentials never appear in a ConnectionSummary. */
 export const ConnectionSummary = z.object({
   id: z.string(),
@@ -39,6 +56,7 @@ export const ConnectionSummary = z.object({
   accountId: z.string(),
   /** Where the Gateway looks for the Emulator home, and whether it found it. */
   home: z.object({ path: z.string(), found: z.boolean() }),
+  behaviour: Behaviour,
 });
 export type ConnectionSummary = z.infer<typeof ConnectionSummary>;
 
@@ -70,6 +88,10 @@ export type Health = z.infer<typeof Health>;
 export const HealthEvent = z.object({ connectionId: z.string(), health: Health });
 export type HealthEvent = z.infer<typeof HealthEvent>;
 
+/** Payload of the SSE `behaviour-changed` event: another tab saved client behaviour, so clients must be rebuilt. */
+export const BehaviourChangedEvent = z.object({ connectionId: z.string() });
+export type BehaviourChangedEvent = z.infer<typeof BehaviourChangedEvent>;
+
 /**
  * The Emulator Credentials of a Connection, for the SPA's SDK clients. Served same-origin only, `no-store`, and only
  * to a request that carries the `X-Console` header. Never logged, never put in a URL.
@@ -83,10 +105,22 @@ export const Credentials = z.object({
 });
 export type Credentials = z.infer<typeof Credentials>;
 
+/** One line of the Connections screen's checks list. `detail` never holds a credential. */
+export const Check = z.object({
+  id: z.enum(["reachable", "tls", "credentials", "s3-path-style", "same-origin"]),
+  ok: z.boolean(),
+  detail: z.string(),
+});
+export type Check = z.infer<typeof Check>;
+export const ChecksResponse = z.object({ checks: z.array(Check) });
+export type ChecksResponse = z.infer<typeof ChecksResponse>;
+
 export const paths = {
   meta: `${API_BASE}/meta`,
   connections: `${API_BASE}/connections`,
   health: (id: string) => `${API_BASE}/connections/${encodeURIComponent(id)}/health`,
   credentials: (id: string) => `${API_BASE}/connections/${encodeURIComponent(id)}/credentials`,
+  checks: (id: string) => `${API_BASE}/connections/${encodeURIComponent(id)}/checks`,
+  behaviour: (id: string) => `${API_BASE}/connections/${encodeURIComponent(id)}/behaviour`,
   events: `${API_BASE}/events`,
 } as const;

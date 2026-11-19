@@ -3,5 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": { "start": "node src/main.ts" },
-  "dependencies": { "@console/api-contract": "workspace:*" }
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1171.0",
+    "@aws-sdk/client-sts": "3.1171.0",
+    "@console/api-contract": "workspace:*",
+    "@smithy/node-http-handler": "4.14.2"
+  }
 }

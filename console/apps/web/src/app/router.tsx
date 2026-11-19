@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { fetchMeta } from "../api.ts";
 import { useHealthView } from "./HealthPill.tsx";
 import { useHealth } from "./HealthProvider.tsx";
+import { ConnectionsPage } from "../features/connections/ConnectionsPage.tsx";
 import { ExplorerPage } from "../features/explorer/ExplorerPage.tsx";
 import { Root, useActiveConnection } from "./Shell.tsx";
 
@@ -82,7 +83,7 @@ const routeTree = rootRoute.addChildren([
   }),
   createRoute({ getParentRoute: () => rootRoute, path: "/services", component: soon("All services") }),
   createRoute({ getParentRoute: () => rootRoute, path: "/inspector", component: soon("Request inspector") }),
-  createRoute({ getParentRoute: () => rootRoute, path: "/connections", component: soon("Connections") }),
+  createRoute({ getParentRoute: () => rootRoute, path: "/connections", component: ConnectionsPage }),
 ]);
 
 export const router = createRouter({ routeTree, basepath: "/__console", defaultNotFoundComponent: NotFound });

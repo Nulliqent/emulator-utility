@@ -51,6 +51,12 @@ export function HealthProvider({
         }
       },
       onState: setStreamUp,
+      // Another tab saved client behaviour: rebuild this tab's SDK clients and reload the Connection.
+      onBehaviourChanged: (e) => {
+        if (e.connectionId !== connectionId) return;
+        getInvoker().forget(connectionId);
+        void queryClient.invalidateQueries({ queryKey: ["connections"] });
+      },
     });
   }, [connectionId, queryClient]);
 
