@@ -1,3 +1,5 @@
+import { formFor, fromInput, initialValue, reviveInput, stringifyInput, toInput } from "@console/forms";
+import type { FieldError, StructValue } from "@console/forms";
 import type { InvokeResult } from "@console/invoker";
 import { Button } from "@console/ui";
 import { useQuery } from "@tanstack/react-query";
@@ -5,9 +7,10 @@ import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { fetchMeta } from "../../api.ts";
 import { useActiveConnection } from "../../app/Shell.tsx";
-import { fetchCatalogIndex, fetchServiceOps } from "./catalog.ts";
+import { fetchCatalogIndex, fetchServiceDocs, fetchServiceOps } from "./catalog.ts";
 import { byteLength, formatOutput, parseInput, skeletonInput } from "./format.ts";
 import { getInvoker } from "./invoker.ts";
+import { OperationForm } from "./OperationForm.tsx";
 
 const HELP: Record<string, string> = {
   "not-implemented": "The Emulator does not implement this Operation yet (it answered 501).",
@@ -42,6 +45,10 @@ export function ExplorerPage() {
 
   const [filter, setFilter] = useState("");
   const [text, setText] = useState("{}");
+  const [tab, setTab] = useState<"form" | "json">("form");
+  const [value, setValue] = useState<StructValue>({});
+  const [attempted, setAttempted] = useState(false);
+  const [dropped, setDropped] = useState<string[]>([]);
   const [formError, setFormError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<InvokeResult | null>(null);
@@ -75,6 +82,28 @@ export function ExplorerPage() {
   const opModel = ops.data && Object.hasOwn(ops.data.operations, op) ? ops.data.operations[op] : undefined;
   const unknownOp = ops.isSuccess && op !== "" && opModel === undefined;
 
+  // Documentation is loaded on its own so the form never waits for it.
+  const docs = useQuery({
+    queryKey: ["catalog", fingerprint, "docs", serviceId],
+    queryFn: () => fetchServiceDocs(fingerprint!, entry!),
+    enabled: fingerprint !== null && entry !== undefined && opModel !== undefined,
+    staleTime: Infinity,
+  });
+  const spec = useMemo(() => (ops.data && opModel ? formFor(ops.data, op, docs.data ? { docs: docs.data } : {}) : undefined), [ops.data, opModel, op, docs.data]);
+
+  // What the active tab would send, and what is wrong with it. The JSON tab is checked through the same spec.
+  const parsedJson = useMemo(() => (tab === "json" ? parseInput(text) : null), [tab, text]);
+  const check = useMemo((): { input: object | null; errors: FieldError[] } => {
+    if (!spec) return { input: null, errors: [] };
+    if (tab === "form") {
+      const r = toInput(spec, value);
+      return { input: r.input, errors: r.errors };
+    }
+    if (!parsedJson?.ok) return { input: null, errors: [] };
+    return { input: reviveInput(spec, parsedJson.value) as object, errors: toInput(spec, fromInput(spec, parsedJson.value).value).errors };
+  }, [spec, tab, value, parsedJson]);
+  const shownErrors = check.errors.filter((e) => attempted || e.code !== "required");
+
   // A new Operation (picked, or arrived at by a deep link): clear the result and start from its required members.
   const initialised = useRef("");
   useEffect(() => {
@@ -82,6 +111,10 @@ export function ExplorerPage() {
     if (!op || !ops.data || initialised.current === key) return;
     initialised.current = key;
     setText(skeletonInput(ops.data, op));
+    setValue({});
+    setTab("form");
+    setAttempted(false);
+    setDropped([]);
     setResult(null);
     setFormError(null);
     setCancelled(false);
@@ -92,17 +125,56 @@ export function ExplorerPage() {
     if (serviceId && !op) opSelect.current?.focus();
   }, [serviceId, op, ops.data]);
 
-  async function send() {
+  // The first time a spec exists for the Operation, required structures start open.
+  const seeded = useRef("");
+  useEffect(() => {
+    const key = `${serviceId}/${op}`;
+    if (!spec || seeded.current === key) return;
+    seeded.current = key;
+    setValue(initialValue(spec.root) as StructValue);
+  }, [spec, serviceId, op]);
+
+  function switchTab(next: "form" | "json") {
+    if (next === tab) return;
+    if (next === "json") {
+      if (check.input) setText(stringifyInput(check.input));
+      setFormError(null);
+      setTab("json");
+      return;
+    }
     const parsed = parseInput(text);
     if (!parsed.ok) return setFormError(parsed.message);
+    if (spec) {
+      const r = fromInput(spec, parsed.value);
+      setValue(r.value);
+      setDropped(r.dropped);
+    }
+    setFormError(null);
+    setTab("form");
+  }
+
+  async function send() {
     if (!active || !serviceId || !op) return setFormError("Pick a Service and an Operation.");
+    let input: object;
+    if (tab === "json" && !parsedJson?.ok) return setFormError(parsedJson?.message ?? "The input is not valid JSON.");
+    if (spec && check.input) {
+      setAttempted(true);
+      if (check.errors.length > 0) {
+        return setFormError(`Fix ${check.errors.length} problem${check.errors.length === 1 ? "" : "s"} before sending.`);
+      }
+      input = check.input;
+    } else {
+      const parsed = parseInput(text);
+      if (!parsed.ok) return setFormError(parsed.message);
+      input = parsed.value;
+    }
     setFormError(null);
     setCancelled(false);
     setSending(true);
     const controller = new AbortController();
     abort.current = controller;
     try {
-      const r = await getInvoker().invoke({ connectionId: active.id, serviceId, op, input: parsed.value, signal: controller.signal, origin: "user" });
+      const r = await getInvoker().invoke({ connectionId: active.id, serviceId, op, input, signal: controller.signal, origin: "user" });
       if (controller.signal.aborted) {
         setResult(null);
         setCancelled(true);
@@ -204,10 +276,57 @@ export function ExplorerPage() {
             <p className="hint" role="note">This operation answers 501 in the emulator source.</p>
           )}
         </div>
-        <div className="field">
-          <label htmlFor={ids.input}>Input (JSON)</label>
-          <textarea id={ids.input} className="ui-input mono" rows={8} spellCheck={false} value={text} onChange={(e) => setText(e.target.value)} />
-        </div>
+        {spec ? (
+          <div className="field">
+            <div role="tablist" aria-label="Input" className="tabs">
+              {(["form", "json"] as const).map((t) => (
+                <button
+                  key={t}
+                  type="button"
+                  role="tab"
+                  id={`${ids.input}-tab-${t}`}
+                  aria-selected={tab === t}
+                  aria-controls={`${ids.input}-panel`}
+                  tabIndex={tab === t ? 0 : -1}
+                  className={`tab${tab === t ? " tab-active" : ""}`}
+                  onClick={() => switchTab(t)}
+                >
+                  {t === "form" ? "Form" : "JSON"}
+                </button>
+              ))}
+            </div>
+            <div role="tabpanel" id={`${ids.input}-panel`} aria-labelledby={`${ids.input}-tab-${tab}`}>
+              {tab === "form" ? (
+                <>
+                  {dropped.length > 0 && (
+                    <p className="hint" role="status">
+                      The form cannot show {dropped.length} member{dropped.length === 1 ? "" : "s"} from the JSON ({dropped.slice(0, 3).join(", ")}
+                      {dropped.length > 3 ? ", …" : ""}). Send from the JSON tab to keep {dropped.length === 1 ? "it" : "them"}.
+                    </p>
+                  )}
+                  <OperationForm members={spec.root.members} value={value} onChange={setValue} errors={check.errors} attempted={attempted} />
+                </>
+              ) : (
+                <>
+                  <label htmlFor={ids.input}>Input (JSON)</label>
+                  <textarea id={ids.input} className="ui-input mono" rows={10} spellCheck={false} value={text} onChange={(e) => setText(e.target.value)} />
+                  {shownErrors.length > 0 && (
+                    <ul className="form-error problems" role="alert">
+                      {shownErrors.map((e, i) => (
+                        <li key={i}>{e.message}</li>
+                      ))}
+                    </ul>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        ) : (
+          <div className="field">
+            <label htmlFor={ids.input}>Input (JSON)</label>
+            <textarea id={ids.input} className="ui-input mono" rows={8} spellCheck={false} value={text} onChange={(e) => setText(e.target.value)} />
+          </div>
+        )}
         {formError && <p role="alert" className="form-error">{formError}</p>}
         <div className="explorer-actions">
           <Button variant="primary" onClick={() => void send()} disabled={sending || disabledReason !== null} aria-describedby={ids.hint}>

@@ -21,7 +21,7 @@ const nodeGlobals = ["process", "Buffer", "__dirname", "__filename", "require"];
 const restrict = (names, message) => names.map((name) => ({ name, message }));
 
 const files = {
-  pure: ["packages/model/**/*.ts", "packages/api-contract/**/*.ts"],
+  pure: ["packages/model/**/*.ts", "packages/api-contract/**/*.ts", "packages/forms/src/**/*.ts"],
   ui: ["packages/ui/**/*.{ts,tsx}"],
   web: ["apps/web/**/*.{ts,tsx}"],
   gateway: ["apps/gateway/**/*.ts"],

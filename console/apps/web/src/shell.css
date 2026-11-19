@@ -117,3 +117,21 @@ a:hover { color: var(--color-link-hover); }
 .ui-input { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
 .explorer-result { box-sizing: border-box; min-width: 0; }
 .explorer-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
+
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--color-line-card); margin-bottom: 12px; }
+.tab { font: inherit; font-size: 14px; padding: 6px 12px; background: none; border: 0; border-bottom: 2px solid transparent; color: var(--color-text-secondary); cursor: pointer; }
+.tab-active { color: var(--color-text); border-bottom-color: var(--color-accent); font-weight: 600; }
+.members { display: grid; gap: 14px; }
+.nested { display: grid; gap: 10px; margin-left: 4px; padding-left: 12px; border-left: 2px solid var(--color-line-card); }
+.member { gap: 4px; }
+.member-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.member .label { font-weight: 600; }
+.req { color: var(--color-text-secondary); font-size: 12px; }
+.field-doc { margin: 0; }
+.field-doc-body { white-space: pre-wrap; margin: 4px 0 0; overflow-wrap: anywhere; }
+.field-error { font-size: 13px; }
+.list-item { display: flex; gap: 8px; align-items: flex-start; }
+.list-item-body { flex: 1; min-width: 0; display: grid; gap: 8px; }
+.blob-field { display: grid; gap: 6px; }
+.blob-mode { max-width: 160px; }
+.problems { padding-left: 18px; }

@@ -38,6 +38,9 @@ importers:
       '@console/api-contract':
         specifier: workspace:*
         version: link:../../packages/api-contract
+      '@console/forms':
+        specifier: workspace:*
+        version: link:../../packages/forms
       '@console/invoker':
         specifier: workspace:*
         version: link:../../packages/invoker

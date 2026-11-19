@@ -96,7 +96,7 @@ function buildUncached(shapes: Shapes, docs: Docs | undefined, cache: Cache, id:
 }
 
 /** The Operation Form of an Operation: its input shape as a tree of fields, required members first. */
-export function formFor(uiModel: Pick<UiModel, "operations" | "shapes">, op: OpName, hints?: FormHints): FormSpec {
+export function formFor(uiModel: { operations: Record<string, { input?: string }>; shapes: UiModel["shapes"] }, op: OpName, hints?: FormHints): FormSpec {
   const model = Object.hasOwn(uiModel.operations, op) ? uiModel.operations[op] : undefined;
   if (!model) throw new Error(`No Operation ${op} in this model.`);
   const cache = cacheFor(uiModel.shapes, hints?.docs);

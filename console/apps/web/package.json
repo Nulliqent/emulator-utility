@@ -5,6 +5,7 @@
   "scripts": { "dev": "vite", "build": "node scripts/build.mjs" },
   "dependencies": {
     "@console/api-contract": "workspace:*",
+    "@console/forms": "workspace:*",
     "@console/invoker": "workspace:*",
     "@console/model": "workspace:*",
     "@console/ui": "workspace:*",

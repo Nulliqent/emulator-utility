@@ -33,3 +33,10 @@ export const fetchCatalogIndex = (fingerprint: string) => getJson<CatalogIndex>(
 
 export const fetchServiceOps = (fingerprint: string, entry: CatalogEntry) =>
   getJson<ServiceOps>(`${CATALOG_BASE}/${fingerprint}/${entry.files.ui}`, `The ${entry.title} model`);
+
+export interface ServiceDocs {
+  shapes: Record<string, { doc?: string; members?: Record<string, string> }>;
+}
+
+export const fetchServiceDocs = (fingerprint: string, entry: CatalogEntry) =>
+  getJson<ServiceDocs>(`${CATALOG_BASE}/${fingerprint}/${entry.files.docs}`, `The ${entry.title} documentation`);
