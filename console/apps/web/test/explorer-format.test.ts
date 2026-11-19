@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { ServiceOps } from "../src/features/explorer/catalog.ts";
+import type { ServiceOps } from "../src/catalog/fetch.ts";
 import { parseInput, skeletonInput } from "../src/features/explorer/format.ts";
 
 const ops: ServiceOps = {

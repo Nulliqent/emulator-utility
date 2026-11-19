@@ -3,9 +3,9 @@ import { Button } from "@console/ui";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { fetchMeta } from "../../api.ts";
 import { useActiveConnection } from "../../app/Shell.tsx";
-import { fetchCatalogIndex, fetchServiceOps } from "./catalog.ts";
+import { fetchServiceOps } from "../../catalog/fetch.ts";
+import { useCatalogIndex } from "../../catalog/useCatalogIndex.ts";
 import { byteLength, formatOutput, parseInput, skeletonInput } from "./format.ts";
 import { getInvoker } from "./invoker.ts";
 
@@ -31,14 +31,7 @@ export function ExplorerPage() {
   const op = typeof search.op === "string" ? search.op : "";
   const setSelection = (next: Search) => void navigate({ to: "/explorer", search: next, replace: true });
 
-  const meta = useQuery({ queryKey: ["meta"], queryFn: fetchMeta });
-  const fingerprint = meta.data?.catalog.fingerprint ?? null;
-  const index = useQuery({
-    queryKey: ["catalog", fingerprint],
-    queryFn: () => fetchCatalogIndex(fingerprint!),
-    enabled: fingerprint !== null,
-    staleTime: Infinity,
-  });
+  const { index, fingerprint, metaError, noCatalog } = useCatalogIndex();
 
   const [filter, setFilter] = useState("");
   const [text, setText] = useState("{}");
@@ -136,9 +129,9 @@ export function ExplorerPage() {
   }
 
   const loadError =
-    meta.isError
-      ? `The Gateway did not answer: ${(meta.error as Error).message}`
-      : meta.isSuccess && fingerprint === null
+    metaError
+      ? `The Gateway did not answer: ${metaError.message}`
+      : noCatalog
         ? "The Catalog is not built on this Gateway. Run `pnpm catalog:build` (in console/) and restart it."
         : index.isError
           ? (index.error as Error).message

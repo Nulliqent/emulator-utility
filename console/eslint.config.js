@@ -20,6 +20,8 @@ const browserGlobals = ["window", "document", "navigator", "localStorage", "sess
 const nodeGlobals = ["process", "Buffer", "__dirname", "__filename", "require"];
 const restrict = (names, message) => names.map((name) => ({ name, message }));
 
+const webPatterns = [...noNode, { group: ["@console/gateway", "@console/e2e", "@console/catalog-compiler"], message: "The web app cannot import the Gateway, the compiler or e2e." }];
+
 const files = {
   pure: ["packages/model/**/*.ts", "packages/api-contract/**/*.ts"],
   ui: ["packages/ui/**/*.{ts,tsx}"],
@@ -74,10 +76,27 @@ export default tseslint.config(
   {
     files: files.web,
     rules: {
-      "no-restricted-imports": ["error", { patterns: [...noNode, { group: ["@console/gateway", "@console/e2e", "@console/catalog-compiler"], message: "The web app cannot import the Gateway, the compiler or e2e." }] }],
+      "no-restricted-imports": ["error", { patterns: webPatterns }],
       "no-restricted-globals": ["error", ...restrict(nodeGlobals, "The web app runs in the browser.")],
     },
   },
+  // Features are independent screens: shared code lives in apps/web/src/catalog, preferences.ts or a package, never in a sibling feature.
+  ...["explorer", "catalog"].map((feature) => ({
+    files: [`apps/web/src/features/${feature}/**/*.{ts,tsx}`],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            ...webPatterns,
+            ...["explorer", "catalog"]
+              .filter((other) => other !== feature)
+              .map((other) => ({ group: [`**/features/${other}`, `**/features/${other}/**`, `../${other}`, `../${other}/**`], message: `The ${feature} feature cannot import the ${other} feature; move shared code to apps/web/src/catalog.` })),
+          ],
+        },
+      ],
+    },
+  })),
   {
     files: files.gateway,
     rules: {
