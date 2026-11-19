@@ -118,10 +118,10 @@ test("an Operation can be opened by a deep link, which is also written as the UR
   await page.goto("/__console/explorer?service=sqs&op=CreateQueue");
   await expect(page.getByLabel("Service", { exact: true })).toHaveValue("sqs");
   await expect(page.getByLabel("Operation", { exact: true })).toHaveValue("CreateQueue");
-  // The required member is pre-filled as a placeholder.
-  await expect(page.getByLabel("QueueName", { exact: true })).toBeVisible();
+  // The required member is a field of the form.
+  await page.getByLabel("QueueName", { exact: true }).fill("deep");
   await page.getByRole("tab", { name: "JSON" }).click();
-  await expect(page.getByLabel("Input (JSON)")).toHaveValue(/"QueueName": ""/);
+  await expect(page.getByLabel("Input (JSON)")).toHaveValue(/"QueueName": "deep"/);
   await page.getByLabel("Operation", { exact: true }).selectOption("ListQueues");
   await expect(page).toHaveURL(/service=sqs&op=ListQueues|op=ListQueues&service=sqs/);
   await page.getByRole("tab", { name: "JSON" }).click();

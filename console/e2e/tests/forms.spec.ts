@@ -19,9 +19,10 @@ test("SQS SendMessage is filled in through the form and succeeds; validation sho
   await expect(page.getByLabel("DelaySeconds", { exact: true })).toHaveCount(0);
   await page.getByRole("button", { name: /more optional fields/ }).click();
 
-  // @range shows as soon as it is broken (DelaySeconds is 0 to 900); required shows when Send is pressed.
-  await page.getByLabel("DelaySeconds", { exact: true }).fill("901");
-  await expect(page.getByRole("alert").filter({ hasText: /DelaySeconds must be between 0 and 900/ })).toBeVisible();
+  // A broken value shows as soon as it is typed; a missing required field shows when Send is pressed.
+  // (The SQS model has no @range, @length or @pattern on these members; those are covered by the forms unit tests.)
+  await page.getByLabel("DelaySeconds", { exact: true }).fill("abc");
+  await expect(page.getByRole("alert").filter({ hasText: /DelaySeconds must be a number/ })).toBeVisible();
   await page.getByRole("button", { name: "Send" }).click();
   await expect(page.getByRole("alert").filter({ hasText: /Fix \d+ problems? before sending/ })).toBeVisible();
   await expect(page.getByRole("alert").filter({ hasText: "QueueUrl is required" })).toBeVisible();
