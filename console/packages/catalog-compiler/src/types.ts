@@ -1,4 +1,7 @@
-import type { OpName, Protocol, UiDocs, UiModel } from "@console/model";
+import type { CatalogEntry } from "@console/api-contract";
+import type { UiDocs, UiModel } from "@console/model";
+
+export type { CatalogEntry };
 
 export interface CategoryDef {
   id: string;
@@ -12,33 +15,6 @@ export interface CategoriesFile {
   services: Record<string, { crate: string; category: string }>;
 }
 
-export interface CatalogEntry {
-  serviceId: string;
-  crate: string;
-  title: string;
-  sdkId: string;
-  signingName: string;
-  /** `@aws-sdk/client-` + sdkId lowercased with spaces as hyphens. Whether each Operation has a Command is ticket #13. */
-  sdkPackage: string;
-  protocol: Protocol;
-  category: string;
-  tier: "custom" | "generated";
-  coverage: {
-    implemented: number;
-    scaffolded: number;
-    unrouted: number;
-    total: number;
-    level: "full" | "partial" | "none";
-  };
-  /**
-   * Availability Probe Operation: implemented, read, non-streaming, no required input; ranked by how often
-   * its noun appears across the Service's Operations, then List > Describe > Get, then name.
-   */
-  probeOp?: OpName;
-  /** Content-hashed per-Service files, relative to `dist/catalog/`. */
-  files: { ui: string; docs: string };
-  // `rootResourceTypes` (ticket #14) and `knownIssues` (Phase 3 Known Issues work) are deferred.
-}
 
 export interface CatalogManifest {
   schemaVersion: 1;

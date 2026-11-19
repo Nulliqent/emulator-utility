@@ -84,12 +84,18 @@ importers:
 
   packages/api-contract:
     dependencies:
+      '@console/model':
+        specifier: workspace:*
+        version: link:../model
       zod:
         specifier: ^4.1.12
         version: 4.6.7
 
   packages/catalog-compiler:
     dependencies:
+      '@console/api-contract':
+        specifier: workspace:*
+        version: link:../api-contract
       '@console/model':
         specifier: workspace:*
         version: link:../model

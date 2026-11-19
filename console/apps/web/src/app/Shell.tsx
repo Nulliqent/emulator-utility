@@ -2,6 +2,7 @@ import { StatusDot } from "@console/ui";
 import { useQuery } from "@tanstack/react-query";
 import { Link, Outlet, useRouterState } from "@tanstack/react-router";
 import { fetchConnections } from "../api.ts";
+import { PinnedNav } from "../features/catalog/PinnedNav.tsx";
 import { HealthPill, useHealthView } from "./HealthPill.tsx";
 import { HealthProvider } from "./HealthProvider.tsx";
 import { GridIcon, HomeIcon, PlugIcon, PulseIcon } from "./icons.tsx";
@@ -82,6 +83,8 @@ function Shell() {
             </Link>
           ))}
         </div>
+
+        <PinnedNav />
 
         <div className="sidebar-footer">
           <span>

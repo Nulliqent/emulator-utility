@@ -1,6 +1,8 @@
 // Console API contract (ARCHITECTURE section 4), shared by the Gateway and the web app.
 import { z } from "zod";
 
+export type { CatalogEntry, CatalogIndex } from "./catalog.ts";
+
 export const API_BASE = "/__console/api/v1";
 
 /** The custom request header the Gateway requires on the credentials endpoint, the AWS pass-through and every mutating route. */

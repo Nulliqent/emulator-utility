@@ -1,20 +1,5 @@
-import { CATALOG_BASE } from "@console/api-contract";
-import type { OperationStatus, Protocol, UiShape } from "@console/model";
-
-/** The slice of a Catalog Entry the explorer reads. */
-export interface CatalogEntry {
-  serviceId: string;
-  title: string;
-  sdkId: string;
-  category: string;
-  protocol: Protocol;
-  files: { ui: string; docs: string };
-}
-
-export interface CatalogIndex {
-  categories: { id: string; name: string }[];
-  entries: CatalogEntry[];
-}
+import { CATALOG_BASE, type CatalogEntry, type CatalogIndex } from "@console/api-contract";
+import type { OperationStatus, UiShape } from "@console/model";
 
 export interface ServiceOps {
   operations: Record<string, { name: string; kind: "read" | "write"; status: OperationStatus; group: string; input?: string }>;

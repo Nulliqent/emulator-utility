@@ -5,6 +5,8 @@ import { fetchMeta } from "../api.ts";
 import { useHealthView } from "./HealthPill.tsx";
 import { useHealth } from "./HealthProvider.tsx";
 import { ExplorerPage } from "../features/explorer/ExplorerPage.tsx";
+import { parseServicesSearch } from "../features/catalog/search-params.ts";
+import { ServicesPage } from "../features/catalog/ServicesPage.tsx";
 import { Root, useActiveConnection } from "./Shell.tsx";
 
 function Page({ title, children }: { title: string; children?: ReactNode }) {
@@ -80,7 +82,7 @@ const routeTree = rootRoute.addChildren([
       ...(typeof s.op === "string" ? { op: s.op } : {}),
     }),
   }),
-  createRoute({ getParentRoute: () => rootRoute, path: "/services", component: soon("All services") }),
+  createRoute({ getParentRoute: () => rootRoute, path: "/services", component: ServicesPage, validateSearch: parseServicesSearch }),
   createRoute({ getParentRoute: () => rootRoute, path: "/inspector", component: soon("Request inspector") }),
   createRoute({ getParentRoute: () => rootRoute, path: "/connections", component: soon("Connections") }),
 ]);

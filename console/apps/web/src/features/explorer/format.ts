@@ -1,5 +1,5 @@
 import type { UiShape } from "@console/model";
-import type { ServiceOps } from "./catalog.ts";
+import type { ServiceOps } from "../../catalog/fetch.ts";
 
 /** Renders an SDK output as indented JSON. Dates, bytes and bigints have no JSON form, so they get a readable one. */
 export function formatOutput(value: unknown): string {

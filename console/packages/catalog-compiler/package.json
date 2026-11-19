@@ -4,6 +4,7 @@
   "type": "module",
   "exports": { ".": "./src/index.ts" },
   "dependencies": {
+    "@console/api-contract": "workspace:*",
     "@console/model": "workspace:*"
   }
 }
