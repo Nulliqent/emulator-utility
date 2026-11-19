@@ -41,6 +41,20 @@ export function safeContentType(value: string | undefined): string {
   return mime === "application/json" ? "application/json; charset=utf-8" : "text/plain; charset=utf-8";
 }
 
+/**
+ * TLS options that trust only the Connection's ca.pem and verify the identity as 127.0.0.1 (the CA names the
+ * dialable host whatever host we dial; SNI cannot carry an IP, so no `servername`). Throws `CA_MISSING`.
+ */
+export function pinnedTls(c: Connection): { ca: Buffer; checkServerIdentity: typeof tls.checkServerIdentity } {
+  let ca: Buffer;
+  try {
+    ca = readFileSync(c.caFile);
+  } catch {
+    throw Object.assign(new Error("ca.pem not found"), { code: "CA_MISSING" });
+  }
+  return { ca, checkServerIdentity: (_host, cert) => tls.checkServerIdentity("127.0.0.1", cert) };
+}
+
 export interface ProbeResponse {
   status: number;
   body: string;
@@ -55,11 +69,11 @@ export function createHealthProbe(cfg: GatewayConfig) {
   function request(c: Connection): Promise<ProbeResponse> {
     return new Promise((resolve, reject) => {
       const started = performance.now();
-      let ca: Buffer;
+      let pinned: ReturnType<typeof pinnedTls>;
       try {
-        ca = readFileSync(c.caFile);
-      } catch {
-        reject(Object.assign(new Error("ca.pem not found"), { code: "CA_MISSING" }));
+        pinned = pinnedTls(c);
+      } catch (e) {
+        reject(e);
         return;
       }
       const req = https.request(
@@ -68,11 +82,9 @@ export function createHealthProbe(cfg: GatewayConfig) {
           port: c.dialUrl.port || 443,
           path: "/__admin/health",
           method: "GET",
-          ca,
+          ...pinned,
           agent: false,
           signal: AbortSignal.timeout(cfg.healthTimeoutMs), // hard deadline for the whole exchange
-          // The CA names 127.0.0.1 whatever host we dial; SNI cannot carry an IP, so no `servername`.
-          checkServerIdentity: (_host, cert) => tls.checkServerIdentity("127.0.0.1", cert),
         },
         (res) => {
           const chunks: Buffer[] = [];

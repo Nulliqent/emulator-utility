@@ -54,4 +54,6 @@ export interface OperationInvoker {
   clientFor(connectionId: string, serviceId: string): Promise<unknown>;
   /** Tell the Invoker the Connection's credentials epoch; a change drops its cached credentials and clients. */
   notifyEpoch(connectionId: string, epoch: number): void;
+  /** Drops the Connection's cached clients and credentials, so the next call builds them with its current settings. */
+  forget(connectionId: string): void;
 }

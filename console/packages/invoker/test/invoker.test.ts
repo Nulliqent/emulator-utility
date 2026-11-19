@@ -50,6 +50,34 @@ const make = (sdk: ReturnType<typeof fakeSdk>, extra: Partial<InvokerOptions> = 
   createInvoker({ ...base, fetchImpl: okFetch(), load: () => Promise.resolve(sdk.mod), ...extra });
 const authError = (name = "InvalidClientTokenId") => Object.assign(new Error("bad"), { name, $metadata: { httpStatusCode: 403 } });
 
+describe("client behaviour of the Connection", () => {
+  it("builds each client with the Connection's maxAttempts and request timeout", async () => {
+    const sdk = fakeSdk(() => ({ $metadata: { httpStatusCode: 200 } }));
+    await make(sdk, { behaviourOf: () => ({ maxAttempts: 4, timeoutMs: 12_000 }) }).invoke(call);
+    expect(sdk.seen.config?.maxAttempts).toBe(4);
+    expect(sdk.seen.config?.requestHandler).toEqual({ requestTimeout: 12_000 });
+  });
+
+  it("reports the attempts the SDK made", async () => {
+    const sdk = fakeSdk(() => ({ $metadata: { httpStatusCode: 200, attempts: 3 } }));
+    const r = await make(sdk, { behaviourOf: () => ({ maxAttempts: 4, timeoutMs: 12_000 }) }).invoke(call);
+    expect(r.ok && r.meta.attempts).toBe(3);
+  });
+
+  it("builds a fresh client after forget(), so changed settings apply", async () => {
+    const sdk = fakeSdk(() => ({ $metadata: { httpStatusCode: 200 } }));
+    let attempts = 2;
+    const inv = make(sdk, { behaviourOf: () => ({ maxAttempts: attempts, timeoutMs: 5_000 }) });
+    await inv.invoke(call);
+    attempts = 6;
+    await inv.invoke(call);
+    expect(sdk.seen.configs.map((c) => c.maxAttempts)).toEqual([2]); // still the old client
+    inv.forget("local");
+    await inv.invoke(call);
+    expect(sdk.seen.configs.map((c) => c.maxAttempts)).toEqual([2, 6]);
+  });
+});
+
 describe("createInvoker", () => {
   it("loads a Service's module only on its first call, and once", async () => {
     const loaded: string[] = [];
